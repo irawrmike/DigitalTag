@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,39 +19,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter an existing game ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0af-ER-NPa">
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter an existing game ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0af-ER-NPa">
                                 <rect key="frame" x="95" y="548" width="185" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="OXZ-Lg-SKH"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="185.33333333333337" id="oC7-y1-U6W"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Digital Tag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vei-us-ds7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Digital Tag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vei-us-ds7">
                                 <rect key="frame" x="109.5" y="94" width="156" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="31H-r8-veu"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="JKG-gz-UNc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S7-hl-ZSv">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S7-hl-ZSv">
                                 <rect key="frame" x="134.5" y="285" width="106" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="106" id="cA2-M3-nkF"/>
-                                    <constraint firstAttribute="height" constant="35" id="trG-RE-8KL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Join a Game"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URT-lr-UGr">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URT-lr-UGr">
                                 <rect key="frame" x="110" y="371" width="155" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="dWP-P3-J1C"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="sOo-zR-xsr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -74,22 +71,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53.623188405797109" y="111.68478260869566"/>
+            <point key="canvasLocation" x="183" y="127"/>
         </scene>
-        <!--View Controller-->
+        <!--Player Setup View Controller-->
         <scene sceneID="K6S-IN-k61">
             <objects>
-                <viewController id="zvH-qG-eJv" sceneMemberID="viewController">
+                <viewController id="zvH-qG-eJv" userLabel="Player Setup View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A3H-HT-Pga">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8AZ-ZO-Lns">
+                                <rect key="frame" x="20" y="29" width="335" height="400"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axb-kg-NeT">
+                                <rect key="frame" x="110" y="501.5" width="155" height="2.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Take a New Photo"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8AZ-ZO-Lns" firstAttribute="height" secondItem="A3H-HT-Pga" secondAttribute="height" multiplier="0.6" id="C1I-lU-vht"/>
+                            <constraint firstItem="N3y-nh-fkX" firstAttribute="bottom" secondItem="axb-kg-NeT" secondAttribute="bottom" constant="163" id="cSi-qO-Gmw"/>
+                            <constraint firstItem="8AZ-ZO-Lns" firstAttribute="centerX" secondItem="N3y-nh-fkX" secondAttribute="centerX" id="d2n-o9-eBE"/>
+                            <constraint firstItem="axb-kg-NeT" firstAttribute="centerX" secondItem="N3y-nh-fkX" secondAttribute="centerX" id="dNR-su-al3"/>
+                            <constraint firstItem="8AZ-ZO-Lns" firstAttribute="top" secondItem="N3y-nh-fkX" secondAttribute="top" constant="9" id="dh6-tR-yQB"/>
+                            <constraint firstItem="8AZ-ZO-Lns" firstAttribute="width" secondItem="A3H-HT-Pga" secondAttribute="width" constant="-40" id="fMw-w6-cBv"/>
+                            <constraint firstItem="axb-kg-NeT" firstAttribute="top" secondItem="8AZ-ZO-Lns" secondAttribute="bottom" constant="72.333333333333314" id="l0l-zu-HbB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="N3y-nh-fkX"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aVf-IV-DkD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="943" y="144"/>
+            <point key="canvasLocation" x="881.15942028985512" y="126.35869565217392"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="su5-fq-YeG">
