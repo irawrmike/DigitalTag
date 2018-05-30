@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zvH-qG-eJv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -71,41 +71,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="183" y="127"/>
+            <point key="canvasLocation" x="14" y="126"/>
         </scene>
         <!--Player Setup View Controller-->
         <scene sceneID="K6S-IN-k61">
             <objects>
-                <viewController id="zvH-qG-eJv" userLabel="Player Setup View Controller" sceneMemberID="viewController">
+                <viewController id="zvH-qG-eJv" userLabel="Player Setup View Controller" customClass="PlayerSetupViewController" customModule="DigitalTag" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A3H-HT-Pga">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8AZ-ZO-Lns">
-                                <rect key="frame" x="20" y="29" width="335" height="400"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8AZ-ZO-Lns" userLabel="Player Photo">
+                                <rect key="frame" x="20" y="40" width="335" height="400"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axb-kg-NeT">
-                                <rect key="frame" x="110" y="501.5" width="155" height="2.5"/>
+                                <rect key="frame" x="110" y="512.5" width="155" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Take a New Photo"/>
+                                <connections>
+                                    <action selector="takeANewPhotoButtonPressed:" destination="zvH-qG-eJv" eventType="touchUpInside" id="AHO-sF-ryt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8AZ-ZO-Lns" firstAttribute="height" secondItem="A3H-HT-Pga" secondAttribute="height" multiplier="0.6" id="C1I-lU-vht"/>
-                            <constraint firstItem="N3y-nh-fkX" firstAttribute="bottom" secondItem="axb-kg-NeT" secondAttribute="bottom" constant="163" id="cSi-qO-Gmw"/>
                             <constraint firstItem="8AZ-ZO-Lns" firstAttribute="centerX" secondItem="N3y-nh-fkX" secondAttribute="centerX" id="d2n-o9-eBE"/>
                             <constraint firstItem="axb-kg-NeT" firstAttribute="centerX" secondItem="N3y-nh-fkX" secondAttribute="centerX" id="dNR-su-al3"/>
-                            <constraint firstItem="8AZ-ZO-Lns" firstAttribute="top" secondItem="N3y-nh-fkX" secondAttribute="top" constant="9" id="dh6-tR-yQB"/>
+                            <constraint firstItem="8AZ-ZO-Lns" firstAttribute="top" secondItem="N3y-nh-fkX" secondAttribute="top" constant="20" id="dh6-tR-yQB"/>
                             <constraint firstItem="8AZ-ZO-Lns" firstAttribute="width" secondItem="A3H-HT-Pga" secondAttribute="width" constant="-40" id="fMw-w6-cBv"/>
                             <constraint firstItem="axb-kg-NeT" firstAttribute="top" secondItem="8AZ-ZO-Lns" secondAttribute="bottom" constant="72.333333333333314" id="l0l-zu-HbB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N3y-nh-fkX"/>
                     </view>
+                    <connections>
+                        <outlet property="playerImageView" destination="8AZ-ZO-Lns" id="Hql-8y-caH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aVf-IV-DkD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="881.15942028985512" y="126.35869565217392"/>
+            <point key="canvasLocation" x="817" y="117"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="su5-fq-YeG">

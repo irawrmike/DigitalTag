@@ -8,28 +8,41 @@
 
 import UIKit
 
-class PlayerSetupViewController: UIViewController {
+class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    @IBOutlet weak var playerImageView: UIImageView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        picker.dismiss(animated: true)
+        
+        guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else {
+            print("ERROR: No image found")
+            return
+        }
+        
+        playerImageView.image = image
+        
     }
-    */
-
+    
+    
+    //MARK: Actions
+    
+    @IBAction func takeANewPhotoButtonPressed(_ sender: UIButton) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        imagePicker.cameraDevice = .front
+        
+        present(imagePicker, animated: true)
+    }
+    
 }
+
+
