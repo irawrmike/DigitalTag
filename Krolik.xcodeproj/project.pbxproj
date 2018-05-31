@@ -13,13 +13,14 @@
 		27E7361E20BF31F6004B48D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361D20BF31F6004B48D2 /* Assets.xcassets */; };
 		27E7362120BF31F6004B48D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361F20BF31F6004B48D2 /* LaunchScreen.storyboard */; };
 		3B3D4E8120C082550027C68C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8020C082550027C68C /* GoogleService-Info.plist */; };
+		3B3D4E8720C08E7E0027C68C /* GameSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8620C08E7E0027C68C /* GameSetupViewController.swift */; };
+		3B3D4E8920C08F4D0027C68C /* PlayerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8820C08F4D0027C68C /* PlayerCollectionViewCell.swift */; };
 		3BC0D96720BF3EC900045B17 /* PlayerSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */; };
 		48CAA4A476FE350700FA4863 /* Pods_Krolik.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413B71FF29B5FB6BE268F6C /* Pods_Krolik.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1CB76E85B814DA2FABF2DCCF /* Pods-Krolik.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Krolik.release.xcconfig"; path = "Pods/Target Support Files/Pods-Krolik/Pods-Krolik.release.xcconfig"; sourceTree = "<group>"; };
-		248D29A3AFB89BC0F4E17F64 /* Pods-DigitalTag.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigitalTag.release.xcconfig"; path = "Pods/Target Support Files/Pods-DigitalTag/Pods-DigitalTag.release.xcconfig"; sourceTree = "<group>"; };
 		27E7361320BF31F5004B48D2 /* Krolik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Krolik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E7361620BF31F5004B48D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27E7361820BF31F5004B48D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,10 +28,11 @@
 		27E7361D20BF31F6004B48D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27E7362020BF31F6004B48D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27E7362220BF31F6004B48D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2B34F1161F27FE66E38213F4 /* Pods-DigitalTag.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigitalTag.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DigitalTag/Pods-DigitalTag.debug.xcconfig"; sourceTree = "<group>"; };
 		2F4335916A8A654E3EA71D9E /* Pods-Krolik.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Krolik.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Krolik/Pods-Krolik.debug.xcconfig"; sourceTree = "<group>"; };
 		3413B71FF29B5FB6BE268F6C /* Pods_Krolik.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Krolik.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3D4E8020C082550027C68C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3B3D4E8620C08E7E0027C68C /* GameSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetupViewController.swift; sourceTree = "<group>"; };
+		3B3D4E8820C08F4D0027C68C /* PlayerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSetupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,8 @@
 				27E7362220BF31F6004B48D2 /* Info.plist */,
 				3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */,
 				3B3D4E8020C082550027C68C /* GoogleService-Info.plist */,
+				3B3D4E8620C08E7E0027C68C /* GameSetupViewController.swift */,
+				3B3D4E8820C08F4D0027C68C /* PlayerCollectionViewCell.swift */,
 			);
 			path = Krolik;
 			sourceTree = "<group>";
@@ -82,8 +86,6 @@
 		9A84BEC2C82A9FA4161735FA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2B34F1161F27FE66E38213F4 /* Pods-DigitalTag.debug.xcconfig */,
-				248D29A3AFB89BC0F4E17F64 /* Pods-DigitalTag.release.xcconfig */,
 				2F4335916A8A654E3EA71D9E /* Pods-Krolik.debug.xcconfig */,
 				1CB76E85B814DA2FABF2DCCF /* Pods-Krolik.release.xcconfig */,
 			);
@@ -221,7 +223,9 @@
 			files = (
 				27E7361920BF31F5004B48D2 /* ViewController.swift in Sources */,
 				27E7361720BF31F5004B48D2 /* AppDelegate.swift in Sources */,
+				3B3D4E8720C08E7E0027C68C /* GameSetupViewController.swift in Sources */,
 				3BC0D96720BF3EC900045B17 /* PlayerSetupViewController.swift in Sources */,
+				3B3D4E8920C08F4D0027C68C /* PlayerCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
