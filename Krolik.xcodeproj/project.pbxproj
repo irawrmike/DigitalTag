@@ -14,7 +14,6 @@
 		27E7362120BF31F6004B48D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361F20BF31F6004B48D2 /* LaunchScreen.storyboard */; };
 		3B3D4E8120C082550027C68C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8020C082550027C68C /* GoogleService-Info.plist */; };
 		3B3D4E8720C08E7E0027C68C /* GameSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8620C08E7E0027C68C /* GameSetupViewController.swift */; };
-		3B3D4E8920C08F4D0027C68C /* PlayerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8820C08F4D0027C68C /* PlayerCollectionViewCell.swift */; };
 		3BC0D96720BF3EC900045B17 /* PlayerSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */; };
 		48CAA4A476FE350700FA4863 /* Pods_Krolik.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413B71FF29B5FB6BE268F6C /* Pods_Krolik.framework */; };
 /* End PBXBuildFile section */
@@ -32,7 +31,6 @@
 		3413B71FF29B5FB6BE268F6C /* Pods_Krolik.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Krolik.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3D4E8020C082550027C68C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B3D4E8620C08E7E0027C68C /* GameSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetupViewController.swift; sourceTree = "<group>"; };
-		3B3D4E8820C08F4D0027C68C /* PlayerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSetupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,7 +76,6 @@
 				3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */,
 				3B3D4E8020C082550027C68C /* GoogleService-Info.plist */,
 				3B3D4E8620C08E7E0027C68C /* GameSetupViewController.swift */,
-				3B3D4E8820C08F4D0027C68C /* PlayerCollectionViewCell.swift */,
 			);
 			path = Krolik;
 			sourceTree = "<group>";
@@ -225,7 +222,6 @@
 				27E7361720BF31F5004B48D2 /* AppDelegate.swift in Sources */,
 				3B3D4E8720C08E7E0027C68C /* GameSetupViewController.swift in Sources */,
 				3BC0D96720BF3EC900045B17 /* PlayerSetupViewController.swift in Sources */,
-				3B3D4E8920C08F4D0027C68C /* PlayerCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
