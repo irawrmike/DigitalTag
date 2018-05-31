@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27B449DF20C0991200997600 /* KrolikDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B449DE20C0991200997600 /* KrolikDatabase.swift */; };
 		27E7361720BF31F5004B48D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7361620BF31F5004B48D2 /* AppDelegate.swift */; };
 		27E7361920BF31F5004B48D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7361820BF31F5004B48D2 /* ViewController.swift */; };
 		27E7361C20BF31F5004B48D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361A20BF31F5004B48D2 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		1CB76E85B814DA2FABF2DCCF /* Pods-Krolik.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Krolik.release.xcconfig"; path = "Pods/Target Support Files/Pods-Krolik/Pods-Krolik.release.xcconfig"; sourceTree = "<group>"; };
 		248D29A3AFB89BC0F4E17F64 /* Pods-DigitalTag.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigitalTag.release.xcconfig"; path = "Pods/Target Support Files/Pods-DigitalTag/Pods-DigitalTag.release.xcconfig"; sourceTree = "<group>"; };
+		27B449DE20C0991200997600 /* KrolikDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KrolikDatabase.swift; sourceTree = "<group>"; };
 		27E7361320BF31F5004B48D2 /* Krolik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Krolik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E7361620BF31F5004B48D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27E7361820BF31F5004B48D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			children = (
 				27E7361620BF31F5004B48D2 /* AppDelegate.swift */,
 				27E7361820BF31F5004B48D2 /* ViewController.swift */,
+				27B449DE20C0991200997600 /* KrolikDatabase.swift */,
 				27E7361A20BF31F5004B48D2 /* Main.storyboard */,
 				27E7361D20BF31F6004B48D2 /* Assets.xcassets */,
 				27E7361F20BF31F6004B48D2 /* LaunchScreen.storyboard */,
@@ -221,6 +224,7 @@
 			files = (
 				27E7361920BF31F5004B48D2 /* ViewController.swift in Sources */,
 				27E7361720BF31F5004B48D2 /* AppDelegate.swift in Sources */,
+				27B449DF20C0991200997600 /* KrolikDatabase.swift in Sources */,
 				3BC0D96720BF3EC900045B17 /* PlayerSetupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
