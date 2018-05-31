@@ -1,9 +1,9 @@
 //
 //  PlayerSetupViewController.swift
-//  DigitalTag
+//  Krolik
 //
-//  Created by Colin on 2018-05-30.
-//  Copyright © 2018 Mike Stoltman. All rights reserved.
+//  Created by Mike Stoltman, Mike Cameron, and Colin Russell
+//  Copyright © 2018 Krolik Team. All rights reserved.
 //
 
 import UIKit

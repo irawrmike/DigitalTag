@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:DigitalTag.xcodeproj">
+      location = "self:/Users/mike/Desktop/lighthouse/assignments/Final Project/Krolik/Krolik.xcodeproj">
    </FileRef>
 </Workspace>
