@@ -33,6 +33,16 @@ class KrolikDatabase {
         print("player added with key \(newPlayerKey)")
     }
     
+    func setupGame() {
+        let newGameKey = gameRef.childByAutoId().key
+        
+        var game = [String:Any?]()
+        game["game_id"] = newGameKey
+        game["game_name"] = "Odessa Chronicles"
+        game["game_players"] = players
+        gameRef.child(newGameKey).setValue(game)
+    }
+    
     func startGame() {
         let shuffledPlayers = players.shuffled()
         
@@ -47,13 +57,6 @@ class KrolikDatabase {
         }
         
         playerRef.updateChildValues(targetsUpdate)
-        
-        let newGameKey = gameRef.childByAutoId().key
-        var game = [String:Any?]()
-        game["game_id"] = newGameKey
-        game["game_name"] = "Odessa Chronicles"
-        game["game_players"] = players
-        gameRef.child(newGameKey).setValue(game)
     }
 }
 
