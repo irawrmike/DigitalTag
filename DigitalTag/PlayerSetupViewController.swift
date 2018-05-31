@@ -54,6 +54,11 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
             imagePicker.cameraOverlayView = nil
         })
         
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "_UIImagePickerControllerUserDidRejectItem"), object:nil, queue:nil, using: { note in
+            imagePicker.cameraOverlayView = cameraOverlay
+        })
+        
     }
     
 }
