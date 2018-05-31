@@ -41,12 +41,19 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         imagePicker.cameraDevice = .front
         
         // Create the Camera Overlay
-        let cameraOverlay = UIView(frame: CGRect(x: self.view.frame.midY, y: self.view.frame.midY, width: self.view.frame.width/2, height: self.view.frame.height/2))
-        cameraOverlay.backgroundColor = UIColor.blue
-        cameraOverlay.alpha = 0.5
-        imagePicker.cameraOverlayView = cameraOverlay
         
+        let overlayOrigin = CGPoint(x: view.frame.origin.x, y: view.frame.origin.y-50)
+        let cameraOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: view.frame.size))
+        cameraOverlay.image = UIImage(named: "crosshair")
+        cameraOverlay.contentMode = .scaleAspectFit
+        imagePicker.cameraOverlayView = cameraOverlay
+       
         present(imagePicker, animated: true)
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "_UIImagePickerControllerUserDidCaptureItem"), object:nil, queue:nil, using: { note in
+            imagePicker.cameraOverlayView = nil
+        })
+        
     }
     
 }
