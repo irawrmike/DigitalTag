@@ -31,7 +31,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playerCell", for: indexPath)
         cell.contentView.layer.borderWidth = 2
-        cell.contentView.layer.cornerRadius = 10
+        cell.contentView.layer.cornerRadius = 15
         cell.contentView.layer.borderColor = UIColor.black.cgColor
         cell.layer.masksToBounds = true
         

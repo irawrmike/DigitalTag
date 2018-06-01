@@ -19,45 +19,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S7-hl-ZSv">
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="753" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S7-hl-ZSv">
                                 <rect key="frame" x="154" y="275" width="106" height="36.666666666666686"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Join a Game"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URT-lr-UGr">
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URT-lr-UGr">
                                 <rect key="frame" x="129.66666666666666" y="433.66666666666669" width="154.99999999999997" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Start a New Game"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Digital Tag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vei-us-ds7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Digital Tag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vei-us-ds7">
                                 <rect key="frame" x="129" y="102.33333333333331" width="156" height="73.666666666666686"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter an existing game ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0af-ER-NPa">
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter an existing game ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0af-ER-NPa">
                                 <rect key="frame" x="114.66666666666669" y="518.66666666666663" width="185" height="38.333333333333371"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="0S7-hl-ZSv" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="00s-WA-YjJ"/>
-                            <constraint firstItem="vei-us-ds7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="06Y-sG-5Lm"/>
-                            <constraint firstItem="URT-lr-UGr" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.05" id="9mE-pl-2hs"/>
-                            <constraint firstItem="URT-lr-UGr" firstAttribute="top" secondItem="0S7-hl-ZSv" secondAttribute="bottom" constant="122" id="DVl-sg-C43"/>
-                            <constraint firstItem="0S7-hl-ZSv" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.05" id="GfC-nj-CJm"/>
-                            <constraint firstItem="vei-us-ds7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="82" id="RRm-oz-4Ya"/>
-                            <constraint firstItem="URT-lr-UGr" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Rvf-Ui-hPq"/>
-                            <constraint firstItem="vei-us-ds7" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.1" id="T90-yK-OGm"/>
-                            <constraint firstItem="0af-ER-NPa" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Te8-t0-QWd"/>
-                            <constraint firstItem="0af-ER-NPa" firstAttribute="top" secondItem="URT-lr-UGr" secondAttribute="bottom" constant="48" id="hbe-NY-8Zy"/>
-                            <constraint firstItem="0af-ER-NPa" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.1" id="tAD-T2-lOW"/>
-                            <constraint firstItem="0S7-hl-ZSv" firstAttribute="top" secondItem="vei-us-ds7" secondAttribute="bottom" constant="99" id="wwa-Yf-UDZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0af-ER-NPa" secondAttribute="bottom" constant="179" id="yM1-O4-mRP"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -161,7 +150,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W2n-4h-i9a"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Game Name" id="ZbA-l9-qDd"/>
+                    <navigationItem key="navigationItem" title="Game Name" id="ZbA-l9-qDd">
+                        <barButtonItem key="rightBarButtonItem" title="Mission" id="Ur3-HK-X8a">
+                            <connections>
+                                <segue destination="JFN-wM-Q1B" kind="show" id="7j4-Kd-cxQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Z6z-0O-iux" id="6oi-EN-N2M"/>
                     </connections>
