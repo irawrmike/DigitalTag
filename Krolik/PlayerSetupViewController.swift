@@ -9,14 +9,18 @@
 import UIKit
 
 class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
+    //MARK: Outlets
     @IBOutlet weak var playerImageView: UIImageView!
     @IBOutlet weak var gameIDField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
 
+    //MARK: Properties
+    let networkManager = NetworkManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //submitButton.isEnabled = false
+        submitButton.isEnabled = false
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -29,6 +33,9 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         
         playerImageView.image = image
         
+        // check for a face in the image here!!
+        
+        submitButton.isEnabled = true
     }
     
     
@@ -42,15 +49,15 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         imagePicker.cameraDevice = .front
         
         // Create the Camera Overlay
-        
         let overlayOrigin = CGPoint(x: view.frame.origin.x, y: view.frame.origin.y-50)
         let cameraOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: view.frame.size))
-        cameraOverlay.image = UIImage(named: "crosshair")
+        cameraOverlay.image = UIImage(named: "faceOutline")
         cameraOverlay.contentMode = .scaleAspectFit
         imagePicker.cameraOverlayView = cameraOverlay
        
         present(imagePicker, animated: true)
         
+        // Hide/Show the camera overlay
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "_UIImagePickerControllerUserDidCaptureItem"), object:nil, queue:nil, using: { note in
             imagePicker.cameraOverlayView = nil
         })
@@ -62,6 +69,14 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     @IBAction func submitButtonTapped(_ sender: UIButton) {
+        guard let image = playerImageView.image else { return }
+        
+        networkManager.uploadPhoto(photo: image, path: "gameTestID/image.png") { (url, error) in
+            if error != nil {
+                print("error uploading: \(error!)")
+            }
+            print("Photo uploaded to url: \(url.absoluteString)")
+        }
     }
     
     
