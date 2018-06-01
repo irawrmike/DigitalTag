@@ -1,5 +1,5 @@
 //
-//  Database.swift
+//  GameLogic.swift
 //  Krolik
 //
 //  Created by Mike Stoltman on 2018-05-31.
@@ -8,7 +8,7 @@
 
 import Firebase
 
-class KrolikDatabase {
+class GameLogic {
     
     var databaseRef: DatabaseReference!
     var gameRef: DatabaseReference!
@@ -16,16 +16,17 @@ class KrolikDatabase {
     var players = [String]()
     var owner: Bool = false
     
-    func addPlayer() {
+    func addPlayer(gameID: String) {
         let newPlayerKey = playerRef.childByAutoId().key
         
         var player = [String:Any?]()
         player["player_id"] = newPlayerKey
-        player["target_id"] = "none"
-        player["player_nickname"] = "Player Nickname"
+        player["game_id"] = gameID
+        player["target_id"] = "***INSERT TARGET***"
+        player["player_nickname"] = "***INSERT NICKNAME***"
         player["player_state"] = "alive"
-        player["device_id"] = "INSERT DEVICE ID"
-        player["photo_url"] = "INSERT URL"
+        player["device_id"] = "***INSERT DEVICE ID***"
+        player["photo_url"] = "***INSERT URL***"
         
         playerRef.child(newPlayerKey).setValue(player)
         players.append(newPlayerKey)
@@ -39,8 +40,16 @@ class KrolikDatabase {
         var game = [String:Any?]()
         game["game_id"] = newGameKey
         game["game_name"] = "Odessa Chronicles"
-        game["game_players"] = players
+        game["game_players"] = []
         gameRef.child(newGameKey).setValue(game)
+        gameRef.child(newGameKey).child("game_players").observe(.value) { (snapshot) in
+            guard let players = snapshot.value as? [String] else {
+                print("could not get players from game")
+                return
+            }
+            self.players = players
+            // reload collection view with players as they populate
+        }
     }
     
     func startGame() {
@@ -57,6 +66,37 @@ class KrolikDatabase {
         }
         
         playerRef.updateChildValues(targetsUpdate)
+    }
+    
+    func killPlayer(playerID: String, targetID: String) {
+        // get new target from killed agent
+        guard let newTarget = playerRef.child(targetID).value(forKey: "target_id") as? String else {
+            print("could not get new target from database")
+            return
+        }
+        
+        // kill agent by setting player_state
+        let killUpdate = ["player_state":"dead", "target_id":"none"]
+        playerRef.child(playerID).updateChildValues(killUpdate)
+        
+        // assign new target to killer
+        let updateTarget = ["target_id":newTarget]
+        playerRef.child(playerID).updateChildValues(updateTarget)
+        
+        // send push notification
+    }
+    
+    func deleteGame(gameID: String) {
+        // get a list of all players within the game and delete them
+        guard let players = gameRef.child(gameID).value(forKey: "game_players") as? [String] else {
+            print("could not get list of players from game")
+            return
+        }
+        for player in players {
+            playerRef.child(player).removeValue()
+        }
+        // delete game
+        gameRef.child(gameID).removeValue()
     }
 }
 
