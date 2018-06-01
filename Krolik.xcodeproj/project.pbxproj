@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		272EBE3820C17560003FEFE2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EBE3720C17560003FEFE2 /* Player.swift */; };
+		27B449DF20C0991200997600 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B449DE20C0991200997600 /* Game.swift */; };
 		27E7361720BF31F5004B48D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7361620BF31F5004B48D2 /* AppDelegate.swift */; };
 		27E7361920BF31F5004B48D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7361820BF31F5004B48D2 /* ViewController.swift */; };
 		27E7361C20BF31F5004B48D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361A20BF31F5004B48D2 /* Main.storyboard */; };
@@ -70,6 +72,8 @@
 			children = (
 				27E7361620BF31F5004B48D2 /* AppDelegate.swift */,
 				27E7361820BF31F5004B48D2 /* ViewController.swift */,
+				27B449DE20C0991200997600 /* Game.swift */,
+				272EBE3720C17560003FEFE2 /* Player.swift */,
 				27E7361A20BF31F5004B48D2 /* Main.storyboard */,
 				27E7361D20BF31F6004B48D2 /* Assets.xcassets */,
 				27E7361F20BF31F6004B48D2 /* LaunchScreen.storyboard */,
