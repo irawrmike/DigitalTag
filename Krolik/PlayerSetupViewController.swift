@@ -35,8 +35,14 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         playerImageView.image = image
         
         // check for a face in the image here!!
+        networkManager.checkPhotoFace(photo: image) { (isFace) in
+            if isFace {
+                self.submitButton.isEnabled = true
+            } else {
+                print("NOT A FACE!!!")
+            }
+        }
         
-        submitButton.isEnabled = true
     }
     
     
@@ -48,8 +54,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
         imagePicker.cameraDevice = .front
-        imagePicker.cameraCaptureMode = .photo
-        
+        imagePicker.cameraFlashMode = .off
         
         // Create the Camera Overlay
         let overlayOrigin = CGPoint(x: view.frame.origin.x+75, y: view.frame.origin.y+15)

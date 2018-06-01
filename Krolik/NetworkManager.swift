@@ -31,8 +31,30 @@ class NetworkManager {
         }
     }
     
-    func checkPhotoFace(photoURL: String, completion: @escaping (_ isFace: Bool) -> ()) {
+    func checkPhotoFace(photo: UIImage, completion: @escaping (_ isFace: Bool) -> ()) {
+        guard let url = URL(string: "http://api.kairos.com/detect") else { return }
         
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("48f9a54e", forHTTPHeaderField: "app_id")
+        request.addValue("f9da2200327fdab7f1848c77ced880df", forHTTPHeaderField: "app_key")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = UIImagePNGRepresentation(photo)
+        let dataTask = URLSession(configuration: URLSessionConfiguration.default).dataTask(with: request) { (data, urlResponse, error) in
+            guard let responseData = data else {
+                print(error as? String ?? "no error")
+                completion(false)
+                return
+            }
+            guard let results = try? JSONSerialization.jsonObject(with: responseData, options: []) else {
+                print("JSON results ERROR")
+                completion(false)
+                return
+            }
+            print(results)
+            completion(true)
+        }
+        dataTask.resume()
     }
     
 }
