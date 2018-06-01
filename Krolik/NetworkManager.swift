@@ -31,4 +31,8 @@ class NetworkManager {
         }
     }
     
+    func checkPhotoFace(photoURL: String, completion: @escaping (_ isFace: Bool) -> ()) {
+        
+    }
+    
 }

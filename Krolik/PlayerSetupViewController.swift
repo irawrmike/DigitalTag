@@ -21,6 +21,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.isEnabled = false
+        playerImageView.contentMode = .scaleAspectFit
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -47,10 +48,13 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
         imagePicker.cameraDevice = .front
+        imagePicker.cameraCaptureMode = .photo
+        
         
         // Create the Camera Overlay
-        let overlayOrigin = CGPoint(x: view.frame.origin.x, y: view.frame.origin.y-50)
-        let cameraOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: view.frame.size))
+        let overlayOrigin = CGPoint(x: view.frame.origin.x+75, y: view.frame.origin.y+15)
+        let overlaySize = CGSize(width: view.frame.width-150, height: view.frame.height-150)
+        let cameraOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: overlaySize))
         cameraOverlay.image = UIImage(named: "faceOutline")
         cameraOverlay.contentMode = .scaleAspectFit
         imagePicker.cameraOverlayView = cameraOverlay
