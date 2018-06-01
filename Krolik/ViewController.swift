@@ -15,4 +15,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    @IBAction func joinButtonTapped(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func startButtonTapped(_ sender: UIButton) {
+        
+    }
 }

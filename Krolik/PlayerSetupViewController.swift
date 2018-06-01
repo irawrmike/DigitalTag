@@ -11,11 +11,12 @@ import UIKit
 class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var playerImageView: UIImageView!
-    
+    @IBOutlet weak var gameIDField: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //submitButton.isEnabled = false
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -58,8 +59,11 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "_UIImagePickerControllerUserDidRejectItem"), object:nil, queue:nil, using: { note in
             imagePicker.cameraOverlayView = cameraOverlay
         })
-        
     }
+
+    @IBAction func submitButtonTapped(_ sender: UIButton) {
+    }
+    
     
 }
 
