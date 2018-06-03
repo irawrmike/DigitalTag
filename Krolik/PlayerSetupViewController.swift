@@ -14,7 +14,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var playerImageView: UIImageView!
     @IBOutlet weak var gameIDField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
-
+    
     //MARK: Properties
     let networkManager = NetworkManager()
     
@@ -34,12 +34,21 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         
         playerImageView.image = image
         
-        // check for a face in the image here!!
-        networkManager.checkPhotoFace(photo: image) { (isFace) in
-            if isFace {
-                self.submitButton.isEnabled = true
-            } else {
-                print("NOT A FACE!!!")
+        networkManager.uploadPhoto(photo: image, path: "gameTestID/image.png") { (url, error) in
+            if error != nil {
+                print(error ?? "error?")
+            }
+            // check for a face in the image here!!
+            self.networkManager.checkPhotoFace(photoURL: url.absoluteString) { (isFace) in
+                
+                DispatchQueue.main.async {
+                    if isFace {
+                        self.submitButton.isEnabled = true
+                    } else {
+                        print("NOT A FACE!!!")
+                    }
+                    
+                }
             }
         }
         
@@ -63,7 +72,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         cameraOverlay.image = UIImage(named: "faceOutline")
         cameraOverlay.contentMode = .scaleAspectFit
         imagePicker.cameraOverlayView = cameraOverlay
-       
+        
         present(imagePicker, animated: true)
         
         // Hide/Show the camera overlay
@@ -76,7 +85,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
             imagePicker.cameraOverlayView = cameraOverlay
         })
     }
-
+    
     @IBAction func submitButtonTapped(_ sender: UIButton) {
         guard let image = playerImageView.image else { return }
         
