@@ -27,7 +27,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true)
         
-        guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else {
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             print("ERROR: No image found")
             return
         }

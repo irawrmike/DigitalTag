@@ -14,7 +14,7 @@ class NetworkManager {
     func uploadPhoto(photo: UIImage, path: String, completion: @escaping (_ photoURL: URL, Error?) -> ()) {
         let storage = Storage.storage()
         let storageRef = storage.reference()
-        guard let photoData = UIImagePNGRepresentation(photo) else {
+        guard let photoData = UIImageJPEGRepresentation(photo, 0.7) else {
             print("photo data conversion ERROR")
             return
         }
