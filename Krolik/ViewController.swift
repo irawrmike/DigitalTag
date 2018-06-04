@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Krolik
 //
-//  Created by Mike Stoltman, Mike Cameron, and Colin Russell
+//  Created by Colin Russell, Mike Cameron, and Mike Stoltman
 //  Copyright © 2018 Krolik Team. All rights reserved.
 //
 

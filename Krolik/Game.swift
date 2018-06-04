@@ -2,7 +2,7 @@
 //  Game.swift
 //  Krolik
 //
-//  Created by Mike Stoltman, Mike Cameron, and Colin Russell
+//  Created by Colin Russell, Mike Cameron, and Mike Stoltman
 //  Copyright © 2018 Krolik Team. All rights reserved.
 //
 
@@ -10,97 +10,52 @@ import Firebase
 
 class Game {
     
-    var databaseRef: DatabaseReference!
-    var gameRef: DatabaseReference!
-    var playerRef: DatabaseReference!
+    struct keys {
+        static let root = "games"
+        static let history = "game_history"
+        static let name = "game_name"
+        static let id = "game_id"
+        static let players = "game_players"
+        static let created = "date_created"
+        static let ended = "date_ended"
+    }
+    
+    let databaseManager = DatabaseManager()
+    var name: String!
     var players = [String]()
-    var owner: Bool = false
-    
-    func addPlayer(gameID: String) {
-        let newPlayerKey = playerRef.childByAutoId().key
-        
-        var player = [String:Any?]()
-        player["player_id"] = newPlayerKey
-        player["game_id"] = gameID
-        player["target_id"] = "***INSERT TARGET***"
-        player["player_nickname"] = "***INSERT NICKNAME***"
-        player["player_state"] = "alive"
-        player["device_id"] = "***INSERT DEVICE ID***"
-        player["photo_url"] = "***INSERT URL***"
-        
-        playerRef.child(newPlayerKey).setValue(player)
-        players.append(newPlayerKey)
-        
-        print("player added with key \(newPlayerKey)")
-    }
-    
-    func setupGame() {
-        let newGameKey = gameRef.childByAutoId().key
-        
-        var game = [String:Any?]()
-        game["game_id"] = newGameKey
-        game["game_name"] = "Odessa Chronicles"
-        game["game_players"] = []
-        gameRef.child(newGameKey).setValue(game)
-        gameRef.child(newGameKey).child("game_players").observe(.value) { (snapshot) in
-            guard let players = snapshot.value as? [String] else {
-                print("could not get players from game")
-                return
-            }
-            self.players = players
-            // reload collection view with players as they populate
-        }
-    }
     
     func startGame() {
+        // get list of players from database
+        
+        // shuffle list of players
         let shuffledPlayers = players.shuffled()
         
+        // create dictionary for update to database
         var targetsUpdate = [String:String]()
         
         for i in 0..<shuffledPlayers.count {
             if i == (shuffledPlayers.count - 1) {
-                targetsUpdate["\(shuffledPlayers[i])/target_id/"] = shuffledPlayers[0]
+                // last player in shuffled list gets first player
+                targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.target)/"] = shuffledPlayers[0]
             }else{
-                targetsUpdate["\(shuffledPlayers[i])/target_id/"] = shuffledPlayers[i+1]
+                // all other players in shuffled list get their index + 1
+                targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.target)/"] = shuffledPlayers[i+1]
             }
         }
+        // update player targets on database
         
-        playerRef.updateChildValues(targetsUpdate)
     }
     
-    func killPlayer(playerID: String, targetID: String) {
-        // get new target from killed agent
-        guard let newTarget = playerRef.child(targetID).value(forKey: "target_id") as? String else {
-            print("could not get new target from database")
-            return
-        }
-        
-        // kill agent by setting player_state
-        let killUpdate = ["player_state":"dead", "target_id":"none"]
-        playerRef.child(playerID).updateChildValues(killUpdate)
-        
-        // assign new target to killer
-        let updateTarget = ["target_id":newTarget]
-        playerRef.child(playerID).updateChildValues(updateTarget)
-        
-        // send push notification
+    static func generateGameName() -> String {
+        let names = ["The Odessa Files", "The Munich Gambit", "The Ostravsky Affair", "Smiley's Lament", "The Prague Chronicles", "The Vienna Waltz", "The Leningrad Let-Down"]
+        let randomIndex = Int(arc4random_uniform(UInt32(names.count)))
+        let name = names[randomIndex]
+        return name
     }
-    
-    func deleteGame(gameID: String) {
-        // get a list of all players within the game and delete them
-        guard let players = gameRef.child(gameID).value(forKey: "game_players") as? [String] else {
-            print("could not get list of players from game")
-            return
-        }
-        for player in players {
-            playerRef.child(player).removeValue()
-        }
-        // delete game
-        gameRef.child(gameID).removeValue()
-    }
+
 }
 
-// MARK: Functions for shuffling
+// MARK: Functions for shuffling players
 
 extension MutableCollection {
     /// Shuffles the contents of this collection.
