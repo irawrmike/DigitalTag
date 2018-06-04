@@ -23,7 +23,7 @@ class DatabaseManager {
     // MARK: CREATE
     
     // CREATE GAME
-    func create(game: Game) {
+    func createGame() {
         // create reference to games root folder
         let gamesRef = databaseRef.child(Game.keys.root)
         
@@ -41,7 +41,7 @@ class DatabaseManager {
     }
     
     // CREATE PLAYER
-    func create(player: Player, gameID: String) {
+    func createPlayer(gameID: String) {
         // create reference to players root folder
         let playersRef = databaseRef.child(Player.keys.root)
         
@@ -59,7 +59,7 @@ class DatabaseManager {
         playerData[Player.keys.device] = "***INSERT URL***"
         
         // create the player on firebase database
-        playersRef.child(newPlayerKey).setValue(player)
+        playersRef.child(newPlayerKey).setValue(playerData)
         
         // print statement to confirm addition of new player with unique key
         print("player added with key \(newPlayerKey)")
@@ -182,6 +182,14 @@ class DatabaseManager {
         
         // update values based on dictionary
         playerRef.updateChildValues(update)
+    }
+    
+    func updatePlayers(update: Dictionary<String, Any>) {
+        // create reference to players root folder
+        let playersRef = databaseRef.child(Player.keys.root)
+        
+        // update values
+        playersRef.updateChildValues(update)
     }
     
     // MARK: DELETE
