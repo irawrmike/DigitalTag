@@ -13,13 +13,16 @@ class GameLogic {
 
     var players = [String]()
     let database = DatabaseManager()
+    var currentGame: Game!
     
     func createGame() {
-        
+        // create game object on database
+        currentGame = database.createGame()
     }
     
     func startGame() {
-        
+        // create targets and send to database
+        createTargets(game: currentGame)
     }
     
     func createTargets(game: Game) {
@@ -51,7 +54,10 @@ class GameLogic {
 extension GameLogic: DatabaseDelegate {
     
     func readGame(game: Game) {
+        // assign returned game value to current game property
+        currentGame = game
         
+        // run code on returned game object here
     }
     
     func readPlayer(player: Player) {

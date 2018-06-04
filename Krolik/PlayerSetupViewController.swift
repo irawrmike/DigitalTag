@@ -17,6 +17,8 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     
     //MARK: Properties
     let networkManager = NetworkManager()
+    let database = DatabaseManager()
+    var currentGame: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,7 +101,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func submitButtonTapped(_ sender: UIButton) {
-        
+        database.createPlayer(gameID: currentGame)
     }
     
     

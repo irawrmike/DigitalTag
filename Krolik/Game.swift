@@ -25,8 +25,8 @@ class Game {
     var id: String!
     var players = [String]()
     var kills = [String]()
-    var created: Date!
-    var ended: Date?
+    var created: String!
+    var ended: String?
     
     static func generateGameName() -> String {
         let names = ["The Odessa Files", "The Munich Gambit", "The Ostravsky Affair", "Smiley's Lament", "The Prague Chronicles", "The Vienna Waltz", "The Leningrad Let-Down"]

@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let game = GameLogic()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,6 +22,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        
+        game.createGame()
     }
+    
 }
