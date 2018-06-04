@@ -70,7 +70,6 @@ class DatabaseManager {
         playerData[Player.keys.target] = "***INSERT TARGET***"
         let nickname = Player.generatePlayerName()
         playerData[Player.keys.nickname] = nickname
-        playerData[Player.keys.state] = Player.state.alive
         let device = "***INSERT DEVICE ID***"
         playerData[Player.keys.device] = device
         let photo = "***INSERT URL***"
@@ -78,6 +77,10 @@ class DatabaseManager {
         
         // create the player on firebase database
         playersRef.child(newPlayerKey).setValue(playerData)
+        
+        // update game to include newly created player
+        let update = [Game.keys.players : [newPlayerKey : Player.state.alive]]
+        self.update(gameID: gameID, update: update)
         
         // print statement to confirm addition of new player with unique key
         print("player added with key \(newPlayerKey)")
@@ -143,7 +146,6 @@ class DatabaseManager {
             player.nickname = playerData[Player.keys.nickname] as? String
             player.id = playerData[Player.keys.id] as? String
             player.target = playerData[Player.keys.target] as? String
-            player.state = playerData[Player.keys.state] as? String
             player.device = playerData[Player.keys.device] as? String
             
             // pass created player to delegate

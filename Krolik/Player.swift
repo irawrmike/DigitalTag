@@ -37,7 +37,7 @@ class Player {
     var device: String!
     
     static func generatePlayerName() -> String {
-        let names = ["The Odessa Files", "The Munich Gambit", "The Ostravsky Affair", "Smiley's Lament", "The Prague Chronicles", "The Vienna Waltz", "The Leningrad Let-Down"]
+        let names = ["Switchblade", "Honey Badger", "the Rattlesnake", "Omega Prime", "the Blade", "Shovelhead", "Nuke", "the Silent Wizard", "Marmot Alpha", "the auld Claymore", "Goosefeather", "Blackjack", "the Demon Dog", "Sidewinder", "Tomahawk", "Maverick from Top Gun", "Some Kind of Gremlin", "the Pink Ninja", "the Ender of Worlds"]
         let randomIndex = Int(arc4random_uniform(UInt32(names.count)))
         let name = names[randomIndex]
         return name
