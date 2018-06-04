@@ -87,29 +87,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8AZ-ZO-Lns" userLabel="Player Photo">
-                                <rect key="frame" x="20" y="40" width="374" height="400"/>
+                                <rect key="frame" x="20" y="40" width="374" height="412"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="yb9-E9-7XY"/>
-                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axb-kg-NeT">
-                                <rect key="frame" x="129.66666666666666" y="473" width="154.99999999999997" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="139" y="485" width="137" height="36.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Take a New Photo"/>
                                 <connections>
                                     <action selector="takeANewPhotoButtonPressed:" destination="zvH-qG-eJv" eventType="touchUpInside" id="AHO-sF-ryt"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter an existing game ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0af-ER-NPa">
-                                <rect key="frame" x="88.666666666666686" y="558" width="237" height="30"/>
+                                <rect key="frame" x="88.666666666666686" y="546.66666666666663" width="237" height="36.333333333333371"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5l-a2-fWA">
-                                <rect key="frame" x="263.66666666666669" y="640" width="62" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="263.66666666666669" y="613" width="62" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submitButtonTapped:" destination="zvH-qG-eJv" eventType="touchUpInside" id="7c8-Xn-N6q"/>
@@ -121,13 +118,19 @@
                         <constraints>
                             <constraint firstItem="8AZ-ZO-Lns" firstAttribute="top" secondItem="N3y-nh-fkX" secondAttribute="top" constant="20" id="5Jz-LW-ZKM"/>
                             <constraint firstItem="8AZ-ZO-Lns" firstAttribute="leading" secondItem="N3y-nh-fkX" secondAttribute="leading" constant="20" id="7ij-Tu-jYD"/>
+                            <constraint firstItem="v5l-a2-fWA" firstAttribute="height" secondItem="A3H-HT-Pga" secondAttribute="height" multiplier="0.05" id="9P6-7B-J6S"/>
+                            <constraint firstItem="axb-kg-NeT" firstAttribute="height" secondItem="A3H-HT-Pga" secondAttribute="height" multiplier="0.05" id="EWI-OY-KrZ"/>
+                            <constraint firstItem="N3y-nh-fkX" firstAttribute="bottom" secondItem="v5l-a2-fWA" secondAttribute="bottom" constant="86" id="GvP-wg-aog"/>
+                            <constraint firstItem="8AZ-ZO-Lns" firstAttribute="height" secondItem="A3H-HT-Pga" secondAttribute="height" multiplier="0.56" id="Ja7-th-zDV"/>
                             <constraint firstItem="N3y-nh-fkX" firstAttribute="trailing" secondItem="8AZ-ZO-Lns" secondAttribute="trailing" constant="20" id="KAs-Io-ce5"/>
-                            <constraint firstItem="0af-ER-NPa" firstAttribute="top" secondItem="axb-kg-NeT" secondAttribute="bottom" constant="49" id="NpG-ZQ-7eA"/>
+                            <constraint firstItem="0af-ER-NPa" firstAttribute="top" secondItem="axb-kg-NeT" secondAttribute="bottom" constant="25" id="NpG-ZQ-7eA"/>
+                            <constraint firstItem="0af-ER-NPa" firstAttribute="height" secondItem="A3H-HT-Pga" secondAttribute="height" multiplier="0.05" id="T9l-iT-ZF5"/>
+                            <constraint firstItem="v5l-a2-fWA" firstAttribute="leading" secondItem="N3y-nh-fkX" secondAttribute="leading" constant="263.66666666666669" id="VxK-40-OIL"/>
                             <constraint firstItem="axb-kg-NeT" firstAttribute="centerX" secondItem="N3y-nh-fkX" secondAttribute="centerX" id="eCr-l5-kUD"/>
                             <constraint firstItem="v5l-a2-fWA" firstAttribute="trailing" secondItem="0af-ER-NPa" secondAttribute="trailing" id="k13-fp-SLH"/>
                             <constraint firstItem="0af-ER-NPa" firstAttribute="centerX" secondItem="N3y-nh-fkX" secondAttribute="centerX" id="qj9-rS-Cow"/>
                             <constraint firstItem="axb-kg-NeT" firstAttribute="top" secondItem="8AZ-ZO-Lns" secondAttribute="bottom" constant="33" id="wHg-i9-QEi"/>
-                            <constraint firstItem="v5l-a2-fWA" firstAttribute="top" secondItem="0af-ER-NPa" secondAttribute="bottom" constant="52" id="y40-xw-mO7"/>
+                            <constraint firstItem="v5l-a2-fWA" firstAttribute="top" secondItem="0af-ER-NPa" secondAttribute="bottom" constant="30" id="y40-xw-mO7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N3y-nh-fkX"/>
                     </view>
