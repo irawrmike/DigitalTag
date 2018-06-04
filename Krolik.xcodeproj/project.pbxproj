@@ -16,6 +16,7 @@
 		27E7361C20BF31F5004B48D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361A20BF31F5004B48D2 /* Main.storyboard */; };
 		27E7361E20BF31F6004B48D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361D20BF31F6004B48D2 /* Assets.xcassets */; };
 		27E7362120BF31F6004B48D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361F20BF31F6004B48D2 /* LaunchScreen.storyboard */; };
+		3B07CB8620C5C01A00C370C0 /* kremlin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BB04DEE20C17C010015C6B5 /* kremlin.ttf */; };
 		3B3D4E8120C082550027C68C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8020C082550027C68C /* GoogleService-Info.plist */; };
 		3B3D4E8720C08E7E0027C68C /* GameStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8620C08E7E0027C68C /* GameStatusViewController.swift */; };
 		3B8CC14920C1D71C00A5890C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8CC14820C1D71C00A5890C /* NetworkManager.swift */; };
@@ -174,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B07CB8620C5C01A00C370C0 /* kremlin.ttf in Resources */,
 				27E7362120BF31F6004B48D2 /* LaunchScreen.storyboard in Resources */,
 				3B3D4E8120C082550027C68C /* GoogleService-Info.plist in Resources */,
 				27E7361E20BF31F6004B48D2 /* Assets.xcassets in Resources */,

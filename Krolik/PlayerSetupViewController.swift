@@ -17,6 +17,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     
     //MARK: Properties
     let networkManager = NetworkManager()
+    let player = Player()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,8 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true)
+        
+        
         
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         spinner.center = playerImageView.center
