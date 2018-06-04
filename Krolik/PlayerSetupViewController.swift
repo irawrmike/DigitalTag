@@ -26,6 +26,11 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true)
+        
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        spinner.center = playerImageView.center
+        view.addSubview(spinner)
+        spinner.startAnimating()
         submitButton.isEnabled = false
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             print("ERROR: No image found")
@@ -42,12 +47,18 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
             self.networkManager.checkPhotoFace(photoURL: url.absoluteString) { (isFace) in
                 
                 DispatchQueue.main.async {
+                    let faceAlert = UIAlertController(title: "Finished Checking Photo", message: "", preferredStyle: .alert)
+                    faceAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
                     if isFace {
                         self.submitButton.isEnabled = true
+                        faceAlert.message = "Face was found. If ready to start, hit the submit button!"
+                        self.present(faceAlert, animated: true, completion: nil)
                     } else {
-                        print("NOT A FACE!!!")
-                        self.submitButton.isEnabled = false
+                        faceAlert.message = "Face was NOT found. Please take picture of your face again!"
+                        self.present(faceAlert, animated: true, completion: nil)
                     }
+                    spinner.stopAnimating()
                     
                 }
             }
@@ -61,7 +72,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func takeANewPhotoButtonPressed(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .camera
-        imagePicker.allowsEditing = true
+        imagePicker.allowsEditing = false
         imagePicker.delegate = self
         imagePicker.cameraDevice = .front
         imagePicker.cameraFlashMode = .off
