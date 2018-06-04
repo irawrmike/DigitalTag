@@ -75,13 +75,17 @@ class DatabaseManager {
         // get data snapshot of database
         gamesRef.child(gameID).observe(.value) { [weak self] (snapshot) in
             // convert snapshot to dictionary
-            guard let gameData = snapshot.value as? [String:Any?] else {
+            guard let gameData = snapshot.value as? [String:Any] else {
                 print("error converting game snapshot to dictionary")
                 return
             }
             
             // create game object using data from dictionary
             let game = Game()
+            
+            game.name = gameData[Game.keys.name] as? String
+            game.id = gameData[Game.keys.id] as? String
+            game.players = gameData[Game.keys.players] as! [String]
             
             // pass created game to delegate
             guard let delegate = self?.delegate else {
@@ -131,13 +135,19 @@ class DatabaseManager {
         // get data snapshot of database
         historyRef.child(historicalID).observe(.value) { [weak self] (snapshot) in
             // convert snapshot to dictionary
-            guard let historyData = snapshot.value as? [String:Any?] else {
+            guard let historyData = snapshot.value as? [String:Any] else {
                 print("error converting game history snapshot to dictionary")
                 return
             }
             
             // create game object using data from dictionary
             let game = Game()
+            
+            game.name = historyData[Game.keys.name] as? String
+            game.id = historyData[Game.keys.id] as? String
+            game.players = historyData[Game.keys.players] as! [String]
+            game.created = historyData[Game.keys.created] as? Date
+            game.ended = historyData[Game.keys.ended] as? Date
             
             // pass created game to delegate
             guard let delegate = self?.delegate else {
@@ -151,17 +161,27 @@ class DatabaseManager {
     // MARK: UPDATE
     
     // UPDATE GAME
-    func update(gameID: String, update: Dictionary<String, Any?>) {
+    func update(gameID: String, update: Dictionary<String, Any>) {
         // create reference to games root folder
         let gamesRef = databaseRef.child(Game.keys.root)
         
+        // create reference to specific game via ID
+        let gameRef = gamesRef.child(gameID)
+        
+        // update values based on dictionary
+        gameRef.updateChildValues(update)
     }
     
     // UPDATE PLAYER
-    func update(playerID: String, update: Dictionary<String, Any?>) {
+    func update(playerID: String, update: Dictionary<String, Any>) {
         // create reference to players root folder
         let playersRef = databaseRef.child(Player.keys.root)
         
+        // create reference to specific player via ID
+        let playerRef = playersRef.child(playerID)
+        
+        // update values based on dictionary
+        playerRef.updateChildValues(update)
     }
     
     // MARK: DELETE
@@ -171,12 +191,25 @@ class DatabaseManager {
         // create reference to games root folder
         let gamesRef = databaseRef.child(Game.keys.root)
         
-        // read all players from game
-        
-        // delete all players that were created for the game
-        
-        // delete all values associated to specified game from database
-        gamesRef.child(gameID).removeValue()
+        // get data snapshot of database
+        gamesRef.child(gameID).observe(.value) { [weak self] (snapshot) in
+            // convert snapshot to dictionary
+            guard let gameData = snapshot.value as? [String:Any] else {
+                print("error converting game snapshot to dictionary")
+                return
+            }
+            
+            // read players list from game
+            let players = gameData[Game.keys.players] as! [String]
+            
+            // delete all players that were created for the game
+            for player in players {
+                self?.delete(playerID: player)
+            }
+            
+            // delete all values associated to specified game from database
+            gamesRef.child(gameID).removeValue()
+        }
     }
     
     // DELETE PLAYER
@@ -194,11 +227,17 @@ class DatabaseManager {
         // create reference to games root folder
         let gamesRef = databaseRef.child(Game.keys.root)
         
-        // get game info from database
+        // get data snapshot of database
+        gamesRef.child(gameID).observe(.value) { [weak self] (snapshot) in
+            // convert snapshot to dictionary
+            guard let gameData = snapshot.value as? [String:Any] else {
+                print("error converting game snapshot to dictionary")
+                return
+            }
+           
+            let historyRef = self?.databaseRef.child(Game.keys.history)
+            historyRef?.setValuesForKeys(gameData)
         
-        // backup game history to database
-        
-        
+        }
     }
-    
 }

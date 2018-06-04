@@ -22,29 +22,11 @@ class Game {
     
     let databaseManager = DatabaseManager()
     var name: String!
+    var id: String!
     var players = [String]()
-    
-    func startGame() {
-        // get list of players from database
-        
-        // shuffle list of players
-        let shuffledPlayers = players.shuffled()
-        
-        // create dictionary for update to database
-        var targetsUpdate = [String:String]()
-        
-        for i in 0..<shuffledPlayers.count {
-            if i == (shuffledPlayers.count - 1) {
-                // last player in shuffled list gets first player
-                targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.target)/"] = shuffledPlayers[0]
-            }else{
-                // all other players in shuffled list get their index + 1
-                targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.target)/"] = shuffledPlayers[i+1]
-            }
-        }
-        // update player targets on database
-        
-    }
+    var kills = [String]()
+    var created: Date!
+    var ended: Date?
     
     static func generateGameName() -> String {
         let names = ["The Odessa Files", "The Munich Gambit", "The Ostravsky Affair", "Smiley's Lament", "The Prague Chronicles", "The Vienna Waltz", "The Leningrad Let-Down"]
