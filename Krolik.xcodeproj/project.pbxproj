@@ -18,6 +18,7 @@
 		27E7362120BF31F6004B48D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361F20BF31F6004B48D2 /* LaunchScreen.storyboard */; };
 		3B3D4E8120C082550027C68C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8020C082550027C68C /* GoogleService-Info.plist */; };
 		3B3D4E8720C08E7E0027C68C /* GameStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8620C08E7E0027C68C /* GameStatusViewController.swift */; };
+		3B8CC14920C1D71C00A5890C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8CC14820C1D71C00A5890C /* NetworkManager.swift */; };
 		3BC0D96720BF3EC900045B17 /* PlayerSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */; };
 		48CAA4A476FE350700FA4863 /* Pods_Krolik.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413B71FF29B5FB6BE268F6C /* Pods_Krolik.framework */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,7 @@
 		3413B71FF29B5FB6BE268F6C /* Pods_Krolik.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Krolik.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3D4E8020C082550027C68C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B3D4E8620C08E7E0027C68C /* GameStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatusViewController.swift; sourceTree = "<group>"; };
+		3B8CC14820C1D71C00A5890C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3BB04DEE20C17C010015C6B5 /* kremlin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kremlin.ttf; sourceTree = "<group>"; };
 		3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSetupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +86,7 @@
 				27E7361820BF31F5004B48D2 /* ViewController.swift */,
 				27E7361A20BF31F5004B48D2 /* Main.storyboard */,
 				27E7361D20BF31F6004B48D2 /* Assets.xcassets */,
+				3B8CC14820C1D71C00A5890C /* NetworkManager.swift */,
 				27E7361F20BF31F6004B48D2 /* LaunchScreen.storyboard */,
 				27E7362220BF31F6004B48D2 /* Info.plist */,
 				3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */,
@@ -236,6 +239,7 @@
 				272EBE3C20C1BA7F003FEFE2 /* Game.swift in Sources */,
 				272EBE4020C5AFE7003FEFE2 /* GameLogic.swift in Sources */,
 				27E7361720BF31F5004B48D2 /* AppDelegate.swift in Sources */,
+				3B8CC14920C1D71C00A5890C /* NetworkManager.swift in Sources */,
 				3B3D4E8720C08E7E0027C68C /* GameStatusViewController.swift in Sources */,
 				272EBE3B20C1BA7F003FEFE2 /* Player.swift in Sources */,
 				272EBE3E20C1D3F2003FEFE2 /* DatabaseManager.swift in Sources */,
