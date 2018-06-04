@@ -7,6 +7,7 @@
 //
 
 import Firebase
+import FirebaseDatabase
 
 protocol DatabaseDelegate {
     func readGame(game: Game)
@@ -23,8 +24,9 @@ class DatabaseManager {
     // MARK: CREATE
     
     // CREATE GAME
-    func createGame() {
+    func createGame() -> Game {
         // create reference to games root folder
+        databaseRef = Database.database().reference()
         let gamesRef = databaseRef.child(Game.keys.root)
         
         // get random key for new game
@@ -33,16 +35,29 @@ class DatabaseManager {
         // create gameData dictionary using game properties
         var gameData = [String:Any?]()
         gameData[Game.keys.id] = newGameKey
-        gameData[Game.keys.name] = Game.generateGameName()
+        let date = "TODAY"
+        gameData[Game.keys.created] = date
+        let name = Game.generateGameName()
+        gameData[Game.keys.name] = name
         gameData[Game.keys.players] = []
         
         // create the game on the firebase database
         gamesRef.child(newGameKey).setValue(gameData)
+        
+        // use assigned values to create game object
+        let game = Game()
+        game.id = newGameKey
+        game.name = name
+        game.created = date
+        game.players = []
+        
+        return game
     }
     
     // CREATE PLAYER
-    func createPlayer(gameID: String) {
+    func createPlayer(gameID: String) -> Player {
         // create reference to players root folder
+        databaseRef = Database.database().reference()
         let playersRef = databaseRef.child(Player.keys.root)
         
         // get random key for new player
@@ -53,16 +68,27 @@ class DatabaseManager {
         playerData[Player.keys.id] = newPlayerKey
         playerData[Game.keys.id] = gameID
         playerData[Player.keys.target] = "***INSERT TARGET***"
-        playerData[Player.keys.nickname] = Player.generatePlayerName()
+        let nickname = Player.generatePlayerName()
+        playerData[Player.keys.nickname] = nickname
         playerData[Player.keys.state] = Player.state.alive
-        playerData[Player.keys.device] = "***INSERT DEVICE ID***"
-        playerData[Player.keys.device] = "***INSERT URL***"
+        let device = "***INSERT DEVICE ID***"
+        playerData[Player.keys.device] = device
+        let photo = "***INSERT URL***"
+        playerData[Player.keys.photo] = photo
         
         // create the player on firebase database
         playersRef.child(newPlayerKey).setValue(playerData)
         
         // print statement to confirm addition of new player with unique key
         print("player added with key \(newPlayerKey)")
+        
+        let player = Player()
+        player.id = newPlayerKey
+        player.nickname = nickname
+        player.state = Player.state.alive
+        player.device = device
+        
+        return player
     }
     
     // MARK: READ
@@ -70,6 +96,7 @@ class DatabaseManager {
     // READ GAME
     func read(gameID: String) {
         // create reference to games root folder
+        databaseRef = Database.database().reference()
         let gamesRef = databaseRef.child(Game.keys.root)
         
         // get data snapshot of database
@@ -99,6 +126,7 @@ class DatabaseManager {
     // READ PLAYER
     func read(playerID: String) {
         // create reference to players root folder
+        databaseRef = Database.database().reference()
         let playersRef = databaseRef.child(Player.keys.root)
         
         // get data snapshot of database
@@ -130,6 +158,7 @@ class DatabaseManager {
     // READ GAME HISTORY
     func read(historicalID: String) {
         // create reference to games history root folder
+        databaseRef = Database.database().reference()
         let historyRef = databaseRef.child(Game.keys.history)
         
         // get data snapshot of database
@@ -146,8 +175,8 @@ class DatabaseManager {
             game.name = historyData[Game.keys.name] as? String
             game.id = historyData[Game.keys.id] as? String
             game.players = historyData[Game.keys.players] as! [String]
-            game.created = historyData[Game.keys.created] as? Date
-            game.ended = historyData[Game.keys.ended] as? Date
+            game.created = historyData[Game.keys.created] as? String
+            game.ended = historyData[Game.keys.ended] as? String
             
             // pass created game to delegate
             guard let delegate = self?.delegate else {
@@ -163,6 +192,7 @@ class DatabaseManager {
     // UPDATE GAME
     func update(gameID: String, update: Dictionary<String, Any>) {
         // create reference to games root folder
+        databaseRef = Database.database().reference()
         let gamesRef = databaseRef.child(Game.keys.root)
         
         // create reference to specific game via ID
@@ -175,6 +205,7 @@ class DatabaseManager {
     // UPDATE PLAYER
     func update(playerID: String, update: Dictionary<String, Any>) {
         // create reference to players root folder
+        databaseRef = Database.database().reference()
         let playersRef = databaseRef.child(Player.keys.root)
         
         // create reference to specific player via ID
@@ -186,6 +217,7 @@ class DatabaseManager {
     
     func updatePlayers(update: Dictionary<String, Any>) {
         // create reference to players root folder
+        databaseRef = Database.database().reference()
         let playersRef = databaseRef.child(Player.keys.root)
         
         // update values
@@ -197,6 +229,7 @@ class DatabaseManager {
     // DELETE GAME
     func delete(gameID: String) {
         // create reference to games root folder
+        databaseRef = Database.database().reference()
         let gamesRef = databaseRef.child(Game.keys.root)
         
         // get data snapshot of database
@@ -223,6 +256,7 @@ class DatabaseManager {
     // DELETE PLAYER
     func delete(playerID: String) {
         // create reference to players root folder
+        databaseRef = Database.database().reference()
         let playersRef = databaseRef.child(Player.keys.root)
         
         // delete all values associated to specified player from database
@@ -233,6 +267,7 @@ class DatabaseManager {
     
     func backupData(gameID: String) {
         // create reference to games root folder
+        databaseRef = Database.database().reference()
         let gamesRef = databaseRef.child(Game.keys.root)
         
         // get data snapshot of database
