@@ -26,7 +26,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true)
-        
+        submitButton.isEnabled = false
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             print("ERROR: No image found")
             return
@@ -46,6 +46,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
                         self.submitButton.isEnabled = true
                     } else {
                         print("NOT A FACE!!!")
+                        self.submitButton.isEnabled = false
                     }
                     
                 }
@@ -87,14 +88,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func submitButtonTapped(_ sender: UIButton) {
-        guard let image = playerImageView.image else { return }
         
-        networkManager.uploadPhoto(photo: image, path: "gameTestID/image.png") { (url, error) in
-            if error != nil {
-                print("error uploading: \(error!)")
-            }
-            print("Photo uploaded to url: \(url.absoluteString)")
-        }
     }
     
     

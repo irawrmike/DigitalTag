@@ -55,8 +55,13 @@ class NetworkManager {
                 completion(false)
                 return
             }
+            guard let resultsDict = results as? [String : Any] ?? nil else { return }
             print(results)
-            completion(true)
+            if resultsDict["Errors"] != nil {
+                completion(false)
+            } else {
+                completion(true)
+            }
         }
         dataTask.resume()
     }
