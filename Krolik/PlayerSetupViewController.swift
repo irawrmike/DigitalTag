@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     //MARK: Outlets
     @IBOutlet weak var playerImageView: UIImageView!
@@ -23,12 +23,12 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         super.viewDidLoad()
         submitButton.isEnabled = false
         playerImageView.contentMode = .scaleAspectFit
+        gameIDField.delegate = self
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true)
-        
-        
+ 
         
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         spinner.center = playerImageView.center
@@ -69,6 +69,11 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        gameIDField.resignFirstResponder()
+        print(gameIDField.text ?? "")
+        return true
+    }
     
     //MARK: Actions
     
