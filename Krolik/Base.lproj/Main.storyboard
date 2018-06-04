@@ -17,10 +17,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Krolik" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Krolik" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,7 +37,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Krolic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vei-us-ds7">
-                                <rect key="frame" x="94.666666666666686" y="122" width="225" height="81"/>
+                                <rect key="frame" x="94.999999999999986" y="122" width="224.66666666666663" height="81"/>
                                 <fontDescription key="fontDescription" name="Kremlin" family="Kremlin" pointSize="60"/>
                                 <color key="textColor" white="0.19048756359999994" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -72,6 +72,7 @@
                     <connections>
                         <outlet property="joinGameButton" destination="0S7-hl-ZSv" id="NW8-4N-tiu"/>
                         <outlet property="startGameButton" destination="OPV-5D-daz" id="Q3y-F4-yvS"/>
+                        <segue destination="8pz-AZ-AZe" kind="show" identifier="gameInProgress" animates="NO" id="U1W-np-V5y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -142,12 +143,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aVf-IV-DkD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="815.94202898550736" y="116.57608695652175"/>
+            <point key="canvasLocation" x="913" y="498"/>
         </scene>
         <!--Game Status View Controller-->
         <scene sceneID="LgY-Zu-zvq">
             <objects>
-                <viewController id="Pcb-ia-zwM" userLabel="Game Status View Controller" customClass="GameStatusViewController" customModule="Krolik" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameStatusViewController" id="Pcb-ia-zwM" userLabel="Game Status View Controller" customClass="GameStatusViewController" customModule="Krolik" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ApP-1h-Q2M">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -176,7 +177,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wam-dd-5Z3">
-                                            <rect key="frame" x="289" y="16" width="78" height="38"/>
+                                            <rect key="frame" x="328" y="16" width="78" height="38"/>
                                             <state key="normal" title="Start Game"/>
                                             <connections>
                                                 <action selector="startGameButtonTapped:" destination="Pcb-ia-zwM" eventType="touchUpInside" id="0uL-bM-46q"/>
@@ -261,10 +262,11 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G44-gh-sHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1517" y="126"/>
+            <point key="canvasLocation" x="1678" y="10"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="U1W-np-V5y"/>
         <segue reference="kKU-CA-kCN"/>
     </inferredMetricsTieBreakers>
 </document>

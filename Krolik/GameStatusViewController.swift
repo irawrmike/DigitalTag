@@ -1,5 +1,5 @@
 //
-//  GameSetupViewController.swift
+//  GameStatusViewController.swift
 //  Krolik
 //
 //  Created by Colin Russell, Mike Cameron, and Mike Stoltman

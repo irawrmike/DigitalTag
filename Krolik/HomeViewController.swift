@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  Krolik
 //
 //  Created by Colin Russell, Mike Cameron, and Mike Stoltman
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var joinGameButton: UIButton!
     @IBOutlet weak var startGameButton: UIButton!
@@ -18,16 +18,12 @@ class ViewController: UIViewController {
 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
+    override func viewDidAppear(_ animated: Bool) {
         if UserDefaults.standard.string(forKey: Game.keys.id) != nil {
-            startGameButton.isHidden = true
-        }
-        if UserDefaults.standard.string(forKey: Player.keys.id) != nil {
-            
+            performSegue(withIdentifier: "gameInProgress", sender: nil)
         }
     }
-
+    
     @IBAction func joinButtonTapped(_ sender: UIButton) {
         
     }
