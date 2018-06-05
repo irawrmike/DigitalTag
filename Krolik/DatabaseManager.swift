@@ -148,6 +148,7 @@ class DatabaseManager {
             player.id = playerData[Player.keys.id] as? String
             player.target = playerData[Player.keys.target] as? String
             player.device = playerData[Player.keys.device] as? String
+            player.photo = playerData[Player.keys.photo] as? String
             
             // pass created player to delegate
             guard let delegate = self?.delegate else {

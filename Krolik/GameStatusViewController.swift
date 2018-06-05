@@ -12,21 +12,15 @@ import FirebaseStorage
 class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    var currentGame: Game?
+    var currentGame: Game!
     var currentPlayers: [Player] = []
     let database = DatabaseManager()
-    let testGame = "-LEBbbIMPLjDgXMBIaP-"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         database.delegate = self
-        database.read(gameID: testGame)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        database.read(gameID: currentGame.id)
     }
     
     //MARK: UICollectionViewMethods
@@ -51,7 +45,9 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         let imageView = UIImageView(frame: imageFrame)
         imageView.contentMode = .scaleAspectFit
  
-        getDataFromUrl(url: URL(string: "https://firebasestorage.googleapis.com/v0/b/krolik-9ed87.appspot.com/o/gameTestID%2Fimage.png?alt=media&token=122898dd-cc3a-451d-9101-8a3843c0d949")!) { (data, response, error) in
+        let player = currentPlayers[indexPath.row]
+        
+        getDataFromUrl(url: URL(string: player.photo)!) { (data, response, error) in
             guard let imageData = data else {
                 print("bad data")
                 return
@@ -91,7 +87,12 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
 // MARK: Database Delegate Functions
 
 extension GameStatusViewController: DatabaseDelegate {
-    func readGame(game: Game) {
+    
+    func readGame(game: Game?) {
+        guard let game = game else {
+            print("game read returned nil value")
+            return
+        }
         currentGame = game
         let players = Array(game.players.keys)
         
@@ -100,7 +101,11 @@ extension GameStatusViewController: DatabaseDelegate {
         }
     }
     
-    func readPlayer(player: Player) {
+    func readPlayer(player: Player?) {
+        guard let player = player else {
+            print("player read returned nil value")
+            return
+        }
         currentPlayers.append(player)
         collectionView.reloadData()
     }

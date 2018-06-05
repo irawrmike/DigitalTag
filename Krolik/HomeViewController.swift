@@ -21,6 +21,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, DatabaseDelegat
     var keyboardHeight: CGFloat = 0
     var keyboardIsHidden = true
     let database = DatabaseManager()
+    var currentGame: Game!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,12 +63,14 @@ class HomeViewController: UIViewController, UITextFieldDelegate, DatabaseDelegat
     func readGame(game: Game?) {
         if game != nil {
             print("GAME EXISTS")
+            currentGame = game
         } else {
             print("GAME DOES NOT EXIST")
         }
     }
 
     func readPlayer(player: Player?) {
+        
     }
 
     //MARK: UITextFieldDelegate
@@ -86,6 +89,28 @@ class HomeViewController: UIViewController, UITextFieldDelegate, DatabaseDelegat
     }
 
     @IBAction func startButtonTapped(_ sender: UIButton) {
-
+        
+    }
+    
+    // MARK: Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "startGameSegue" {
+            // creates new game object on database
+            let newGame = database.createGame()
+            currentGame = newGame
+            
+            // passes game object to player creation
+            let destination = segue.destination as? PlayerSetupViewController
+            destination?.currentGame = currentGame
+            
+            // update player creation to create game owner
+            destination?.isGameOwner = true
+        }
+        if segue.identifier == "joinGameSegue" {
+            // passes game object to player creation
+            let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameStatusViewController") as? GameStatusViewController
+            destination?.currentGame = currentGame
+        }
     }
 }

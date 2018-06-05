@@ -17,15 +17,17 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     //MARK: Properties
     let networkManager = NetworkManager()
     let database = DatabaseManager()
-    var currentGame: String!
+    var currentGame: Game!
     var keyboardHeight: CGFloat = 0
     var currentPlayer: Player?
+    var isGameOwner = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.isEnabled = false
         playerImageView.contentMode = .scaleAspectFit
-        //currentPlayer = database.createPlayer(gameID: currentGame)
+        
+        currentPlayer = database.createPlayer(gameID: currentGame.id)
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -43,27 +45,33 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
 
         playerImageView.image = image
 
-        networkManager.uploadPhoto(photo: image, path: "gameTestID/image.png") { (url, error) in
+        let gameID = currentGame?.id ?? ""
+        let playerID = currentPlayer?.id ?? ""
+        
+        networkManager.uploadPhoto(photo: image, path: "\(gameID)/\(playerID).jpg") { (url, error) in
             if error != nil {
                 print(error ?? "error?")
             }
             // check for a face in the image here!!
-            self.networkManager.checkPhotoFace(photoURL: url.absoluteString) { (isFace) in
+            self.networkManager.checkPhotoFace(photoURL: url.absoluteString) { [weak self] (isFace) in
 
                 DispatchQueue.main.async {
                     let faceAlert = UIAlertController(title: "Finished Checking Photo", message: "", preferredStyle: .alert)
                     faceAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 
                     if isFace {
-                        self.submitButton.isEnabled = true
+                        self?.submitButton.isEnabled = true
                         faceAlert.message = "Face was found. If ready to start, hit the submit button!"
-                        self.present(faceAlert, animated: true, completion: nil)
+                        self?.present(faceAlert, animated: true, completion: nil)
                     } else {
                         faceAlert.message = "Face was NOT found. Please take picture of your face again!"
-                        self.present(faceAlert, animated: true, completion: nil)
+                        self?.present(faceAlert, animated: true, completion: nil)
                     }
                     spinner.stopAnimating()
-
+                    
+                    let update = [Player.keys.photo : url.absoluteString]
+                    self?.database.update(playerID: (self?.currentPlayer?.id)!, update: update)
+                    
                 }
             }
         }
@@ -102,7 +110,15 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     @IBAction func submitButtonTapped(_ sender: UIButton) {
-        database.createPlayer(gameID: currentGame)
+        
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "submitPlayerSegue" {
+            let tab = segue.destination as? UITabBarController
+            let destination = tab?.viewControllers![0] as? GameStatusViewController
+            destination?.currentGame = currentGame
+        }
+    }
+    
 }
