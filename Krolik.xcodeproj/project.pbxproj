@@ -16,8 +16,6 @@
 		27E7361C20BF31F5004B48D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361A20BF31F5004B48D2 /* Main.storyboard */; };
 		27E7361E20BF31F6004B48D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361D20BF31F6004B48D2 /* Assets.xcassets */; };
 		27E7362120BF31F6004B48D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361F20BF31F6004B48D2 /* LaunchScreen.storyboard */; };
-		27F9F58D20C6FD3A00381D59 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F9F58C20C6FD3A00381D59 /* NotificationService.swift */; };
-		27F9F59120C6FD3A00381D59 /* ServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 27F9F58A20C6FD3A00381D59 /* ServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3B07CB8620C5C01A00C370C0 /* kremlin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BB04DEE20C17C010015C6B5 /* kremlin.ttf */; };
 		3B3D4E8120C082550027C68C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8020C082550027C68C /* GoogleService-Info.plist */; };
 		3B3D4E8720C08E7E0027C68C /* GameStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8620C08E7E0027C68C /* GameStatusViewController.swift */; };
@@ -26,16 +24,6 @@
 		48CAA4A476FE350700FA4863 /* Pods_Krolik.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413B71FF29B5FB6BE268F6C /* Pods_Krolik.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		27F9F58F20C6FD3A00381D59 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 27E7360B20BF31F5004B48D2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 27F9F58920C6FD3A00381D59;
-			remoteInfo = ServiceExtension;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		27F9F59520C6FD3A00381D59 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -43,7 +31,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				27F9F59120C6FD3A00381D59 /* ServiceExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,9 +51,6 @@
 		27E7361D20BF31F6004B48D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27E7362020BF31F6004B48D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27E7362220BF31F6004B48D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27F9F58A20C6FD3A00381D59 /* ServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		27F9F58C20C6FD3A00381D59 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
-		27F9F58E20C6FD3A00381D59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F4335916A8A654E3EA71D9E /* Pods-Krolik.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Krolik.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Krolik/Pods-Krolik.debug.xcconfig"; sourceTree = "<group>"; };
 		3413B71FF29B5FB6BE268F6C /* Pods_Krolik.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Krolik.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3D4E8020C082550027C68C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -85,13 +69,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		27F9F58720C6FD3A00381D59 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -99,7 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				27E7361520BF31F5004B48D2 /* Krolik */,
-				27F9F58B20C6FD3A00381D59 /* ServiceExtension */,
 				27E7361420BF31F5004B48D2 /* Products */,
 				9A84BEC2C82A9FA4161735FA /* Pods */,
 				C821704100BA919C482379A9 /* Frameworks */,
@@ -110,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				27E7361320BF31F5004B48D2 /* Krolik.app */,
-				27F9F58A20C6FD3A00381D59 /* ServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,15 +111,6 @@
 				3BB04DEE20C17C010015C6B5 /* kremlin.ttf */,
 			);
 			path = Krolik;
-			sourceTree = "<group>";
-		};
-		27F9F58B20C6FD3A00381D59 /* ServiceExtension */ = {
-			isa = PBXGroup;
-			children = (
-				27F9F58C20C6FD3A00381D59 /* NotificationService.swift */,
-				27F9F58E20C6FD3A00381D59 /* Info.plist */,
-			);
-			path = ServiceExtension;
 			sourceTree = "<group>";
 		};
 		9A84BEC2C82A9FA4161735FA /* Pods */ = {
@@ -181,29 +147,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				27F9F59020C6FD3A00381D59 /* PBXTargetDependency */,
 			);
 			name = Krolik;
 			productName = DigitalTag;
 			productReference = 27E7361320BF31F5004B48D2 /* Krolik.app */;
 			productType = "com.apple.product-type.application";
-		};
-		27F9F58920C6FD3A00381D59 /* ServiceExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 27F9F59420C6FD3A00381D59 /* Build configuration list for PBXNativeTarget "ServiceExtension" */;
-			buildPhases = (
-				27F9F58620C6FD3A00381D59 /* Sources */,
-				27F9F58720C6FD3A00381D59 /* Frameworks */,
-				27F9F58820C6FD3A00381D59 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ServiceExtension;
-			productName = ServiceExtension;
-			productReference = 27F9F58A20C6FD3A00381D59 /* ServiceExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -223,9 +171,6 @@
 							};
 						};
 					};
-					27F9F58920C6FD3A00381D59 = {
-						CreatedOnToolsVersion = 9.4;
-					};
 				};
 			};
 			buildConfigurationList = 27E7360E20BF31F5004B48D2 /* Build configuration list for PBXProject "Krolik" */;
@@ -242,7 +187,6 @@
 			projectRoot = "";
 			targets = (
 				27E7361220BF31F5004B48D2 /* Krolik */,
-				27F9F58920C6FD3A00381D59 /* ServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -257,13 +201,6 @@
 				3B3D4E8120C082550027C68C /* GoogleService-Info.plist in Resources */,
 				27E7361E20BF31F6004B48D2 /* Assets.xcassets in Resources */,
 				27E7361C20BF31F5004B48D2 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		27F9F58820C6FD3A00381D59 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,23 +270,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		27F9F58620C6FD3A00381D59 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				27F9F58D20C6FD3A00381D59 /* NotificationService.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		27F9F59020C6FD3A00381D59 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 27F9F58920C6FD3A00381D59 /* ServiceExtension */;
-			targetProxy = 27F9F58F20C6FD3A00381D59 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		27E7361A20BF31F5004B48D2 /* Main.storyboard */ = {
@@ -527,46 +448,6 @@
 			};
 			name = Release;
 		};
-		27F9F59220C6FD3A00381D59 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 36N89YW4Y8;
-				INFOPLIST_FILE = ServiceExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.krolikTeam.Krolik.ServiceExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		27F9F59320C6FD3A00381D59 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 36N89YW4Y8;
-				INFOPLIST_FILE = ServiceExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.krolikTeam.Krolik.ServiceExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -584,15 +465,6 @@
 			buildConfigurations = (
 				27E7362620BF31F6004B48D2 /* Debug */,
 				27E7362720BF31F6004B48D2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		27F9F59420C6FD3A00381D59 /* Build configuration list for PBXNativeTarget "ServiceExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				27F9F59220C6FD3A00381D59 /* Debug */,
-				27F9F59320C6FD3A00381D59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
