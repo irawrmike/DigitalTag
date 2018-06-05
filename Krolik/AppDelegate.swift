@@ -16,7 +16,7 @@ import FirebaseDatabase
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
     
     var window: UIWindow?
-    let userDefaults = UserDefaults.standard
+   // let userDefaults = UserDefaults.standard
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -53,7 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         guard let token = Messaging.messaging().fcmToken else { return }
         print(#line, "FCM token: \(token)")
         //STORE TOKEN IN USER DEFAULTS
-        userDefaults.set(token, forKey: "FCMToken")
+        //userDefaults.set(token, forKey: "FCMToken")
+        UserDefaults.standard.set(token, forKey: "FCMToken")
         //STORE TOKEN IN DATABASE CURRENT PATH "DEVICES" NEEDS FIXING
         let ref = Database.database().reference().child("devices")
         ref.updateChildValues([token : true])

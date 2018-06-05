@@ -14,15 +14,27 @@ class GameLogic {
     var players = [String]()
     let database = DatabaseManager()
     var currentGame: Game!
+    var currentPlayer : Player = Player()
+    var currentTarget : Player = Player()
+//    var userDefaults = UserDefaults.standard
+    
     
     func createGame() {
-        // create game object on database
+        // create game object on database and locally
         currentGame = database.createGame()
     }
     
     func startGame() {
         // create targets and send to database
+        self.players = fetchPlayers(game: currentGame)
+        //call create Targets
         createTargets(game: currentGame)
+    }
+    //NEED DATABASE STUFF HERE COPY FROM GAMESTATUSVIEWCONTROLLER
+    func fetchPlayers(game: Game) -> [String] {
+        //get players from game.id from Database
+        let fetchedPlayers = [String]()
+        return fetchedPlayers
     }
     
     func createTargets(game: Game) {
@@ -46,6 +58,16 @@ class GameLogic {
         // update player targets on database
         database.updatePlayers(update: targetsUpdate)
     }
+    
+    func fetchTarget (player: Player) -> String {
+        //GIVEN A PLAYER RETURN THE PLAYERID OF THEIR TARGET
+        return "playerId"
+    }
+    
+    func tryToKill (player: Player, target: Player) -> Bool {
+        return true
+    }
+    
     
 }
 
