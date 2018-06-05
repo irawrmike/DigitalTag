@@ -22,25 +22,28 @@ class GameLogic {
     func createGame() {
         // create game object on database and locally
         currentGame = database.createGame()
+        currentPlayer.isDM = true
     }
     
     func startGame() {
         // create targets and send to database
-        self.players = fetchPlayers(game: currentGame)
+        database.read(gameID: currentGame.id) { (game) in
+            // assign returned game value to current game property
+            self.currentGame = game
+            self.createTargets(game: game!)
+            // run code on returned game object here
+        }
+        
         //call create Targets
         createTargets(game: currentGame)
     }
-    //NEED DATABASE STUFF HERE COPY FROM GAMESTATUSVIEWCONTROLLER
-    func fetchPlayers(game: Game) -> [String] {
-        //get players from game.id from Database
-        let fetchedPlayers = [String]()
-        return fetchedPlayers
-    }
+
     
     func createTargets(game: Game) {
         
         // shuffle list of players
-        let shuffledPlayers = players.shuffled()
+        let playersArray = Array(game.players.keys)
+        let shuffledPlayers = playersArray.shuffled()
         
         // create dictionary for update to database
         var targetsUpdate = [String:String]()
@@ -61,6 +64,7 @@ class GameLogic {
     
     func fetchTarget (player: Player) -> String {
         //GIVEN A PLAYER RETURN THE PLAYERID OF THEIR TARGET
+        
         return "playerId"
     }
     
@@ -71,21 +75,6 @@ class GameLogic {
     
 }
 
-// MARK: Database Delegate Functions
-
-extension GameLogic: DatabaseDelegate {
-    
-    func readGame(game: Game?) {
-        // assign returned game value to current game property
-        currentGame = game
-        
-        // run code on returned game object here
-    }
-    
-    func readPlayer(player: Player?) {
-        
-    }
-}
 
 // MARK: Functions for shuffling players
 

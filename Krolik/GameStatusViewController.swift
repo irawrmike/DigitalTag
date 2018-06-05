@@ -15,12 +15,26 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     var currentGame: Game!
     var currentPlayers: [Player] = []
     let database = DatabaseManager()
+    let game = GameLogic()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        database.delegate = self
-        database.read(gameID: currentGame.id)
+        database.read(gameID: currentGame.id) { (game) in
+            guard let game = game else {
+                print("game read returned nil value")
+                return
+            }
+            self.currentGame = game
+            let players = Array(game.players.keys)
+            
+            for player in players {
+                self.database.read(playerID: player, completion: { (player) in
+                    self.currentPlayers.append(player!)
+                    self.collectionView.reloadData()
+                })
+            }
+        }
     }
     
     //MARK: UICollectionViewMethods
@@ -47,7 +61,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
  
         let player = currentPlayers[indexPath.row]
         
-        getDataFromUrl(url: URL(string: player.photo)!) { (data, response, error) in
+        getDataFromUrl(url: URL(string: player.photoURL)!) { (data, response, error) in
             guard let imageData = data else {
                 print("bad data")
                 return
@@ -80,35 +94,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     
     @IBAction func startGameButtonTapped(_ sender: UIButton) {
         print("start game button tapped")
+        game.startGame()
     }
-    
-}
-
-// MARK: Database Delegate Functions
-
-extension GameStatusViewController: DatabaseDelegate {
-    
-    func readGame(game: Game?) {
-        guard let game = game else {
-            print("game read returned nil value")
-            return
-        }
-        currentGame = game
-        let players = Array(game.players.keys)
-        
-        for player in players {
-            database.read(playerID: player)
-        }
-    }
-    
-    func readPlayer(player: Player?) {
-        guard let player = player else {
-            print("player read returned nil value")
-            return
-        }
-        currentPlayers.append(player)
-        collectionView.reloadData()
-    }
-    
     
 }

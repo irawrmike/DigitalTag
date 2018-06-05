@@ -9,18 +9,12 @@
 import Firebase
 import FirebaseDatabase
 
-protocol DatabaseDelegate {
-    func readGame(game: Game?)
-    func readPlayer(player: Player?)
-}
 
 class DatabaseManager {
     
     // MARK: PROPERTIES
     
     var databaseRef: DatabaseReference!
-    var delegate: DatabaseDelegate?
-   
     
     // MARK: CREATE
     
@@ -100,17 +94,17 @@ class DatabaseManager {
     // MARK: READ
     
     // READ GAME
-    func read(gameID: String) {
+    func read(gameID: String, completion: @escaping (_ game: Game?) -> ()) {
         // create reference to games root folder
         databaseRef = Database.database().reference()
         let gamesRef = databaseRef.child(Game.keys.root)
         
         // get data snapshot of database
-        gamesRef.child(gameID).observe(.value) { [weak self] (snapshot) in
+        gamesRef.child(gameID).observe(.value) { (snapshot) in
             // convert snapshot to dictionary
             guard let gameData = snapshot.value as? [String:Any] else {
                 print("error converting game snapshot to dictionary")
-                self?.delegate?.readGame(game: nil)
+                completion(nil)
                 return
             }
             
@@ -121,26 +115,22 @@ class DatabaseManager {
             game.id = gameData[Game.keys.id] as? String
             game.players = gameData[Game.keys.players] as! [String:String]
             
-            // pass created game to delegate
-            guard let delegate = self?.delegate else {
-                print("error, no delegate")
-                return
-            }
-            delegate.readGame(game: game)
+            completion(game)
         }
     }
     
     // READ PLAYER
-    func read(playerID: String) {
+    func read(playerID: String, completion: @escaping (_ player: Player?) -> ()) {
         // create reference to players root folder
         databaseRef = Database.database().reference()
         let playersRef = databaseRef.child(Player.keys.root)
         
         // get data snapshot of database
-        playersRef.child(playerID).observe(.value) { [weak self] (snapshot) in
+        playersRef.child(playerID).observe(.value) { (snapshot) in
             // convert snapshot to dictionary
             guard let playerData = snapshot.value as? [String:Any?] else {
                 print("error converting player snapshot to dictionary")
+                completion(nil)
                 return
             }
             
@@ -151,28 +141,24 @@ class DatabaseManager {
             player.id = playerData[Player.keys.id] as? String
             player.target = playerData[Player.keys.target] as? String
             player.device = playerData[Player.keys.device] as? String
-            player.photo = playerData[Player.keys.photo] as? String
+            player.photoURL = playerData[Player.keys.photo] as? String
             
-            // pass created player to delegate
-            guard let delegate = self?.delegate else {
-                print("error, no delegate")
-                return
-            }
-            delegate.readPlayer(player: player)
+            completion(player)
         }
     }
     
     // READ GAME HISTORY
-    func read(historicalID: String) {
+    func read(historicalID: String, completion: @escaping (_ game: Game?) -> ()) {
         // create reference to games history root folder
         databaseRef = Database.database().reference()
         let historyRef = databaseRef.child(Game.keys.history)
         
         // get data snapshot of database
-        historyRef.child(historicalID).observe(.value) { [weak self] (snapshot) in
+        historyRef.child(historicalID).observe(.value) { (snapshot) in
             // convert snapshot to dictionary
             guard let historyData = snapshot.value as? [String:Any] else {
                 print("error converting game history snapshot to dictionary")
+                completion(nil)
                 return
             }
             
@@ -185,12 +171,7 @@ class DatabaseManager {
             game.created = historyData[Game.keys.created] as? String
             game.ended = historyData[Game.keys.ended] as? String
             
-            // pass created game to delegate
-            guard let delegate = self?.delegate else {
-                print("error, no delegate")
-                return
-            }
-            delegate.readGame(game: game)
+            completion(game)
         }
     }
     

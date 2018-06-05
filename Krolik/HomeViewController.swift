@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITextFieldDelegate, DatabaseDelegate {
+class HomeViewController: UIViewController, UITextFieldDelegate {
 
     //MARK: Outlets
 
@@ -26,7 +26,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate, DatabaseDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         gameIDField.delegate = self
-        database.delegate = self
 
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -60,15 +59,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate, DatabaseDelegat
 
     //MARK: DatabaseDelegate
 
-    func readGame(game: Game?) {
-        if game != nil {
-            print("GAME EXISTS")
-            currentGame = game
-        } else {
-            print("GAME DOES NOT EXIST")
-        }
-    }
-
     func readPlayer(player: Player?) {
         
     }
@@ -85,7 +75,14 @@ class HomeViewController: UIViewController, UITextFieldDelegate, DatabaseDelegat
 
     @IBAction func joinButtonTapped(_ sender: UIButton) {
         guard let gameID = gameIDField.text else { return }
-        database.read(gameID: gameID)
+        database.read(gameID: gameID) { (game) in
+            if game != nil {
+                print("GAME EXISTS")
+                self.currentGame = game
+            } else {
+                print("GAME DOES NOT EXIST")
+            }
+        }
     }
 
     @IBAction func startButtonTapped(_ sender: UIButton) {

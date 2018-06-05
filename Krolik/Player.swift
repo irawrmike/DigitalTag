@@ -36,7 +36,8 @@ class Player {
     var nickname: String!
     var state: String!
     var device: String!
-    var photo: String!
+    var photoURL: String!
+    var isDM: Bool = false
     
     static func generatePlayerName() -> String {
         let names = ["Switchblade", "Honey Badger", "the Rattlesnake", "Omega Prime", "the Blade", "Shovelhead", "Nuke", "the Silent Wizard", "Marmot Alpha", "the auld Claymore", "Goosefeather", "Blackjack", "the Demon Dog", "Sidewinder", "Tomahawk", "Maverick from Top Gun", "Some Kind of Gremlin", "the Pink Ninja", "the Ender of Worlds"]
