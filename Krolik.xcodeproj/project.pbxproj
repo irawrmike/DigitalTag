@@ -30,6 +30,7 @@
 		272EBE3A20C1BA7F003FEFE2 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		272EBE3D20C1D3F2003FEFE2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		272EBE3F20C5AFE7003FEFE2 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
+		277179E020C6DFAF00DE6580 /* Krolik.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Krolik.entitlements; sourceTree = "<group>"; };
 		27E7361320BF31F5004B48D2 /* Krolik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Krolik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E7361620BF31F5004B48D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27E7361820BF31F5004B48D2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 		27E7361520BF31F5004B48D2 /* Krolik */ = {
 			isa = PBXGroup;
 			children = (
+				277179E020C6DFAF00DE6580 /* Krolik.entitlements */,
 				27E7361620BF31F5004B48D2 /* AppDelegate.swift */,
 				272EBE3D20C1D3F2003FEFE2 /* DatabaseManager.swift */,
 				272EBE3F20C5AFE7003FEFE2 /* GameLogic.swift */,
@@ -149,6 +151,11 @@
 				TargetAttributes = {
 					27E7361220BF31F5004B48D2 = {
 						CreatedOnToolsVersion = 9.3.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -390,8 +397,9 @@
 			baseConfigurationReference = 2F4335916A8A654E3EA71D9E /* Pods-Krolik.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Krolik/Krolik.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 84BM2BTTA9;
+				DEVELOPMENT_TEAM = 36N89YW4Y8;
 				INFOPLIST_FILE = Krolik/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -409,8 +417,9 @@
 			baseConfigurationReference = 1CB76E85B814DA2FABF2DCCF /* Pods-Krolik.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Krolik/Krolik.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 84BM2BTTA9;
+				DEVELOPMENT_TEAM = 36N89YW4Y8;
 				INFOPLIST_FILE = Krolik/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
