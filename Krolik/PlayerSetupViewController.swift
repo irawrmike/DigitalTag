@@ -12,7 +12,6 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
 
     //MARK: Outlets
     @IBOutlet weak var playerImageView: UIImageView!
-    @IBOutlet weak var gameIDField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
 
     //MARK: Properties
@@ -20,20 +19,13 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     let database = DatabaseManager()
     var currentGame: String!
     var keyboardHeight: CGFloat = 0
-    let testGame = "-LEBbbIMPLjDgXMBIaP-"
+    var currentPlayer: Player?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.isEnabled = false
         playerImageView.contentMode = .scaleAspectFit
-        gameIDField.delegate = self
-
-        //NotificationCenter.default.addObserver(self, selector: #selector(UIViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(PlayerSetupViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(PlayerSetupViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-
-        // just for testing
-        gameIDField.text = testGame
+        //currentPlayer = database.createPlayer(gameID: currentGame)
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -78,31 +70,6 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
 
     }
 
-    //MARK: Keyboard Move View
-
-    @objc func keyboardWillShow(notification: NSNotification) {
-        // get initial keyboard height
-        if keyboardHeight == 0 {
-            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-                keyboardHeight = keyboardSize.height
-            }
-        }
-        self.view.frame.origin.y -= keyboardHeight
-    }
-
-    @objc func keyboardWillHide() {
-        self.view.frame.origin.y += keyboardHeight
-    }
-
-
-    //MARK: TextFieldDelegate
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        gameIDField.resignFirstResponder()
-        print(gameIDField.text ?? "")
-        return true
-    }
-
     //MARK: Actions
 
     @IBAction func takeANewPhotoButtonPressed(_ sender: UIButton) {
@@ -135,9 +102,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     @IBAction func submitButtonTapped(_ sender: UIButton) {
-        currentGame = gameIDField.text ?? ""
-        _ = database.createPlayer(gameID: currentGame)
-        performSegue(withIdentifier: "submitPlayerSegue", sender: self)
+        database.createPlayer(gameID: currentGame)
     }
 
 }

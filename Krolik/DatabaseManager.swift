@@ -10,8 +10,8 @@ import Firebase
 import FirebaseDatabase
 
 protocol DatabaseDelegate {
-    func readGame(game: Game)
-    func readPlayer(player: Player)
+    func readGame(game: Game?)
+    func readPlayer(player: Player?)
 }
 
 class DatabaseManager {
@@ -107,6 +107,7 @@ class DatabaseManager {
             // convert snapshot to dictionary
             guard let gameData = snapshot.value as? [String:Any] else {
                 print("error converting game snapshot to dictionary")
+                self?.delegate?.readGame(game: nil)
                 return
             }
             
