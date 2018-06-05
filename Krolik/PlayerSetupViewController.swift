@@ -19,17 +19,21 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     let networkManager = NetworkManager()
     let database = DatabaseManager()
     var currentGame: String!
+    var keyboardHeight: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.isEnabled = false
         playerImageView.contentMode = .scaleAspectFit
         gameIDField.delegate = self
+        
+        //NotificationCenter.default.addObserver(self, selector: #selector(UIViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PlayerSetupViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PlayerSetupViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true)
- 
         
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         spinner.center = playerImageView.center
@@ -69,6 +73,25 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         }
         
     }
+    
+    //MARK: Keyboard Move View
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        // get initial keyboard height
+        if keyboardHeight == 0 {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                keyboardHeight = keyboardSize.height
+            }
+        }
+        self.view.frame.origin.y -= keyboardHeight
+    }
+    
+    @objc func keyboardWillHide() {
+        self.view.frame.origin.y += keyboardHeight
+    }
+    
+    
+    //MARK: TextFieldDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         gameIDField.resignFirstResponder()

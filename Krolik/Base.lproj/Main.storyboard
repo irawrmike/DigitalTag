@@ -26,7 +26,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OPV-5D-daz">
-                                <rect key="frame" x="99.666666666666686" y="431.66666666666669" width="215" height="14.666666666666686"/>
+                                <rect key="frame" x="99.666666666666686" y="453.66666666666669" width="215" height="36.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Kremlin" family="Kremlin" pointSize="22"/>
                                 <state key="normal" title="Start a New Game">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -44,7 +44,7 @@
                                 <size key="shadowOffset" width="3" height="2"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S7-hl-ZSv">
-                                <rect key="frame" x="138.66666666666666" y="339" width="136.99999999999997" height="14.666666666666686"/>
+                                <rect key="frame" x="138.66666666666666" y="339" width="136.99999999999997" height="36.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Kremlin" family="Kremlin" pointSize="22"/>
                                 <state key="normal" title="Join a Game">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -59,11 +59,11 @@
                         <constraints>
                             <constraint firstItem="0S7-hl-ZSv" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3DX-d8-XZe"/>
                             <constraint firstItem="OPV-5D-daz" firstAttribute="top" secondItem="0S7-hl-ZSv" secondAttribute="bottom" constant="77.666666666666686" id="Ope-YH-TGW"/>
-                            <constraint firstItem="0S7-hl-ZSv" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.02" id="W7L-Q5-RGR"/>
+                            <constraint firstItem="0S7-hl-ZSv" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.05" id="W7L-Q5-RGR"/>
                             <constraint firstItem="vei-us-ds7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="eUj-Rd-TCO"/>
                             <constraint firstItem="OPV-5D-daz" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="q1o-6F-fho"/>
                             <constraint firstItem="0S7-hl-ZSv" firstAttribute="top" secondItem="vei-us-ds7" secondAttribute="bottom" constant="136" id="she-4d-AAa"/>
-                            <constraint firstItem="OPV-5D-daz" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.02" id="tHS-PX-88F"/>
+                            <constraint firstItem="OPV-5D-daz" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.05" id="tHS-PX-88F"/>
                             <constraint firstItem="vei-us-ds7" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.11" id="wmn-ER-el4"/>
                             <constraint firstItem="vei-us-ds7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="102" id="z75-1A-BfX"/>
                         </constraints>
@@ -215,6 +215,7 @@
                                         <constraint firstAttribute="bottom" secondItem="yOa-qX-NjR" secondAttribute="bottom" constant="8" id="18A-H5-kH7"/>
                                         <constraint firstItem="yOa-qX-NjR" firstAttribute="leading" secondItem="feh-Hu-HxU" secondAttribute="leading" constant="8" id="8UJ-4v-gHl"/>
                                         <constraint firstItem="wam-dd-5Z3" firstAttribute="trailing" secondItem="feh-Hu-HxU" secondAttribute="trailing" constant="-8" id="TKy-VZ-AlP"/>
+                                        <constraint firstItem="wam-dd-5Z3" firstAttribute="leading" relation="lessThanOrEqual" secondItem="fjZ-Vl-I5m" secondAttribute="trailing" constant="225.33333333333331" id="aBy-o6-aOf"/>
                                         <constraint firstItem="yOa-qX-NjR" firstAttribute="top" secondItem="feh-Hu-HxU" secondAttribute="top" constant="8" id="sNf-Hj-l6M"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="wam-dd-5Z3" secondAttribute="bottom" constant="8" id="vS4-rB-dWF"/>
                                         <constraint firstItem="wam-dd-5Z3" firstAttribute="top" secondItem="feh-Hu-HxU" secondAttribute="topMargin" constant="8" id="x5a-ZR-yhu"/>

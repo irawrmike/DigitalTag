@@ -1,450 +1,450 @@
 // !$*UTF8*$!
 {
-    archiveVersion = 1;
-    classes = {
-    };
-    objectVersion = 50;
-    objects = {
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
 
 /* Begin PBXBuildFile section */
-        272EBE3B20C1BA7F003FEFE2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EBE3920C1BA7F003FEFE2 /* Player.swift */; };
-        272EBE3C20C1BA7F003FEFE2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EBE3A20C1BA7F003FEFE2 /* Game.swift */; };
-        272EBE3E20C1D3F2003FEFE2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EBE3D20C1D3F2003FEFE2 /* DatabaseManager.swift */; };
-        272EBE4020C5AFE7003FEFE2 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EBE3F20C5AFE7003FEFE2 /* GameLogic.swift */; };
-        27E7361720BF31F5004B48D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7361620BF31F5004B48D2 /* AppDelegate.swift */; };
-        27E7361920BF31F5004B48D2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7361820BF31F5004B48D2 /* HomeViewController.swift */; };
-        27E7361C20BF31F5004B48D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361A20BF31F5004B48D2 /* Main.storyboard */; };
-        27E7361E20BF31F6004B48D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361D20BF31F6004B48D2 /* Assets.xcassets */; };
-        27E7362120BF31F6004B48D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361F20BF31F6004B48D2 /* LaunchScreen.storyboard */; };
-        3B07CB8620C5C01A00C370C0 /* kremlin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BB04DEE20C17C010015C6B5 /* kremlin.ttf */; };
-        3B3D4E8120C082550027C68C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8020C082550027C68C /* GoogleService-Info.plist */; };
-        3B3D4E8720C08E7E0027C68C /* GameStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8620C08E7E0027C68C /* GameStatusViewController.swift */; };
-        3B8CC14920C1D71C00A5890C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8CC14820C1D71C00A5890C /* NetworkManager.swift */; };
-        3BC0D96720BF3EC900045B17 /* PlayerSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */; };
-        48CAA4A476FE350700FA4863 /* Pods_Krolik.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413B71FF29B5FB6BE268F6C /* Pods_Krolik.framework */; };
+		272EBE3B20C1BA7F003FEFE2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EBE3920C1BA7F003FEFE2 /* Player.swift */; };
+		272EBE3C20C1BA7F003FEFE2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EBE3A20C1BA7F003FEFE2 /* Game.swift */; };
+		272EBE3E20C1D3F2003FEFE2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EBE3D20C1D3F2003FEFE2 /* DatabaseManager.swift */; };
+		272EBE4020C5AFE7003FEFE2 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EBE3F20C5AFE7003FEFE2 /* GameLogic.swift */; };
+		27E7361720BF31F5004B48D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7361620BF31F5004B48D2 /* AppDelegate.swift */; };
+		27E7361920BF31F5004B48D2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7361820BF31F5004B48D2 /* HomeViewController.swift */; };
+		27E7361C20BF31F5004B48D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361A20BF31F5004B48D2 /* Main.storyboard */; };
+		27E7361E20BF31F6004B48D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361D20BF31F6004B48D2 /* Assets.xcassets */; };
+		27E7362120BF31F6004B48D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361F20BF31F6004B48D2 /* LaunchScreen.storyboard */; };
+		3B07CB8620C5C01A00C370C0 /* kremlin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BB04DEE20C17C010015C6B5 /* kremlin.ttf */; };
+		3B3D4E8120C082550027C68C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8020C082550027C68C /* GoogleService-Info.plist */; };
+		3B3D4E8720C08E7E0027C68C /* GameStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8620C08E7E0027C68C /* GameStatusViewController.swift */; };
+		3B8CC14920C1D71C00A5890C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8CC14820C1D71C00A5890C /* NetworkManager.swift */; };
+		3BC0D96720BF3EC900045B17 /* PlayerSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */; };
+		48CAA4A476FE350700FA4863 /* Pods_Krolik.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413B71FF29B5FB6BE268F6C /* Pods_Krolik.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-        1CB76E85B814DA2FABF2DCCF /* Pods-Krolik.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Krolik.release.xcconfig"; path = "Pods/Target Support Files/Pods-Krolik/Pods-Krolik.release.xcconfig"; sourceTree = "<group>"; };
-        272EBE3920C1BA7F003FEFE2 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-        272EBE3A20C1BA7F003FEFE2 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-        272EBE3D20C1D3F2003FEFE2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-        272EBE3F20C5AFE7003FEFE2 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
-        27E7361320BF31F5004B48D2 /* Krolik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Krolik.app; sourceTree = BUILT_PRODUCTS_DIR; };
-        27E7361620BF31F5004B48D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-        27E7361820BF31F5004B48D2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-        27E7361B20BF31F5004B48D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-        27E7361D20BF31F6004B48D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-        27E7362020BF31F6004B48D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-        27E7362220BF31F6004B48D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-        2F4335916A8A654E3EA71D9E /* Pods-Krolik.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Krolik.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Krolik/Pods-Krolik.debug.xcconfig"; sourceTree = "<group>"; };
-        3413B71FF29B5FB6BE268F6C /* Pods_Krolik.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Krolik.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-        3B3D4E8020C082550027C68C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-        3B3D4E8620C08E7E0027C68C /* GameStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatusViewController.swift; sourceTree = "<group>"; };
-        3B8CC14820C1D71C00A5890C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-        3BB04DEE20C17C010015C6B5 /* kremlin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kremlin.ttf; sourceTree = "<group>"; };
-        3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSetupViewController.swift; sourceTree = "<group>"; };
+		1CB76E85B814DA2FABF2DCCF /* Pods-Krolik.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Krolik.release.xcconfig"; path = "Pods/Target Support Files/Pods-Krolik/Pods-Krolik.release.xcconfig"; sourceTree = "<group>"; };
+		272EBE3920C1BA7F003FEFE2 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		272EBE3A20C1BA7F003FEFE2 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		272EBE3D20C1D3F2003FEFE2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		272EBE3F20C5AFE7003FEFE2 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
+		27E7361320BF31F5004B48D2 /* Krolik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Krolik.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E7361620BF31F5004B48D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		27E7361820BF31F5004B48D2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		27E7361B20BF31F5004B48D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		27E7361D20BF31F6004B48D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		27E7362020BF31F6004B48D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		27E7362220BF31F6004B48D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F4335916A8A654E3EA71D9E /* Pods-Krolik.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Krolik.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Krolik/Pods-Krolik.debug.xcconfig"; sourceTree = "<group>"; };
+		3413B71FF29B5FB6BE268F6C /* Pods_Krolik.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Krolik.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B3D4E8020C082550027C68C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3B3D4E8620C08E7E0027C68C /* GameStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatusViewController.swift; sourceTree = "<group>"; };
+		3B8CC14820C1D71C00A5890C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		3BB04DEE20C17C010015C6B5 /* kremlin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kremlin.ttf; sourceTree = "<group>"; };
+		3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSetupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-        27E7361020BF31F5004B48D2 /* Frameworks */ = {
-            isa = PBXFrameworksBuildPhase;
-            buildActionMask = 2147483647;
-            files = (
-                48CAA4A476FE350700FA4863 /* Pods_Krolik.framework in Frameworks */,
-            );
-            runOnlyForDeploymentPostprocessing = 0;
-        };
+		27E7361020BF31F5004B48D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48CAA4A476FE350700FA4863 /* Pods_Krolik.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-        27E7360A20BF31F5004B48D2 = {
-            isa = PBXGroup;
-            children = (
-                27E7361520BF31F5004B48D2 /* Krolik */,
-                27E7361420BF31F5004B48D2 /* Products */,
-                9A84BEC2C82A9FA4161735FA /* Pods */,
-                C821704100BA919C482379A9 /* Frameworks */,
-            );
-            sourceTree = "<group>";
-        };
-        27E7361420BF31F5004B48D2 /* Products */ = {
-            isa = PBXGroup;
-            children = (
-                27E7361320BF31F5004B48D2 /* Krolik.app */,
-            );
-            name = Products;
-            sourceTree = "<group>";
-        };
-        27E7361520BF31F5004B48D2 /* Krolik */ = {
-            isa = PBXGroup;
-            children = (
-                27E7361620BF31F5004B48D2 /* AppDelegate.swift */,
-                272EBE3D20C1D3F2003FEFE2 /* DatabaseManager.swift */,
-                272EBE3F20C5AFE7003FEFE2 /* GameLogic.swift */,
-                272EBE3A20C1BA7F003FEFE2 /* Game.swift */,
-                272EBE3920C1BA7F003FEFE2 /* Player.swift */,
-                27E7361820BF31F5004B48D2 /* HomeViewController.swift */,
-                27E7361A20BF31F5004B48D2 /* Main.storyboard */,
-                27E7361D20BF31F6004B48D2 /* Assets.xcassets */,
-                3B8CC14820C1D71C00A5890C /* NetworkManager.swift */,
-                27E7361F20BF31F6004B48D2 /* LaunchScreen.storyboard */,
-                27E7362220BF31F6004B48D2 /* Info.plist */,
-                3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */,
-                3B3D4E8020C082550027C68C /* GoogleService-Info.plist */,
-                3B3D4E8620C08E7E0027C68C /* GameStatusViewController.swift */,
-                3BB04DEE20C17C010015C6B5 /* kremlin.ttf */,
-            );
-            path = Krolik;
-            sourceTree = "<group>";
-        };
-        9A84BEC2C82A9FA4161735FA /* Pods */ = {
-            isa = PBXGroup;
-            children = (
-                2F4335916A8A654E3EA71D9E /* Pods-Krolik.debug.xcconfig */,
-                1CB76E85B814DA2FABF2DCCF /* Pods-Krolik.release.xcconfig */,
-            );
-            name = Pods;
-            sourceTree = "<group>";
-        };
-        C821704100BA919C482379A9 /* Frameworks */ = {
-            isa = PBXGroup;
-            children = (
-                3413B71FF29B5FB6BE268F6C /* Pods_Krolik.framework */,
-            );
-            name = Frameworks;
-            sourceTree = "<group>";
-        };
+		27E7360A20BF31F5004B48D2 = {
+			isa = PBXGroup;
+			children = (
+				27E7361520BF31F5004B48D2 /* Krolik */,
+				27E7361420BF31F5004B48D2 /* Products */,
+				9A84BEC2C82A9FA4161735FA /* Pods */,
+				C821704100BA919C482379A9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		27E7361420BF31F5004B48D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27E7361320BF31F5004B48D2 /* Krolik.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27E7361520BF31F5004B48D2 /* Krolik */ = {
+			isa = PBXGroup;
+			children = (
+				27E7361620BF31F5004B48D2 /* AppDelegate.swift */,
+				272EBE3D20C1D3F2003FEFE2 /* DatabaseManager.swift */,
+				272EBE3F20C5AFE7003FEFE2 /* GameLogic.swift */,
+				272EBE3A20C1BA7F003FEFE2 /* Game.swift */,
+				272EBE3920C1BA7F003FEFE2 /* Player.swift */,
+				27E7361820BF31F5004B48D2 /* HomeViewController.swift */,
+				27E7361A20BF31F5004B48D2 /* Main.storyboard */,
+				27E7361D20BF31F6004B48D2 /* Assets.xcassets */,
+				3B8CC14820C1D71C00A5890C /* NetworkManager.swift */,
+				27E7361F20BF31F6004B48D2 /* LaunchScreen.storyboard */,
+				27E7362220BF31F6004B48D2 /* Info.plist */,
+				3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */,
+				3B3D4E8020C082550027C68C /* GoogleService-Info.plist */,
+				3B3D4E8620C08E7E0027C68C /* GameStatusViewController.swift */,
+				3BB04DEE20C17C010015C6B5 /* kremlin.ttf */,
+			);
+			path = Krolik;
+			sourceTree = "<group>";
+		};
+		9A84BEC2C82A9FA4161735FA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2F4335916A8A654E3EA71D9E /* Pods-Krolik.debug.xcconfig */,
+				1CB76E85B814DA2FABF2DCCF /* Pods-Krolik.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C821704100BA919C482379A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3413B71FF29B5FB6BE268F6C /* Pods_Krolik.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-        27E7361220BF31F5004B48D2 /* Krolik */ = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = 27E7362520BF31F6004B48D2 /* Build configuration list for PBXNativeTarget "Krolik" */;
-            buildPhases = (
-                BA4E757C4B845D874C8977C4 /* [CP] Check Pods Manifest.lock */,
-                27E7360F20BF31F5004B48D2 /* Sources */,
-                27E7361020BF31F5004B48D2 /* Frameworks */,
-                27E7361120BF31F5004B48D2 /* Resources */,
-                BBA79B737ED2AFC39E237B51 /* [CP] Embed Pods Frameworks */,
-            );
-            buildRules = (
-            );
-            dependencies = (
-            );
-            name = Krolik;
-            productName = DigitalTag;
-            productReference = 27E7361320BF31F5004B48D2 /* Krolik.app */;
-            productType = "com.apple.product-type.application";
-        };
+		27E7361220BF31F5004B48D2 /* Krolik */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27E7362520BF31F6004B48D2 /* Build configuration list for PBXNativeTarget "Krolik" */;
+			buildPhases = (
+				BA4E757C4B845D874C8977C4 /* [CP] Check Pods Manifest.lock */,
+				27E7360F20BF31F5004B48D2 /* Sources */,
+				27E7361020BF31F5004B48D2 /* Frameworks */,
+				27E7361120BF31F5004B48D2 /* Resources */,
+				BBA79B737ED2AFC39E237B51 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Krolik;
+			productName = DigitalTag;
+			productReference = 27E7361320BF31F5004B48D2 /* Krolik.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-        27E7360B20BF31F5004B48D2 /* Project object */ = {
-            isa = PBXProject;
-            attributes = {
-                LastSwiftUpdateCheck = 0930;
-                LastUpgradeCheck = 0930;
-                ORGANIZATIONNAME = "Mike Stoltman";
-                TargetAttributes = {
-                    27E7361220BF31F5004B48D2 = {
-                        CreatedOnToolsVersion = 9.3.1;
-                    };
-                };
-            };
-            buildConfigurationList = 27E7360E20BF31F5004B48D2 /* Build configuration list for PBXProject "Krolik" */;
-            compatibilityVersion = "Xcode 9.3";
-            developmentRegion = en;
-            hasScannedForEncodings = 0;
-            knownRegions = (
-                en,
-                Base,
-            );
-            mainGroup = 27E7360A20BF31F5004B48D2;
-            productRefGroup = 27E7361420BF31F5004B48D2 /* Products */;
-            projectDirPath = "";
-            projectRoot = "";
-            targets = (
-                27E7361220BF31F5004B48D2 /* Krolik */,
-            );
-        };
+		27E7360B20BF31F5004B48D2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Mike Stoltman";
+				TargetAttributes = {
+					27E7361220BF31F5004B48D2 = {
+						CreatedOnToolsVersion = 9.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 27E7360E20BF31F5004B48D2 /* Build configuration list for PBXProject "Krolik" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 27E7360A20BF31F5004B48D2;
+			productRefGroup = 27E7361420BF31F5004B48D2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				27E7361220BF31F5004B48D2 /* Krolik */,
+			);
+		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-        27E7361120BF31F5004B48D2 /* Resources */ = {
-            isa = PBXResourcesBuildPhase;
-            buildActionMask = 2147483647;
-            files = (
-                3B07CB8620C5C01A00C370C0 /* kremlin.ttf in Resources */,
-                27E7362120BF31F6004B48D2 /* LaunchScreen.storyboard in Resources */,
-                3B3D4E8120C082550027C68C /* GoogleService-Info.plist in Resources */,
-                27E7361E20BF31F6004B48D2 /* Assets.xcassets in Resources */,
-                27E7361C20BF31F5004B48D2 /* Main.storyboard in Resources */,
-            );
-            runOnlyForDeploymentPostprocessing = 0;
-        };
+		27E7361120BF31F5004B48D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B07CB8620C5C01A00C370C0 /* kremlin.ttf in Resources */,
+				27E7362120BF31F6004B48D2 /* LaunchScreen.storyboard in Resources */,
+				3B3D4E8120C082550027C68C /* GoogleService-Info.plist in Resources */,
+				27E7361E20BF31F6004B48D2 /* Assets.xcassets in Resources */,
+				27E7361C20BF31F5004B48D2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-        BA4E757C4B845D874C8977C4 /* [CP] Check Pods Manifest.lock */ = {
-            isa = PBXShellScriptBuildPhase;
-            buildActionMask = 2147483647;
-            files = (
-            );
-            inputPaths = (
-                "${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-                "${PODS_ROOT}/Manifest.lock",
-            );
-            name = "[CP] Check Pods Manifest.lock";
-            outputPaths = (
-                "$(DERIVED_FILE_DIR)/Pods-Krolik-checkManifestLockResult.txt",
-            );
-            runOnlyForDeploymentPostprocessing = 0;
-            shellPath = /bin/sh;
-            shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-            showEnvVarsInLog = 0;
-        };
-        BBA79B737ED2AFC39E237B51 /* [CP] Embed Pods Frameworks */ = {
-            isa = PBXShellScriptBuildPhase;
-            buildActionMask = 2147483647;
-            files = (
-            );
-            inputPaths = (
-                "${SRCROOT}/Pods/Target Support Files/Pods-Krolik/Pods-Krolik-frameworks.sh",
-                "${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-                "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-                "${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-                "${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-                "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-            );
-            name = "[CP] Embed Pods Frameworks";
-            outputPaths = (
-                "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-                "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-                "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-                "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-                "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-            );
-            runOnlyForDeploymentPostprocessing = 0;
-            shellPath = /bin/sh;
-            shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Krolik/Pods-Krolik-frameworks.sh\"\n";
-            showEnvVarsInLog = 0;
-        };
+		BA4E757C4B845D874C8977C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Krolik-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBA79B737ED2AFC39E237B51 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Krolik/Pods-Krolik-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Krolik/Pods-Krolik-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-        27E7360F20BF31F5004B48D2 /* Sources */ = {
-            isa = PBXSourcesBuildPhase;
-            buildActionMask = 2147483647;
-            files = (
-                27E7361920BF31F5004B48D2 /* HomeViewController.swift in Sources */,
-                272EBE3C20C1BA7F003FEFE2 /* Game.swift in Sources */,
-                272EBE4020C5AFE7003FEFE2 /* GameLogic.swift in Sources */,
-                27E7361720BF31F5004B48D2 /* AppDelegate.swift in Sources */,
-                3B8CC14920C1D71C00A5890C /* NetworkManager.swift in Sources */,
-                3B3D4E8720C08E7E0027C68C /* GameStatusViewController.swift in Sources */,
-                272EBE3B20C1BA7F003FEFE2 /* Player.swift in Sources */,
-                272EBE3E20C1D3F2003FEFE2 /* DatabaseManager.swift in Sources */,
-                3BC0D96720BF3EC900045B17 /* PlayerSetupViewController.swift in Sources */,
-            );
-            runOnlyForDeploymentPostprocessing = 0;
-        };
+		27E7360F20BF31F5004B48D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27E7361920BF31F5004B48D2 /* HomeViewController.swift in Sources */,
+				272EBE3C20C1BA7F003FEFE2 /* Game.swift in Sources */,
+				272EBE4020C5AFE7003FEFE2 /* GameLogic.swift in Sources */,
+				27E7361720BF31F5004B48D2 /* AppDelegate.swift in Sources */,
+				3B8CC14920C1D71C00A5890C /* NetworkManager.swift in Sources */,
+				3B3D4E8720C08E7E0027C68C /* GameStatusViewController.swift in Sources */,
+				272EBE3B20C1BA7F003FEFE2 /* Player.swift in Sources */,
+				272EBE3E20C1D3F2003FEFE2 /* DatabaseManager.swift in Sources */,
+				3BC0D96720BF3EC900045B17 /* PlayerSetupViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-        27E7361A20BF31F5004B48D2 /* Main.storyboard */ = {
-            isa = PBXVariantGroup;
-            children = (
-                27E7361B20BF31F5004B48D2 /* Base */,
-            );
-            name = Main.storyboard;
-            sourceTree = "<group>";
-        };
-        27E7361F20BF31F6004B48D2 /* LaunchScreen.storyboard */ = {
-            isa = PBXVariantGroup;
-            children = (
-                27E7362020BF31F6004B48D2 /* Base */,
-            );
-            name = LaunchScreen.storyboard;
-            sourceTree = "<group>";
-        };
+		27E7361A20BF31F5004B48D2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27E7361B20BF31F5004B48D2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		27E7361F20BF31F6004B48D2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27E7362020BF31F6004B48D2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-        27E7362320BF31F6004B48D2 /* Debug */ = {
-            isa = XCBuildConfiguration;
-            buildSettings = {
-                ALWAYS_SEARCH_USER_PATHS = NO;
-                CLANG_ANALYZER_NONNULL = YES;
-                CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-                CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-                CLANG_CXX_LIBRARY = "libc++";
-                CLANG_ENABLE_MODULES = YES;
-                CLANG_ENABLE_OBJC_ARC = YES;
-                CLANG_ENABLE_OBJC_WEAK = YES;
-                CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-                CLANG_WARN_BOOL_CONVERSION = YES;
-                CLANG_WARN_COMMA = YES;
-                CLANG_WARN_CONSTANT_CONVERSION = YES;
-                CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-                CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-                CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-                CLANG_WARN_EMPTY_BODY = YES;
-                CLANG_WARN_ENUM_CONVERSION = YES;
-                CLANG_WARN_INFINITE_RECURSION = YES;
-                CLANG_WARN_INT_CONVERSION = YES;
-                CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-                CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-                CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-                CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-                CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-                CLANG_WARN_STRICT_PROTOTYPES = YES;
-                CLANG_WARN_SUSPICIOUS_MOVE = YES;
-                CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-                CLANG_WARN_UNREACHABLE_CODE = YES;
-                CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-                CODE_SIGN_IDENTITY = "iPhone Developer";
-                COPY_PHASE_STRIP = NO;
-                DEBUG_INFORMATION_FORMAT = dwarf;
-                ENABLE_STRICT_OBJC_MSGSEND = YES;
-                ENABLE_TESTABILITY = YES;
-                GCC_C_LANGUAGE_STANDARD = gnu11;
-                GCC_DYNAMIC_NO_PIC = NO;
-                GCC_NO_COMMON_BLOCKS = YES;
-                GCC_OPTIMIZATION_LEVEL = 0;
-                GCC_PREPROCESSOR_DEFINITIONS = (
-                    "DEBUG=1",
-                    "$(inherited)",
-                );
-                GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-                GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-                GCC_WARN_UNDECLARED_SELECTOR = YES;
-                GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-                GCC_WARN_UNUSED_FUNCTION = YES;
-                GCC_WARN_UNUSED_VARIABLE = YES;
-                IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-                MTL_ENABLE_DEBUG_INFO = YES;
-                ONLY_ACTIVE_ARCH = YES;
-                SDKROOT = iphoneos;
-                SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-                SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-            };
-            name = Debug;
-        };
-        27E7362420BF31F6004B48D2 /* Release */ = {
-            isa = XCBuildConfiguration;
-            buildSettings = {
-                ALWAYS_SEARCH_USER_PATHS = NO;
-                CLANG_ANALYZER_NONNULL = YES;
-                CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-                CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-                CLANG_CXX_LIBRARY = "libc++";
-                CLANG_ENABLE_MODULES = YES;
-                CLANG_ENABLE_OBJC_ARC = YES;
-                CLANG_ENABLE_OBJC_WEAK = YES;
-                CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-                CLANG_WARN_BOOL_CONVERSION = YES;
-                CLANG_WARN_COMMA = YES;
-                CLANG_WARN_CONSTANT_CONVERSION = YES;
-                CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-                CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-                CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-                CLANG_WARN_EMPTY_BODY = YES;
-                CLANG_WARN_ENUM_CONVERSION = YES;
-                CLANG_WARN_INFINITE_RECURSION = YES;
-                CLANG_WARN_INT_CONVERSION = YES;
-                CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-                CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-                CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-                CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-                CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-                CLANG_WARN_STRICT_PROTOTYPES = YES;
-                CLANG_WARN_SUSPICIOUS_MOVE = YES;
-                CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-                CLANG_WARN_UNREACHABLE_CODE = YES;
-                CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-                CODE_SIGN_IDENTITY = "iPhone Developer";
-                COPY_PHASE_STRIP = NO;
-                DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-                ENABLE_NS_ASSERTIONS = NO;
-                ENABLE_STRICT_OBJC_MSGSEND = YES;
-                GCC_C_LANGUAGE_STANDARD = gnu11;
-                GCC_NO_COMMON_BLOCKS = YES;
-                GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-                GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-                GCC_WARN_UNDECLARED_SELECTOR = YES;
-                GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-                GCC_WARN_UNUSED_FUNCTION = YES;
-                GCC_WARN_UNUSED_VARIABLE = YES;
-                IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-                MTL_ENABLE_DEBUG_INFO = NO;
-                SDKROOT = iphoneos;
-                SWIFT_COMPILATION_MODE = wholemodule;
-                SWIFT_OPTIMIZATION_LEVEL = "-O";
-                VALIDATE_PRODUCT = YES;
-            };
-            name = Release;
-        };
-        27E7362620BF31F6004B48D2 /* Debug */ = {
-            isa = XCBuildConfiguration;
-            baseConfigurationReference = 2F4335916A8A654E3EA71D9E /* Pods-Krolik.debug.xcconfig */;
-            buildSettings = {
-                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-                CODE_SIGN_STYLE = Automatic;
-                DEVELOPMENT_TEAM = NTZ378Q4WS;
-                INFOPLIST_FILE = Krolik/Info.plist;
-                LD_RUNPATH_SEARCH_PATHS = (
-                    "$(inherited)",
-                    "@executable_path/Frameworks",
-                );
-                PRODUCT_BUNDLE_IDENTIFIER = com.krolikTeam.Krolik;
-                PRODUCT_NAME = "$(TARGET_NAME)";
-                SWIFT_VERSION = 4.0;
-                TARGETED_DEVICE_FAMILY = "1,2";
-            };
-            name = Debug;
-        };
-        27E7362720BF31F6004B48D2 /* Release */ = {
-            isa = XCBuildConfiguration;
-            baseConfigurationReference = 1CB76E85B814DA2FABF2DCCF /* Pods-Krolik.release.xcconfig */;
-            buildSettings = {
-                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-                CODE_SIGN_STYLE = Automatic;
-                DEVELOPMENT_TEAM = NTZ378Q4WS;
-                INFOPLIST_FILE = Krolik/Info.plist;
-                LD_RUNPATH_SEARCH_PATHS = (
-                    "$(inherited)",
-                    "@executable_path/Frameworks",
-                );
-                PRODUCT_BUNDLE_IDENTIFIER = com.krolikTeam.Krolik;
-                PRODUCT_NAME = "$(TARGET_NAME)";
-                SWIFT_VERSION = 4.0;
-                TARGETED_DEVICE_FAMILY = "1,2";
-            };
-            name = Release;
-        };
+		27E7362320BF31F6004B48D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		27E7362420BF31F6004B48D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		27E7362620BF31F6004B48D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F4335916A8A654E3EA71D9E /* Pods-Krolik.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84BM2BTTA9;
+				INFOPLIST_FILE = Krolik/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.krolikTeam.Krolik;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		27E7362720BF31F6004B48D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CB76E85B814DA2FABF2DCCF /* Pods-Krolik.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84BM2BTTA9;
+				INFOPLIST_FILE = Krolik/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.krolikTeam.Krolik;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-        27E7360E20BF31F5004B48D2 /* Build configuration list for PBXProject "Krolik" */ = {
-            isa = XCConfigurationList;
-            buildConfigurations = (
-                27E7362320BF31F6004B48D2 /* Debug */,
-                27E7362420BF31F6004B48D2 /* Release */,
-            );
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Release;
-        };
-        27E7362520BF31F6004B48D2 /* Build configuration list for PBXNativeTarget "Krolik" */ = {
-            isa = XCConfigurationList;
-            buildConfigurations = (
-                27E7362620BF31F6004B48D2 /* Debug */,
-                27E7362720BF31F6004B48D2 /* Release */,
-            );
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Release;
-        };
+		27E7360E20BF31F5004B48D2 /* Build configuration list for PBXProject "Krolik" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27E7362320BF31F6004B48D2 /* Debug */,
+				27E7362420BF31F6004B48D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27E7362520BF31F6004B48D2 /* Build configuration list for PBXNativeTarget "Krolik" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27E7362620BF31F6004B48D2 /* Debug */,
+				27E7362720BF31F6004B48D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
-    };
-    rootObject = 27E7360B20BF31F5004B48D2 /* Project object */;
+	};
+	rootObject = 27E7360B20BF31F5004B48D2 /* Project object */;
 }
