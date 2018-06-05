@@ -108,6 +108,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func submitButtonTapped(_ sender: UIButton) {
+        currentGame = gameIDField.text ?? ""
         database.createPlayer(gameID: currentGame)
     }
     
