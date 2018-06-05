@@ -53,14 +53,14 @@ class GameLogic {
 
 extension GameLogic: DatabaseDelegate {
     
-    func readGame(game: Game) {
+    func readGame(game: Game?) {
         // assign returned game value to current game property
         currentGame = game
         
         // run code on returned game object here
     }
     
-    func readPlayer(player: Player) {
+    func readPlayer(player: Player?) {
         
     }
 }
