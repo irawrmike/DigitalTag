@@ -79,6 +79,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
             if game != nil {
                 print("GAME EXISTS")
                 self.currentGame = game
+                self.performSegue(withIdentifier: "joinGameSegue", sender: self)
             } else {
                 print("GAME DOES NOT EXIST")
             }
@@ -106,7 +107,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         }
         if segue.identifier == "joinGameSegue" {
             // passes game object to player creation
-            let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameStatusViewController") as? GameStatusViewController
+            let destination = segue.destination as? PlayerSetupViewController
             destination?.currentGame = currentGame
         }
     }

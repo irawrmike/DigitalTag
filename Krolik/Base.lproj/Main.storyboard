@@ -40,7 +40,6 @@
                                 </state>
                                 <connections>
                                     <action selector="joinButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NRh-Vr-hAB"/>
-                                    <segue destination="zvH-qG-eJv" kind="show" identifier="joinGameSegue" id="jHO-d9-rW9"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter an existing game ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gJg-np-V01">
@@ -57,7 +56,6 @@
                                 </state>
                                 <connections>
                                     <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kWU-bp-xwH"/>
-                                    <segue destination="zvH-qG-eJv" kind="show" identifier="startGameSegue" id="kKU-CA-kCN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -83,11 +81,13 @@
                         <outlet property="joinGameButton" destination="0S7-hl-ZSv" id="NW8-4N-tiu"/>
                         <outlet property="startGameButton" destination="OPV-5D-daz" id="Q3y-F4-yvS"/>
                         <segue destination="8pz-AZ-AZe" kind="show" identifier="gameInProgress" animates="NO" id="U1W-np-V5y"/>
+                        <segue destination="zvH-qG-eJv" kind="show" identifier="joinGameSegue" id="yep-E6-eBy"/>
+                        <segue destination="zvH-qG-eJv" kind="show" identifier="startGameSegue" id="qdd-un-H9G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="35" y="-114"/>
+            <point key="canvasLocation" x="-322" y="-145"/>
         </scene>
         <!--Player Setup View Controller-->
         <scene sceneID="K6S-IN-k61">
@@ -266,7 +266,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hgt-7m-pOm"/>
-        <segue reference="kKU-CA-kCN"/>
+        <segue reference="U1W-np-V5y"/>
+        <segue reference="qdd-un-H9G"/>
     </inferredMetricsTieBreakers>
 </document>
