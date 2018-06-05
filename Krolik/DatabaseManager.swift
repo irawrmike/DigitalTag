@@ -20,6 +20,7 @@ class DatabaseManager {
     
     var databaseRef: DatabaseReference!
     var delegate: DatabaseDelegate?
+   
     
     // MARK: CREATE
     
@@ -62,7 +63,9 @@ class DatabaseManager {
         
         // get random key for new player
         let newPlayerKey = playersRef.childByAutoId().key
-        
+        // ADD PLAYER KEY TO USER DEFAULTS
+
+        UserDefaults.standard.set(newPlayerKey, forKey: "playerKey")
         // create playerData dictionary using player properties
         var playerData = [String:Any?]()
         playerData[Player.keys.id] = newPlayerKey
@@ -70,7 +73,7 @@ class DatabaseManager {
         playerData[Player.keys.target] = "***INSERT TARGET***"
         let nickname = Player.generatePlayerName()
         playerData[Player.keys.nickname] = nickname
-        let device = "***INSERT DEVICE ID***"
+        guard let device = UserDefaults.standard.value(forKey: "FCMToken") as? String else { return Player()}
         playerData[Player.keys.device] = device
         let photo = "***INSERT URL***"
         playerData[Player.keys.photo] = photo
