@@ -23,7 +23,7 @@ class Game {
     let databaseManager = DatabaseManager()
     var name: String!
     var id: String!
-    var players = [String]()
+    var players = [String:String]()
     var kills = [String]()
     var created: String!
     var ended: String?

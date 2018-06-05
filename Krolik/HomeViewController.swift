@@ -12,10 +12,11 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var joinGameButton: UIButton!
     @IBOutlet weak var startGameButton: UIButton!
+    let testGame = "-LEBbbIMPLjDgXMBIaP-"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

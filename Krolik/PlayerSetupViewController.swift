@@ -19,12 +19,16 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     let networkManager = NetworkManager()
     let database = DatabaseManager()
     var currentGame: String!
+    let testGame = "-LEBbbIMPLjDgXMBIaP-"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.isEnabled = false
         playerImageView.contentMode = .scaleAspectFit
         gameIDField.delegate = self
+        
+        // just for testing
+        gameIDField.text = testGame
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -109,9 +113,9 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBAction func submitButtonTapped(_ sender: UIButton) {
         currentGame = gameIDField.text ?? ""
-        database.createPlayer(gameID: currentGame)
+        _ = database.createPlayer(gameID: currentGame)
+        performSegue(withIdentifier: "submitPlayerSegue", sender: self)
     }
-    
     
 }
 
