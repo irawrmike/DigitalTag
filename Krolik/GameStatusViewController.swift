@@ -12,11 +12,16 @@ import FirebaseStorage
 class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
-
+    var currentGame: Game?
+    var currentPlayers: [Player] = []
+    let database = DatabaseManager()
+    let testGame = "-LEBbbIMPLjDgXMBIaP-"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        database.delegate = self
+        database.read(gameID: testGame)
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,7 +36,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return currentPlayers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -80,5 +85,25 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     @IBAction func startGameButtonTapped(_ sender: UIButton) {
         print("start game button tapped")
     }
+    
+}
+
+// MARK: Database Delegate Functions
+
+extension GameStatusViewController: DatabaseDelegate {
+    func readGame(game: Game) {
+        currentGame = game
+        let players = Array(game.players.keys)
+        
+        for player in players {
+            database.read(playerID: player)
+        }
+    }
+    
+    func readPlayer(player: Player) {
+        currentPlayers.append(player)
+        collectionView.reloadData()
+    }
+    
     
 }

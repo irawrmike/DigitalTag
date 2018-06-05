@@ -49,7 +49,7 @@ class DatabaseManager {
         game.id = newGameKey
         game.name = name
         game.created = date
-        game.players = []
+        game.players = [String:String]()
         
         return game
     }
@@ -78,9 +78,9 @@ class DatabaseManager {
         // create the player on firebase database
         playersRef.child(newPlayerKey).setValue(playerData)
         
-        // update game to include newly created player
-        let update = [Game.keys.players : [newPlayerKey : Player.state.alive]]
-        self.update(gameID: gameID, update: update)
+        // update game to include newly created player\
+        let gamePlayersRef = databaseRef.child(Game.keys.root).child(gameID).child(Game.keys.players)
+        gamePlayersRef.updateChildValues([newPlayerKey:Player.state.alive])
         
         // print statement to confirm addition of new player with unique key
         print("player added with key \(newPlayerKey)")
@@ -115,7 +115,7 @@ class DatabaseManager {
             
             game.name = gameData[Game.keys.name] as? String
             game.id = gameData[Game.keys.id] as? String
-            game.players = gameData[Game.keys.players] as! [String]
+            game.players = gameData[Game.keys.players] as! [String:String]
             
             // pass created game to delegate
             guard let delegate = self?.delegate else {
@@ -176,7 +176,7 @@ class DatabaseManager {
             
             game.name = historyData[Game.keys.name] as? String
             game.id = historyData[Game.keys.id] as? String
-            game.players = historyData[Game.keys.players] as! [String]
+            game.players = historyData[Game.keys.players] as! [String:String]
             game.created = historyData[Game.keys.created] as? String
             game.ended = historyData[Game.keys.ended] as? String
             
