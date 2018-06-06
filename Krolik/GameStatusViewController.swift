@@ -30,6 +30,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
             
             for player in players {
                 self.database.read(playerID: player, completion: { (player) in
+                    self.currentPlayers = []
                     self.currentPlayers.append(player!)
                     self.collectionView.reloadData()
                 })
