@@ -75,10 +75,6 @@ class DatabaseManager {
         // create the player on firebase database
         playersRef.child(newPlayerKey).setValue(playerData)
         
-        // update game to include newly created player\
-        let gamePlayersRef = databaseRef.child(Game.keys.root).child(gameID).child(Game.keys.players)
-        gamePlayersRef.updateChildValues([newPlayerKey:Player.state.alive])
-        
         // print statement to confirm addition of new player with unique key
         print("player added with key \(newPlayerKey)")
         
@@ -201,6 +197,11 @@ class DatabaseManager {
         
         // update values based on dictionary
         playerRef.updateChildValues(update)
+    }
+    
+    func addPlayerToGame(gameID: String, player: Player) {
+        let gamePlayersRef = databaseRef.child(Game.keys.root).child(gameID).child(Game.keys.players)
+        gamePlayersRef.updateChildValues([player.id:Player.state.alive])
     }
     
     func updatePlayers(update: Dictionary<String, Any>) {

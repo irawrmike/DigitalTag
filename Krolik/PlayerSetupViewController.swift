@@ -110,7 +110,8 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     @IBAction func submitButtonTapped(_ sender: UIButton) {
-        
+        guard let player = currentPlayer else {return}
+        database.addPlayerToGame(gameID: currentGame.id, player: player)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
