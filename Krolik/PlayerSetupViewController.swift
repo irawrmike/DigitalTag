@@ -114,11 +114,15 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         database.addPlayerToGame(gameID: currentGame.id, player: player)
     }
 
+    //MARK: Segue
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "submitPlayerSegue" {
             let tab = segue.destination as? UITabBarController
             let destination = tab?.viewControllers![0] as? GameStatusViewController
             destination?.currentGame = currentGame
+            UserDefaults.standard.set(currentPlayer?.id, forKey: Player.keys.id)
+            UserDefaults.standard.set(currentGame.id, forKey: Game.keys.id)
         }
     }
     
