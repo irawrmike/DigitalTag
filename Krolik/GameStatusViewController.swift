@@ -95,6 +95,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     
     @IBAction func startGameButtonTapped(_ sender: UIButton) {
         print("start game button tapped")
+        game.currentGame = currentGame
         game.startGame()
     }
     
