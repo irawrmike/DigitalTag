@@ -31,13 +31,9 @@ class GameLogic {
             // assign returned game value to current game property
             self.currentGame = game
             self.createTargets(game: game!)
-            // run code on returned game object here
+            
         }
-        
-        //call create Targets
-        createTargets(game: currentGame)
     }
-
     
     func createTargets(game: Game) {
         

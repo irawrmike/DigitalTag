@@ -26,9 +26,9 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                 return
             }
             self.currentGame = game
+            self.checkGameState()
+            
             let players = Array(game.players.keys)
-            
-            
             
             self.currentPlayers = []
             
@@ -85,8 +85,15 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "gameLobbyHeader", for: indexPath)
         
+        let startButton = header.viewWithTag(1) as! UIButton
         let gameNameLabel = header.viewWithTag(2) as! UILabel
         let gameIDLabel = header.viewWithTag(3) as! UILabel
+        
+        if UserDefaults.standard.bool(forKey: Player.keys.owner) {
+            startButton.isHidden = false
+        }else{
+            startButton.isHidden = true
+        }
         
         gameNameLabel.text = "Game: \(currentGame.name ?? "")"
         gameIDLabel.text = "ID: \(currentGame.id ?? "")"
@@ -107,6 +114,24 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         print("start game button tapped")
         game.currentGame = currentGame
         game.startGame()
+    }
+    
+    //MARK: Game Status
+    
+    func checkGameState() {
+        if currentGame.state == Game.state.pending {
+            
+            
+            
+        }else if currentGame.state == Game.state.active {
+            
+            
+            
+        }else if currentGame.state == Game.state.ended {
+            
+            
+            
+        }
     }
     
 }

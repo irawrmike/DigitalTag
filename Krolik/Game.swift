@@ -16,8 +16,15 @@ class Game {
         static let name = "game_name"
         static let id = "game_id"
         static let players = "game_players"
+        static let state = "active"
         static let created = "date_created"
         static let ended = "date_ended"
+    }
+    
+    struct state {
+        static let pending = "pending"
+        static let active = "active"
+        static let ended = "ended"
     }
     
     let databaseManager = DatabaseManager()
@@ -27,6 +34,7 @@ class Game {
     var kills = [String]()
     var created: String!
     var ended: String?
+    var state: String!
     
     static func generateGameName() -> String {
         let names = ["The Odessa Files", "The Munich Gambit", "The Ostravsky Affair", "Smiley's Lament", "The Prague Chronicles", "The Vienna Waltz", "The Leningrad Let-Down"]
