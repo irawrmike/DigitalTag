@@ -28,6 +28,8 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
             self.currentGame = game
             let players = Array(game.players.keys)
             
+            
+            
             self.currentPlayers = []
             
             for player in players {
@@ -82,6 +84,13 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "gameLobbyHeader", for: indexPath)
+        
+        let gameNameLabel = header.viewWithTag(2) as! UILabel
+        let gameIDLabel = header.viewWithTag(3) as! UILabel
+        
+        gameNameLabel.text = "Game: \(currentGame.name ?? "")"
+        gameIDLabel.text = "ID: \(currentGame.id ?? "")"
+        
         return header
     }
     
