@@ -122,7 +122,7 @@ class DatabaseManager {
         let playersRef = databaseRef.child(Player.keys.root)
         
         // get data snapshot of database
-        playersRef.child(playerID).observe(.value) { (snapshot) in
+        playersRef.child(playerID).observeSingleEvent(of: .value) { (snapshot) in
             // convert snapshot to dictionary
             guard let playerData = snapshot.value as? [String:Any?] else {
                 print("error converting player snapshot to dictionary")
