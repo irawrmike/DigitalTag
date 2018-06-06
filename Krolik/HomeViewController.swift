@@ -87,7 +87,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        
+        performSegue(withIdentifier: "startGameSegue", sender: self)
     }
     
     // MARK: Segue
