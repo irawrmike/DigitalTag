@@ -10,6 +10,10 @@ import UIKit
 
 class DossierViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var agentLabel: UILabel!
+    @IBOutlet weak var targetLabel: UILabel!
+    
     //MARK: Properties
     
     let networkManager = NetworkManager()
@@ -46,7 +50,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                         let killAlert = UIAlertController(title: "Target Hit!", message: "You have just sucessfully assisinated \(self.playerTarget.nickname)!" , preferredStyle: .alert)
                         killAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(killAlert, animated: true)
-
+                        
                     } else {
                         let failAlert = UIAlertController(title: "Target Miss!", message: "You have missed your target! Make sure you've got your positioning right and try to hit \(self.playerTarget.nickname) again", preferredStyle: .alert)
                         failAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -65,7 +69,9 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
         updatePlayerAndTarget()
     }
     
-    func shootPerson() {
+    //MARK: Actions
+    
+    @IBAction func takeAimTapped(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .camera
         imagePicker.delegate = self
@@ -74,7 +80,9 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
         // add crosshair camera overlay here
         
         present(imagePicker, animated: true)
+        
     }
+    
     
     func updatePlayerAndTarget() {
         // get the current player and its target from the database
@@ -84,6 +92,29 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
             self.database.read(playerID: currentPlayer!.target!, completion: { (playerTarget) in
                 self.playerTarget = playerTarget
             })
+           
+            // game ends if currentPlayer's target is itself
+            if self.currentPlayer.id == self.playerTarget.id {
+                let gameOverAlert = UIAlertController(title: " Game Over!", message: "Game over, you WIN! Mission complete", preferredStyle: .alert)
+                gameOverAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.database.update(gameID: self.currentGame.id, update: [Game.keys.state : Game.state.ended])
+            } else {
+                self.networkManager.getDataFromUrl(url: URL(string: self.playerTarget.photoURL)!) { (data, response, error) in
+                    guard let imageData = data else {
+                        print("bad data")
+                        return
+                    }
+                    guard let image = UIImage(data: imageData) else {
+                        print("error creating image from data")
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        self.imageView.image = image
+                    }
+                }
+                
+            }
+            
         }
     }
 }

@@ -11,6 +11,12 @@ import FirebaseStorage
 
 class NetworkManager {
     
+    func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            completion(data, response, error)
+            }.resume()
+    }
+    
     func uploadPhoto(photo: UIImage, path: String, completion: @escaping (_ photoURL: URL, Error?) -> ()) {
         let storage = Storage.storage()
         let storageRef = storage.reference()

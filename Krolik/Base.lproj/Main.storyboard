@@ -250,7 +250,7 @@
         <!--Dossier-->
         <scene sceneID="G0x-O1-cPz">
             <objects>
-                <viewController id="q7T-mY-VmS" sceneMemberID="viewController">
+                <viewController id="q7T-mY-VmS" customClass="DossierViewController" customModule="Krolik" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mlI-H3-aba">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -270,6 +270,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6OB-fr-kec">
                                 <rect key="frame" x="176" y="573.33333333333337" width="62" height="30"/>
                                 <state key="normal" title="Take Aim"/>
+                                <connections>
+                                    <action selector="takeAimTapped:" destination="q7T-mY-VmS" eventType="touchUpInside" id="ipS-ce-fei"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WMg-hs-rsw">
                                 <rect key="frame" x="82.666666666666671" y="202.66666666666666" width="248.66666666666663" height="330.66666666666674"/>
@@ -294,6 +297,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" tag="1" title="Dossier" id="5qc-Co-Hsv"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="agentLabel" destination="Zi6-S5-Oaf" id="FFV-a1-kQk"/>
+                        <outlet property="imageView" destination="WMg-hs-rsw" id="lji-Ve-dw8"/>
+                        <outlet property="targetLabel" destination="wSg-Ij-Amq" id="ryl-8N-NbU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rar-j5-dBR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

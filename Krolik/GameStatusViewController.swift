@@ -12,6 +12,8 @@ import FirebaseStorage
 class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    let networkManager = NetworkManager()
     var currentGame: Game!
     var currentPlayers: [Player] = []
     let database = DatabaseManager()
@@ -66,7 +68,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
  
         let player = currentPlayers[indexPath.row]
         
-        getDataFromUrl(url: URL(string: player.photoURL)!) { (data, response, error) in
+        networkManager.getDataFromUrl(url: URL(string: player.photoURL)!) { (data, response, error) in
             guard let imageData = data else {
                 print("bad data")
                 return
@@ -103,11 +105,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     }
     
     
-    func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            completion(data, response, error)
-            }.resume()
-    }
+    
     
     //MARK: Actions
     
