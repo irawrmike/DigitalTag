@@ -28,6 +28,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
             self.currentGame = game
             self.checkGameState()
             
+            
             let players = Array(game.players.keys)
             
             self.currentPlayers = []
@@ -121,16 +122,19 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     
     func checkGameState() {
         if currentGame.state == Game.state.pending {
-            
-            
+            if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
+                tabBarItem.isEnabled = false
+            }
             
         }else if currentGame.state == Game.state.active {
-            
-            
+            if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
+                tabBarItem.isEnabled = true
+            }
             
         }else if currentGame.state == Game.state.ended {
-            
-            
+            if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
+                tabBarItem.isEnabled = false
+            }
             
         }
     }
