@@ -77,9 +77,10 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
         update["\(currentPlayer.id!)/\(Player.keys.target)/"] = playerTarget.target!
         update["\(playerTarget.target!)/\(Player.keys.assassin)/"] = currentPlayer.id!
         
-        database.updatePlayers(update: update)
+        database.updatePlayers(update: update) { [weak self] (success) in
+            self?.updatePlayerAndTarget()
+        }
         
-        updatePlayerAndTarget()
     }
     
     //MARK: Actions
