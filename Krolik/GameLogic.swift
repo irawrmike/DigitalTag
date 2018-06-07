@@ -56,6 +56,7 @@ class GameLogic {
         }
         // update player targets on database
         database.updatePlayers(update: targetsUpdate)
+        database.update(gameID: currentGame.id, update: [Game.keys.state : Game.state.active])
     }
     
     func fetchTarget (player: Player) -> String {
