@@ -14,7 +14,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
     
     let networkManager = NetworkManager()
-    var currentGame: Game!
+    var currentGame: Game?
     var currentPlayers: [Player] = []
     let database = DatabaseManager()
     let game = GameLogic()
@@ -22,7 +22,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        database.read(gameID: currentGame.id) { (game) in
+        database.read(gameID: UserDefaults.standard.string(forKey: Game.keys.id)!) { (game) in
             guard let game = game else {
                 print("game read returned nil value")
                 return
@@ -92,14 +92,14 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         let gameNameLabel = header.viewWithTag(2) as! UILabel
         let gameIDLabel = header.viewWithTag(3) as! UILabel
         
-        if UserDefaults.standard.bool(forKey: Player.keys.owner) {
+        if UserDefaults.standard.bool(forKey: Player.keys.owner) && currentGame?.state == Game.state.pending {
             startButton.isHidden = false
-        }else{
+        }else {
             startButton.isHidden = true
         }
         
-        gameNameLabel.text = "Game: \(currentGame.name ?? "")"
-        gameIDLabel.text = "ID: \(currentGame.id ?? "")"
+        gameNameLabel.text = "Game: \(currentGame?.name ?? "")"
+        gameIDLabel.text = "ID: \(currentGame?.id ?? "")"
         
         return header
     }
@@ -119,17 +119,17 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     //MARK: Game Status
     
     func checkGameState() {
-        if currentGame.state == Game.state.pending {
+        if currentGame?.state == Game.state.pending {
             if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
                 tabBarItem.isEnabled = false
             }
             
-        }else if currentGame.state == Game.state.active {
+        }else if currentGame?.state == Game.state.active {
             if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
                 tabBarItem.isEnabled = true
             }
             
-        }else if currentGame.state == Game.state.ended {
+        }else if currentGame?.state == Game.state.ended {
             if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
                 tabBarItem.isEnabled = false
             }

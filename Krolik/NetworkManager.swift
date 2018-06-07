@@ -81,7 +81,7 @@ class NetworkManager {
         request.addValue("f9da2200327fdab7f1848c77ced880df", forHTTPHeaderField: "app_key")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let data = ["image" : player.photoURL!, "subject_id" : "player", "gallery_name" : player.id]
+        let data = ["image" : player.photoURL, "subject_id" : "player", "gallery_name" : player.id]
         let jsonData = try? JSONSerialization.data(withJSONObject: data)
         request.httpBody = jsonData
 

@@ -9,11 +9,11 @@
 import UIKit
 
 class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
-
+    
     //MARK: Outlets
     @IBOutlet weak var playerImageView: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
-
+    
     //MARK: Properties
     let networkManager = NetworkManager()
     let database = DatabaseManager()
@@ -21,7 +21,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     var keyboardHeight: CGFloat = 0
     var currentPlayer: Player?
     var isGameOwner = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.isEnabled = false
@@ -29,10 +29,10 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         
         currentPlayer = database.createPlayer(gameID: currentGame.id)
     }
-
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true)
-
+        
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         spinner.center = playerImageView.center
         view.addSubview(spinner)
@@ -42,9 +42,9 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
             print("ERROR: No image found")
             return
         }
-
+        
         playerImageView.image = image
-
+        
         let gameID = currentGame?.id ?? ""
         let playerID = currentPlayer?.id ?? ""
         
@@ -54,15 +54,14 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
             }
             // check for a face in the image here!!
             self.networkManager.checkPhotoFace(photoURL: url.absoluteString) { [weak self] (isFace) in
-
                 DispatchQueue.main.async {
                     let faceAlert = UIAlertController(title: "Finished Checking Photo", message: "", preferredStyle: .alert)
                     faceAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-
+                    
                     if isFace {
-                        self?.submitButton.isEnabled = true
                         faceAlert.message = "Face was found. If ready to start, hit the submit button!"
                         self?.present(faceAlert, animated: true, completion: nil)
+                        self?.currentPlayer?.photoURL = url.absoluteString
                     } else {
                         faceAlert.message = "Face was NOT found. Please take picture of your face again!"
                         self?.present(faceAlert, animated: true, completion: nil)
@@ -72,14 +71,23 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
                     let update = [Player.keys.photo : url.absoluteString]
                     self?.database.update(playerID: (self?.currentPlayer?.id)!, update: update)
                     
+                    self?.networkManager.enrollFace(player: (self?.currentPlayer)!) { (isEnrolled) in
+                        DispatchQueue.main.async {
+                            if isEnrolled {
+                                self?.submitButton.isEnabled = true
+                            } else {
+                                print("ERROR ENROLLING face to Kairos")
+                            }
+                        }
+                    }
                 }
             }
         }
-
+        
     }
-
+    
     //MARK: Actions
-
+    
     @IBAction func takeANewPhotoButtonPressed(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .camera
@@ -87,7 +95,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         imagePicker.delegate = self
         imagePicker.cameraDevice = .front
         imagePicker.cameraFlashMode = .off
-
+        
         // Create the Camera Overlay
         let overlayOrigin = CGPoint(x: view.frame.origin.x+75, y: view.frame.origin.y+15)
         let overlaySize = CGSize(width: view.frame.width-150, height: view.frame.height-150)
@@ -95,25 +103,25 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         cameraOverlay.image = UIImage(named: "faceOutline")
         cameraOverlay.contentMode = .scaleAspectFit
         imagePicker.cameraOverlayView = cameraOverlay
-
+        
         present(imagePicker, animated: true)
-
+        
         // Hide/Show the camera overlay
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "_UIImagePickerControllerUserDidCaptureItem"), object:nil, queue:nil, using: { note in
             imagePicker.cameraOverlayView = nil
         })
-
-
+        
+        
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "_UIImagePickerControllerUserDidRejectItem"), object:nil, queue:nil, using: { note in
             imagePicker.cameraOverlayView = cameraOverlay
         })
     }
-
+    
     @IBAction func submitButtonTapped(_ sender: UIButton) {
-        guard let player = currentPlayer else {return}
-        database.addPlayerToGame(gameID: currentGame.id, player: player)
+        guard let player = self.currentPlayer else {return}
+        self.database.addPlayerToGame(gameID: self.currentGame.id, player: player)
     }
-
+    
     //MARK: Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
