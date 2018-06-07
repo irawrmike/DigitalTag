@@ -18,13 +18,14 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
     
     let networkManager = NetworkManager()
     let database = DatabaseManager()
-    var currentGame: Game!
+    var currentGameId: String!
     var currentPlayer: Player!
     var playerTarget: Player!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        currentGameId = UserDefaults.standard.string(forKey: Game.keys.id)
         updatePlayerAndTarget()
     }
     
@@ -38,7 +39,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
             return
         }
         
-        networkManager.uploadPhoto(photo: image, path: "\(currentGame.id)/\(currentPlayer.id)_target.jpg") { (url, error) in
+        networkManager.uploadPhoto(photo: image, path: "\(currentGameId)/\(currentPlayer.id)_target.jpg") { (url, error) in
             if error != nil {
                 print(error ?? "error uploading photo in DossierViewController")
             }
@@ -97,7 +98,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                 if self.currentPlayer.id == self.playerTarget.id {
                     let gameOverAlert = UIAlertController(title: " Game Over!", message: "Game over, you WIN! Mission complete", preferredStyle: .alert)
                     gameOverAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.database.update(gameID: self.currentGame.id, update: [Game.keys.state : Game.state.ended])
+                    self.database.update(gameID: self.currentGameId, update: [Game.keys.state : Game.state.ended])
                 } else {
                     self.networkManager.getDataFromUrl(url: URL(string: self.playerTarget.photoURL)!) { (data, response, error) in
                         guard let imageData = data else {
