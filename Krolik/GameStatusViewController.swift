@@ -114,6 +114,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         print("start game button tapped")
         game.currentGame = currentGame
         game.startGame()
+        sender.isEnabled = false
     }
     
     //MARK: Game Status
