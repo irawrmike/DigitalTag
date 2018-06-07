@@ -64,7 +64,7 @@ class DatabaseManager {
         var playerData = [String:Any?]()
         playerData[Player.keys.id] = newPlayerKey
         playerData[Game.keys.id] = gameID
-        playerData[Player.keys.target] = "***INSERT TARGET***"
+        //playerData[Player.keys.target] = "***INSERT TARGET***"
         let nickname = Player.generatePlayerName()
         playerData[Player.keys.nickname] = nickname
         guard let device = UserDefaults.standard.value(forKey: "FCMToken") as? String else { return Player()}
