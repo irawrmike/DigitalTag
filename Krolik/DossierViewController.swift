@@ -43,8 +43,14 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                 DispatchQueue.main.async {
                     if isAMatch {
                         self.killPerson()
+                        let killAlert = UIAlertController(title: "Target Hit!", message: "You have just sucessfully assisinated \(self.playerTarget.nickname)!" , preferredStyle: .alert)
+                        killAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(killAlert, animated: true)
+
                     } else {
-                        
+                        let failAlert = UIAlertController(title: "Target Miss!", message: "You have missed your target! Make sure you've got your positioning right and try to hit \(self.playerTarget.nickname) again", preferredStyle: .alert)
+                        failAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(failAlert, animated: true)
                     }
                 }
                 
@@ -54,8 +60,8 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func killPerson() {
-        
-        
+        database.update(playerID: currentPlayer.id, update: [Player.keys.target : playerTarget.target!])
+        database.update(gameID: UserDefaults.standard.string(forKey: Game.keys.id)!, update: [Game.keys.players : [playerTarget.id : Player.state.dead]])
         updatePlayerAndTarget()
     }
     
