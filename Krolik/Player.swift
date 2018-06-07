@@ -22,6 +22,7 @@ class Player {
         static let device = "player_device"
         static let killedBy = "killed_by"
         static let owner = "game_owner"
+        static let assassin = "assassin"
     }
     
     struct state {

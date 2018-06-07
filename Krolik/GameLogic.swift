@@ -48,10 +48,15 @@ class GameLogic {
             if i == (shuffledPlayers.count - 1) {
                 // last player in shuffled list gets first player
                 targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.target)/"] = shuffledPlayers[0]
-                
+                targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.assassin)/"] = shuffledPlayers[i-1]
+            }else if i == 0 {
+                // first player is chased by last player
+                targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.target)/"] = shuffledPlayers[i+1]
+                targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.assassin)/"] = shuffledPlayers[shuffledPlayers.count-1]
             }else{
                 // all other players in shuffled list get their index + 1
                 targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.target)/"] = shuffledPlayers[i+1]
+                targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.assassin)/"] = shuffledPlayers[i-1]
             }
         }
         // update player targets on database
