@@ -91,30 +91,30 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
             
             self.database.read(playerID: currentPlayer!.target!, completion: { (playerTarget) in
                 self.playerTarget = playerTarget
-            })
-           
-            // game ends if currentPlayer's target is itself
-            if self.currentPlayer.id == self.playerTarget.id {
-                let gameOverAlert = UIAlertController(title: " Game Over!", message: "Game over, you WIN! Mission complete", preferredStyle: .alert)
-                gameOverAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.database.update(gameID: self.currentGame.id, update: [Game.keys.state : Game.state.ended])
-            } else {
-                self.networkManager.getDataFromUrl(url: URL(string: self.playerTarget.photoURL)!) { (data, response, error) in
-                    guard let imageData = data else {
-                        print("bad data")
-                        return
-                    }
-                    guard let image = UIImage(data: imageData) else {
-                        print("error creating image from data")
-                        return
-                    }
-                    DispatchQueue.main.async {
-                        self.imageView.image = image
-                    }
-                }
                 
-            }
-            
+                
+                // game ends if currentPlayer's target is itself
+                if self.currentPlayer.id == self.playerTarget.id {
+                    let gameOverAlert = UIAlertController(title: " Game Over!", message: "Game over, you WIN! Mission complete", preferredStyle: .alert)
+                    gameOverAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.database.update(gameID: self.currentGame.id, update: [Game.keys.state : Game.state.ended])
+                } else {
+                    self.networkManager.getDataFromUrl(url: URL(string: self.playerTarget.photoURL)!) { (data, response, error) in
+                        guard let imageData = data else {
+                            print("bad data")
+                            return
+                        }
+                        guard let image = UIImage(data: imageData) else {
+                            print("error creating image from data")
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            self.imageView.image = image
+                        }
+                    }
+                    
+                }
+            })
         }
     }
 }
