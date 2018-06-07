@@ -77,7 +77,13 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
         imagePicker.delegate = self
         imagePicker.cameraFlashMode = .auto
         
-        // add crosshair camera overlay here
+        // Create the Camera Overlay
+        let overlayOrigin = CGPoint(x: view.frame.origin.x+75, y: view.frame.origin.y+35)
+        let overlaySize = CGSize(width: view.frame.width-150, height: view.frame.height-150)
+        let cameraOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: overlaySize))
+        cameraOverlay.image = UIImage(named: "crosshair")
+        cameraOverlay.contentMode = .scaleAspectFit
+        imagePicker.cameraOverlayView = cameraOverlay
         
         present(imagePicker, animated: true)
         
