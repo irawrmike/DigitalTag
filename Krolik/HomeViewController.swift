@@ -103,12 +103,13 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
             destination?.currentGame = currentGame
             
             // update player creation to create game owner
-            destination?.isGameOwner = true
+            UserDefaults.standard.set(true, forKey: Player.keys.owner)
         }
         if segue.identifier == "joinGameSegue" {
             // passes game object to player creation
             let destination = segue.destination as? PlayerSetupViewController
             destination?.currentGame = currentGame
+            UserDefaults.standard.set(false, forKey: Player.keys.owner)
         }
     }
 }

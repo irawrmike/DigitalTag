@@ -21,11 +21,11 @@ class Player {
         static let photo = "player_photo"
         static let device = "player_device"
         static let killedBy = "killed_by"
+        static let owner = "game_owner"
     }
     
     struct state {
         static let alive = "alive"
-        static let owner = "owner"
         static let dead = "dead"
     }
     

@@ -35,6 +35,7 @@ class DatabaseManager {
         let name = Game.generateGameName()
         gameData[Game.keys.name] = name
         gameData[Game.keys.players] = []
+        gameData[Game.keys.state] = Game.state.pending
         
         // create the game on the firebase database
         gamesRef.child(newGameKey).setValue(gameData)
@@ -43,6 +44,7 @@ class DatabaseManager {
         let game = Game()
         game.id = newGameKey
         game.name = name
+        game.state = Game.state.pending
         game.created = date
         game.players = [String:String]()
         
@@ -81,7 +83,6 @@ class DatabaseManager {
         let player = Player()
         player.id = newPlayerKey
         player.nickname = nickname
-        player.state = Player.state.alive
         player.device = device
         
         return player
@@ -110,6 +111,7 @@ class DatabaseManager {
             game.name = gameData[Game.keys.name] as? String
             game.id = gameData[Game.keys.id] as? String
             game.players = gameData[Game.keys.players] as! [String:String]
+            game.state = gameData[Game.keys.state] as? String
             
             completion(game)
         }
