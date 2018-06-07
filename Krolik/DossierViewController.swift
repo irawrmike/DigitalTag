@@ -72,9 +72,13 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
         // update target state to dead
         database.changePlayerState(gameID: UserDefaults.standard.string(forKey: Game.keys.id)!, playerID: playerTarget.id!, state: Player.state.dead)
         // update player target to target's target
-        database.update(playerID: currentPlayer.id!, update: [Player.keys.target : playerTarget.target!])
-        // update new targets assassin to current player
-        database.update(playerID: playerTarget.target!, update: [Player.keys.assassin : currentPlayer.id!])
+        
+        var update = [String:String]()
+        update["\(currentPlayer.id!)/\(Player.keys.target)/"] = playerTarget.target!
+        update["\(playerTarget.target!)/\(Player.keys.assassin)/"] = currentPlayer.id!
+        
+        database.updatePlayers(update: update)
+        
         updatePlayerAndTarget()
     }
     
