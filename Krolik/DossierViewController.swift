@@ -52,7 +52,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                         self.present(killAlert, animated: true)
                         self.killPerson()
                     } else {
-                        let failAlert = UIAlertController(title: "Target Miss!", message: "You have missed your target! Make sure you've got your positioning right and try to hit \(self.playerTarget.nickname) again", preferredStyle: .alert)
+                        let failAlert = UIAlertController(title: "Target Miss!", message: "You have missed your target! Make sure you've got your positioning right and try to hit \(self.playerTarget.nickname!) again", preferredStyle: .alert)
                         failAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(failAlert, animated: true)
                     }
@@ -110,6 +110,8 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                         }
                         DispatchQueue.main.async {
                             self.imageView.image = image
+                            self.agentLabel.text = self.currentPlayer.nickname
+                            self.targetLabel.text = self.playerTarget.nickname
                         }
                     }
                     
