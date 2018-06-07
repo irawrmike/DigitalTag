@@ -66,7 +66,6 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
                         faceAlert.message = "Face was NOT found. Please take picture of your face again!"
                         self?.present(faceAlert, animated: true, completion: nil)
                     }
-                    spinner.stopAnimating()
                     
                     let update = [Player.keys.photo : url.absoluteString]
                     self?.database.update(playerID: (self?.currentPlayer?.id)!, update: update)
@@ -75,6 +74,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
                         DispatchQueue.main.async {
                             if isEnrolled {
                                 self?.submitButton.isEnabled = true
+                                spinner.stopAnimating()
                             } else {
                                 print("ERROR ENROLLING face to Kairos")
                             }

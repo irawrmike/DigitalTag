@@ -32,7 +32,10 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true)
         
-        // add spinner to imageView here
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        imageView.addSubview(spinner)
+        spinner.center = imageView.center
+        spinner.startAnimating()
         
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             print("ERROR: No image found (DossierViewController)")
@@ -51,10 +54,12 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                         killAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(killAlert, animated: true)
                         self.killPerson()
+                        spinner.stopAnimating()
                     } else {
                         let failAlert = UIAlertController(title: "Target Miss!", message: "You have missed your target! Make sure you've got your positioning right and try to hit \(self.playerTarget.nickname!) again", preferredStyle: .alert)
                         failAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(failAlert, animated: true)
+                        spinner.stopAnimating()
                     }
                 }
                 
