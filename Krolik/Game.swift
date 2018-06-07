@@ -16,9 +16,11 @@ class Game {
         static let name = "game_name"
         static let id = "game_id"
         static let players = "game_players"
+        static let devices = "game_device"
         static let state = "active"
         static let created = "date_created"
         static let ended = "date_ended"
+        static let winner = "winner"
     }
     
     struct state {

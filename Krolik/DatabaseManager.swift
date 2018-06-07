@@ -35,6 +35,7 @@ class DatabaseManager {
         let name = Game.generateGameName()
         gameData[Game.keys.name] = name
         gameData[Game.keys.players] = []
+        gameData[Game.keys.devices] = []
         gameData[Game.keys.state] = Game.state.pending
         
         // create the game on the firebase database
@@ -76,6 +77,9 @@ class DatabaseManager {
         
         // create the player on firebase database
         playersRef.child(newPlayerKey).setValue(playerData)
+        
+        // add device to game devices
+        update(gameID: gameID, update: [Game.keys.devices : [device : true]])
         
         // print statement to confirm addition of new player with unique key
         print("player added with key \(newPlayerKey)")
@@ -224,7 +228,7 @@ class DatabaseManager {
         let gamesRef = databaseRef.child(Game.keys.root)
         
         // get data snapshot of database
-        gamesRef.child(gameID).observe(.value) { [weak self] (snapshot) in
+        gamesRef.child(gameID).observeSingleEvent(of: .value) { [weak self] (snapshot) in
             // convert snapshot to dictionary
             guard let gameData = snapshot.value as? [String:Any] else {
                 print("error converting game snapshot to dictionary")
@@ -238,6 +242,10 @@ class DatabaseManager {
             for player in players {
                 self?.delete(playerID: player)
             }
+            
+            // backup game data to history
+            let historyRef = self?.databaseRef.child(Game.keys.history)
+            historyRef?.setValuesForKeys(gameData)
             
             // delete all values associated to specified game from database
             gamesRef.child(gameID).removeValue()
@@ -254,24 +262,4 @@ class DatabaseManager {
         playersRef.child(playerID).removeValue()
     }
     
-    // MARK: BACKUP HISTORY
-    
-    func backupData(gameID: String) {
-        // create reference to games root folder
-        databaseRef = Database.database().reference()
-        let gamesRef = databaseRef.child(Game.keys.root)
-        
-        // get data snapshot of database
-        gamesRef.child(gameID).observe(.value) { [weak self] (snapshot) in
-            // convert snapshot to dictionary
-            guard let gameData = snapshot.value as? [String:Any] else {
-                print("error converting game snapshot to dictionary")
-                return
-            }
-           
-            let historyRef = self?.databaseRef.child(Game.keys.history)
-            historyRef?.setValuesForKeys(gameData)
-        
-        }
-    }
 }
