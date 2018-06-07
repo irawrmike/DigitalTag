@@ -47,11 +47,10 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
             self.networkManager.compareFaces(target: self.playerTarget, photoURL: url.absoluteString, completion: { (isAMatch) in
                 DispatchQueue.main.async {
                     if isAMatch {
-                        self.killPerson()
-                        let killAlert = UIAlertController(title: "Target Hit!", message: "You have just sucessfully assisinated \(self.playerTarget.nickname)!" , preferredStyle: .alert)
+                        let killAlert = UIAlertController(title: "Target Hit!", message: "You have just sucessfully assasinated \(self.playerTarget.nickname!)!" , preferredStyle: .alert)
                         killAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(killAlert, animated: true)
-                        
+                        self.killPerson()
                     } else {
                         let failAlert = UIAlertController(title: "Target Miss!", message: "You have missed your target! Make sure you've got your positioning right and try to hit \(self.playerTarget.nickname) again", preferredStyle: .alert)
                         failAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -65,7 +64,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func killPerson() {
-        database.update(playerID: currentPlayer.id, update: [Player.keys.target : playerTarget.target!])
+        database.update(playerID: currentPlayer.id!, update: [Player.keys.target : playerTarget.target!])
         database.changePlayerState(gameID: UserDefaults.standard.string(forKey: Game.keys.id)!, playerID: playerTarget.id, state: Player.state.dead)
         updatePlayerAndTarget()
     }
