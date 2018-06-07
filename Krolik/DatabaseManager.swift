@@ -201,9 +201,9 @@ class DatabaseManager {
         playerRef.updateChildValues(update)
     }
     
-    func addPlayerToGame(gameID: String, player: Player) {
+    func changePlayerState(gameID: String, playerID: String, state: String) {
         let gamePlayersRef = databaseRef.child(Game.keys.root).child(gameID).child(Game.keys.players)
-        gamePlayersRef.updateChildValues([player.id:Player.state.alive])
+        gamePlayersRef.updateChildValues([playerID : state])
     }
     
     func updatePlayers(update: Dictionary<String, Any>) {

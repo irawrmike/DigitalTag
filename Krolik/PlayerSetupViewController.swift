@@ -119,7 +119,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBAction func submitButtonTapped(_ sender: UIButton) {
         guard let player = self.currentPlayer else {return}
-        self.database.addPlayerToGame(gameID: self.currentGame.id, player: player)
+        database.changePlayerState(gameID: currentGame.id, playerID: player.id, state: Player.state.alive)
     }
     
     //MARK: Segue

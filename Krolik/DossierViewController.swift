@@ -66,7 +66,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
     
     func killPerson() {
         database.update(playerID: currentPlayer.id, update: [Player.keys.target : playerTarget.target!])
-        database.update(gameID: UserDefaults.standard.string(forKey: Game.keys.id)!, update: [Game.keys.players : [playerTarget.id : Player.state.dead]])
+        database.changePlayerState(gameID: UserDefaults.standard.string(forKey: Game.keys.id)!, playerID: playerTarget.id, state: Player.state.dead)
         updatePlayerAndTarget()
     }
     
