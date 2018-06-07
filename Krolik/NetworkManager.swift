@@ -139,7 +139,7 @@ class NetworkManager {
                 completion(false)
             } else {
                 let resultsArr = resultsDict["images"]
-                let imageDict = resultsArr![0]
+                let imageDict = resultsArr![0]["transaction"] as! [String:Any]
                 if imageDict["confidence"] as! Double > 0.6 {
                     completion(true)
                 } else {
