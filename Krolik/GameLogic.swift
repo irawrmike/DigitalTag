@@ -30,7 +30,10 @@ class GameLogic {
         database.read(gameID: currentGame.id) { (game) in
             // assign returned game value to current game property
             self.currentGame = game
-            self.createTargets(game: game!)
+            
+            if game?.state == Game.state.pending {
+                self.createTargets(game: game!)
+            }
             
         }
     }

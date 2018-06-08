@@ -17,7 +17,7 @@ class Game {
         static let id = "game_id"
         static let players = "game_players"
         static let devices = "game_device"
-        static let state = "state"
+        static let state = "game_state"
         static let created = "date_created"
         static let ended = "date_ended"
         static let winner = "winner"

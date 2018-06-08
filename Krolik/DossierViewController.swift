@@ -101,14 +101,28 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
     
     
     func updatePlayerAndTarget() {
+        print("update player/target called")
         // get the current player and its target from the database
         database.read(playerID: UserDefaults.standard.string(forKey: Player.keys.id)!) { (currentPlayer) in
+            print("current player finished reading with these values:")
+            print("id: \(currentPlayer?.id ?? "nil")")
+            print("nickname: \(currentPlayer?.nickname ?? "nil")")
+            print("target: \(currentPlayer?.target ?? "nil")")
+            
             self.currentPlayer = currentPlayer
+            print("assigned current player to property")
+            
             
             self.database.read(playerID: currentPlayer!.target!, completion: { (playerTarget) in
+                print("finished reading playerTarget with these values:")
+                print("id: \(playerTarget?.id ?? "nil")")
+                print("nickname: \(playerTarget?.nickname ?? "nil")")
+                print("target: \(playerTarget?.target ?? "nil")")
+                
                 self.playerTarget = playerTarget
+                print("assigned player target to property")
                 
-                
+                print("entering game end check")
                 // game ends if currentPlayer's target is itself
                 if self.currentPlayer.id == self.playerTarget.id {
                     let gameOverAlert = UIAlertController(title: " Game Over!", message: "Game over, you WIN! Mission complete", preferredStyle: .alert)
@@ -119,9 +133,11 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                     self.database.update(gameID: self.currentGameId, update: [Game.keys.winner : winner])
                     print("winner is: \(winner)!")
                     // delete game and backup to history
-                    self.database.delete(gameID: self.currentGameId)
+//                    self.database.delete(gameID: self.currentGameId)
                 } else {
                     self.networkManager.getDataFromUrl(url: URL(string: self.playerTarget.photoURL)!) { (data, response, error) in
+                        print("finished getting image data")
+                        
                         guard let imageData = data else {
                             print("bad data")
                             return
@@ -131,6 +147,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                             return
                         }
                         DispatchQueue.main.async {
+                            print("changes image to downloaded image")
                             self.imageView.image = image
                             self.agentLabel.text = self.currentPlayer.nickname
                             self.targetLabel.text = self.playerTarget.nickname
