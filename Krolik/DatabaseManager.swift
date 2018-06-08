@@ -10,7 +10,7 @@ import Firebase
 import FirebaseDatabase
 
 
-class DatabaseManager: NSObject {
+class DatabaseManager {
     
     // MARK: PROPERTIES
     
