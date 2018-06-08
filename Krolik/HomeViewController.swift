@@ -75,13 +75,18 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func joinButtonTapped(_ sender: UIButton) {
         guard let gameID = gameIDField.text else { return }
-        database.read(gameID: gameID) { (game) in
-            if game != nil {
-                print("GAME EXISTS")
-                self.currentGame = game
-                self.performSegue(withIdentifier: "joinGameSegue", sender: self)
-            } else {
-                print("GAME DOES NOT EXIST")
+        
+        if gameID == "" {
+            print("blank join game entered")
+        }else{
+            database.readOnce(gameID: gameID) { (game) in
+                if game != nil {
+                    print("GAME EXISTS")
+                    self.currentGame = game
+                    self.performSegue(withIdentifier: "joinGameSegue", sender: self)
+                } else {
+                    print("GAME DOES NOT EXIST")
+                }
             }
         }
     }

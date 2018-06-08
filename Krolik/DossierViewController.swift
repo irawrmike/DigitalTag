@@ -131,6 +131,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                 if self.currentPlayer.id == self.playerTarget.id {
                     let gameOverAlert = UIAlertController(title: " Game Over!", message: "Game over, you WIN! Mission complete", preferredStyle: .alert)
                     gameOverAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(gameOverAlert, animated: true, completion: nil)
                     self.database.update(gameID: self.currentGameId, update: [Game.keys.state : Game.state.ended])
                     // add self as winner to game
                     let winner = currentPlayer!.nickname as String

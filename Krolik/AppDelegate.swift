@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UNUserNotificationCenter.current().delegate = self
         registerNotifications(application)
         application.registerForRemoteNotifications()
+        UIApplication.shared.isStatusBarHidden = false
         return true
     }
     
@@ -45,7 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         completionHandler([.alert, .sound, .badge])
     }
-    
     
     //FIREBASE CLOUD MESSAGING
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {

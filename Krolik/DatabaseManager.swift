@@ -79,7 +79,7 @@ class DatabaseManager {
         playersRef.child(newPlayerKey).setValue(playerData)
         
         // add device to game devices
-        update(gameID: gameID, update: [Game.keys.devices : [device : true]])
+        databaseRef.child(Game.keys.root).child(gameID).child(Game.keys.devices).updateChildValues([device : true])
         
         // print statement to confirm addition of new player with unique key
         print("player added with key \(newPlayerKey)")
@@ -102,6 +102,33 @@ class DatabaseManager {
         
         // get data snapshot of database
         gamesRef.child(gameID).observe(.value) { (snapshot) in
+            // convert snapshot to dictionary
+            guard let gameData = snapshot.value as? [String:Any] else {
+                print("error converting game snapshot to dictionary")
+                completion(nil)
+                return
+            }
+            
+            // create game object using data from dictionary
+            let game = Game()
+            
+            game.name = gameData[Game.keys.name] as? String
+            game.id = gameData[Game.keys.id] as? String
+            game.players = gameData[Game.keys.players] as! [String:String]
+            game.state = gameData[Game.keys.state] as? String
+            
+            completion(game)
+        }
+    }
+    
+    // READ GAME ONCE
+    func readOnce(gameID: String, completion: @escaping (_ game: Game?) -> ()) {
+        // create reference to games root folder
+        databaseRef = Database.database().reference()
+        let gamesRef = databaseRef.child(Game.keys.root)
+        
+        // get data snapshot of database
+        gamesRef.child(gameID).observeSingleEvent(of: .value) { (snapshot) in
             // convert snapshot to dictionary
             guard let gameData = snapshot.value as? [String:Any] else {
                 print("error converting game snapshot to dictionary")
@@ -247,7 +274,12 @@ class DatabaseManager {
             }
             
             // read players list from game
-            let players = gameData[Game.keys.players] as! [String]
+            guard let playersDict = gameData[Game.keys.players] as? [String : String] else {
+                print("error: could not get players from gameData")
+                return
+            }
+            
+            let players = Array(playersDict.keys)
             
             // delete all players that were created for the game
             for player in players {
