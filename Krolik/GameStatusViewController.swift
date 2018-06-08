@@ -22,14 +22,13 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.checkGameState()
-        
         database.read(gameID: UserDefaults.standard.string(forKey: Game.keys.id)!) { (game) in
             guard let game = game else {
                 print("game read returned nil value")
                 return
             }
             self.currentGame = game
+            self.checkGameState()
             
             let players = Array(game.players.keys)
             
@@ -104,16 +103,20 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         return header
     }
     
-    
-    
-    
     //MARK: Actions
     
     @IBAction func startGameButtonTapped(_ sender: UIButton) {
         print("start game button tapped")
-        game.currentGame = currentGame
-        game.startGame()
-        sender.isEnabled = false
+        if currentGame?.players.count == 1 {
+            sender.isEnabled = true
+            let singlePlayerAlert = UIAlertController(title: "", message: "Comrade, please recruit more civilians for cause.", preferredStyle: .alert)
+            singlePlayerAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(singlePlayerAlert, animated: true, completion: nil)
+        }else{
+            game.currentGame = currentGame
+            game.startGame()
+            sender.isEnabled = false
+        }
     }
     
     //MARK: Game Status

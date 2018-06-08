@@ -48,23 +48,27 @@ class GameLogic {
         var targetsUpdate = [String:String]()
         
         for i in 0..<shuffledPlayers.count {
-            if i == (shuffledPlayers.count - 1) {
-                // last player in shuffled list gets first player
-                targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.target)/"] = shuffledPlayers[0]
-                targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.assassin)/"] = shuffledPlayers[i-1]
-            }else if i == 0 {
-                // first player is chased by last player
-                targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.target)/"] = shuffledPlayers[i+1]
-                targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.assassin)/"] = shuffledPlayers[shuffledPlayers.count-1]
-            }else{
-                // all other players in shuffled list get their index + 1
-                targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.target)/"] = shuffledPlayers[i+1]
-                targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.assassin)/"] = shuffledPlayers[i-1]
+            if shuffledPlayers.count == 1 {
+                print("can't start game with 1 player.")
+            }else {
+                if i == (shuffledPlayers.count - 1) {
+                    // last player in shuffled list gets first player
+                    targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.target)/"] = shuffledPlayers[0]
+                    targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.assassin)/"] = shuffledPlayers[i-1]
+                }else if i == 0 {
+                    // first player is chased by last player
+                    targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.target)/"] = shuffledPlayers[i+1]
+                    targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.assassin)/"] = shuffledPlayers[shuffledPlayers.count-1]
+                }else{
+                    // all other players in shuffled list get their index + 1
+                    targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.target)/"] = shuffledPlayers[i+1]
+                    targetsUpdate["\(shuffledPlayers[i])/\(Player.keys.assassin)/"] = shuffledPlayers[i-1]
+                }
             }
+            // update player targets on database
+            database.updatePlayers(update: targetsUpdate)
+            database.update(gameID: currentGame.id, update: [Game.keys.state : Game.state.active])
         }
-        // update player targets on database
-        database.updatePlayers(update: targetsUpdate)
-        database.update(gameID: currentGame.id, update: [Game.keys.state : Game.state.active])
     }
     
     func fetchTarget (player: Player) -> String {
