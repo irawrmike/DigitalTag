@@ -56,39 +56,40 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
             self.networkManager.checkPhotoFace(photoURL: url.absoluteString) { [weak self] (isFace) in
                 DispatchQueue.main.async {
                     let faceAlert = UIAlertController(title: "Finished Checking Photo", message: "", preferredStyle: .alert)
-                    faceAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     
                     if isFace {
                         faceAlert.message = "Face was found. If ready to start, hit the submit button!"
+                        faceAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self?.present(faceAlert, animated: true, completion: nil)
                         self?.currentPlayer?.photoURL = url.absoluteString
+                        self?.networkManager.enrollFace(player: (self?.currentPlayer)!) { (isEnrolled) in
+                            DispatchQueue.main.async {
+                                if isEnrolled {
+                                    self?.submitButton.isEnabled = true
+                                    spinner.stopAnimating()
+                                } else {
+                                    print("ERROR ENROLLING face to Kairos")
+                                }
+                            }
+                        }
                     } else {
+                        faceAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+                            self?.showCamera()
+                        }))
                         faceAlert.message = "Face was NOT found. Please take picture of your face again!"
                         self?.present(faceAlert, animated: true, completion: nil)
+                        spinner.stopAnimating()
                     }
                     
                     let update = [Player.keys.photo : url.absoluteString]
                     self?.database.update(playerID: (self?.currentPlayer?.id)!, update: update)
-                    
-                    self?.networkManager.enrollFace(player: (self?.currentPlayer)!) { (isEnrolled) in
-                        DispatchQueue.main.async {
-                            if isEnrolled {
-                                self?.submitButton.isEnabled = true
-                                spinner.stopAnimating()
-                            } else {
-                                print("ERROR ENROLLING face to Kairos")
-                            }
-                        }
-                    }
                 }
             }
         }
         
     }
     
-    //MARK: Actions
-    
-    @IBAction func takeANewPhotoButtonPressed(_ sender: UIButton) {
+    func showCamera() {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .camera
         imagePicker.allowsEditing = false
@@ -115,6 +116,12 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "_UIImagePickerControllerUserDidRejectItem"), object:nil, queue:nil, using: { note in
             imagePicker.cameraOverlayView = cameraOverlay
         })
+    }
+    
+    //MARK: Actions
+    
+    @IBAction func takeANewPhotoButtonPressed(_ sender: UIButton) {
+        showCamera()
     }
     
     @IBAction func submitButtonTapped(_ sender: UIButton) {
