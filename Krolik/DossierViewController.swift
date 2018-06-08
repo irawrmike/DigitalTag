@@ -79,8 +79,8 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
 //        database.update(playerID: playerTarget.target!, update: [Player.keys.assassin : currentPlayer.id!])
         
         // new update method
-        database.databaseRef.child(Player.keys.root).child(currentPlayer.id!).child(Player.keys.target).setValue(playerTarget.target!)
-        database.databaseRef.child(Player.keys.root).child(playerTarget.target!).child(Player.keys.assassin).setValue(currentPlayer.id!)
+        database.databaseRef.child(Player.keys.root).child(currentPlayer.id!).setValue(playerTarget.target!, forKey: Player.keys.target)
+        database.databaseRef.child(Player.keys.root).child(playerTarget.target!).setValue(currentPlayer.id!, forKey: Player.keys.assassin)
         
         updatePlayerAndTarget()
     }
