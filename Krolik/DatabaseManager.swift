@@ -79,7 +79,7 @@ class DatabaseManager {
         playersRef.child(newPlayerKey).setValue(playerData)
         
         // add device to game devices
-        update(gameID: gameID, update: [Game.keys.devices : [device : true]])
+        databaseRef.child(Game.keys.root).child(gameID).updateChildValues([device : true])
         
         // print statement to confirm addition of new player with unique key
         print("player added with key \(newPlayerKey)")
