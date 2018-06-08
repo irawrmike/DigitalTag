@@ -48,7 +48,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
             }
             
             self.networkManager.compareFaces(target: self.playerTarget, photoURL: url.absoluteString, completion: { (isAMatch) in
-                DispatchQueue.main.async {
+                //DispatchQueue.main.async {
                     if isAMatch {
                         let killAlert = UIAlertController(title: "Target Hit!", message: "You have just sucessfully assasinated \(self.playerTarget.nickname!)!" , preferredStyle: .alert)
                         killAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -61,7 +61,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                         self.present(failAlert, animated: true)
                         spinner.stopAnimating()
                     }
-                }
+                //}
                 
             })
             
@@ -71,12 +71,16 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
     func killPerson() {
         // update target state to dead
         database.changePlayerState(gameID: UserDefaults.standard.string(forKey: Game.keys.id)!, playerID: playerTarget.id!, state: Player.state.dead)
+        // update player target to target's target
         
-        // update assassin and target values on database
-    database.databaseRef.child(Player.keys.root).child(currentPlayer.id!).updateChildValues([Player.keys.target : playerTarget.target!])
-    database.databaseRef.child(Player.keys.root).child(playerTarget.target!).updateChildValues([Player.keys.assassin : currentPlayer.id!])
+        var update = [String:String]()
+        update["\(currentPlayer.id!)/\(Player.keys.target)/"] = playerTarget.target!
+        update["\(playerTarget.target!)/\(Player.keys.assassin)/"] = currentPlayer.id!
         
-        updatePlayerAndTarget()
+        database.updatePlayers(update: update) { [weak self] (success) in
+            self?.updatePlayerAndTarget()
+        }
+        
     }
     
     //MARK: Actions
