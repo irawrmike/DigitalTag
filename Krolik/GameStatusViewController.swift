@@ -22,13 +22,14 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.checkGameState()
+        
         database.read(gameID: UserDefaults.standard.string(forKey: Game.keys.id)!) { (game) in
             guard let game = game else {
                 print("game read returned nil value")
                 return
             }
             self.currentGame = game
-            self.checkGameState()
             
             let players = Array(game.players.keys)
             

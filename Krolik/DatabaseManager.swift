@@ -236,7 +236,12 @@ class DatabaseManager {
             }
             
             // read players list from game
-            let players = gameData[Game.keys.players] as! [String]
+            guard let playersDict = gameData[Game.keys.players] as? [String : String] else {
+                print("error: could not get players from gameData")
+                return
+            }
+            
+            let players = Array(playersDict.keys)
             
             // delete all players that were created for the game
             for player in players {
