@@ -131,7 +131,6 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         }else if currentGame?.state == Game.state.active {
             if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
                 tabBarItem.isEnabled = true
-                
             }
             
         }else if currentGame?.state == Game.state.ended {
@@ -146,8 +145,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     //MARK: View Changes based on game state
     
     func endGameScreen() {
-        
-        
+        performSegue(withIdentifier: "quitFromStatus", sender: self)
     }
     
 }

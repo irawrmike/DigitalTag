@@ -241,11 +241,87 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Z6z-0O-iux" id="6oi-EN-N2M"/>
+                        <segue destination="Ug4-XS-4dn" kind="presentation" identifier="quitFromStatus" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="vhS-jg-IHX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J8S-TX-YSB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1833" y="293"/>
+        </scene>
+        <!--Game Over View Controller-->
+        <scene sceneID="P97-3Q-Rdm">
+            <objects>
+                <viewController id="Ug4-XS-4dn" customClass="GameOverViewController" customModule="Krolik" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dKn-t7-B7d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOh-73-337">
+                                <rect key="frame" x="124" y="80" width="166" height="39"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THr-lT-8Au">
+                                <rect key="frame" x="180" y="188" width="55" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dwv-HO-WWT">
+                                <rect key="frame" x="103.66666666666669" y="229" width="207" height="276"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dwv-HO-WWT" secondAttribute="height" multiplier="3:4" id="hQy-W5-LUg"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nickname" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tE4-Ou-eqB">
+                                <rect key="frame" x="168.66666666666666" y="525" width="77" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sq6-Qk-ctI">
+                                <rect key="frame" x="170.66666666666666" y="566" width="73" height="30"/>
+                                <state key="normal" title="Quit Game"/>
+                                <connections>
+                                    <action selector="quitButtonTapped" destination="Ug4-XS-4dn" eventType="touchUpInside" id="ThQ-Ab-d8J"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="Cb7-DF-BU3"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSG-kk-hre">
+                                <rect key="frame" x="142.66666666666666" y="139" width="128.99999999999997" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dwv-HO-WWT" firstAttribute="top" secondItem="THr-lT-8Au" secondAttribute="bottom" constant="20" id="839-au-aYs"/>
+                            <constraint firstItem="tE4-Ou-eqB" firstAttribute="centerX" secondItem="dKn-t7-B7d" secondAttribute="centerX" id="Fxg-5N-ifP"/>
+                            <constraint firstItem="sq6-Qk-ctI" firstAttribute="top" secondItem="tE4-Ou-eqB" secondAttribute="bottom" constant="20" id="IOe-ud-Ust"/>
+                            <constraint firstItem="THr-lT-8Au" firstAttribute="top" secondItem="kSG-kk-hre" secondAttribute="bottom" constant="20" id="M4u-MZ-1Cz"/>
+                            <constraint firstItem="kSG-kk-hre" firstAttribute="top" secondItem="JOh-73-337" secondAttribute="bottom" constant="20" id="OoV-TB-5gk"/>
+                            <constraint firstItem="dwv-HO-WWT" firstAttribute="centerX" secondItem="dKn-t7-B7d" secondAttribute="centerX" id="SDO-Tl-Po1"/>
+                            <constraint firstItem="dwv-HO-WWT" firstAttribute="width" secondItem="dKn-t7-B7d" secondAttribute="width" multiplier="0.5" id="Urw-3r-Yk5"/>
+                            <constraint firstItem="kSG-kk-hre" firstAttribute="centerX" secondItem="dKn-t7-B7d" secondAttribute="centerX" id="erw-Fd-g5Q"/>
+                            <constraint firstItem="JOh-73-337" firstAttribute="top" secondItem="RUl-GB-rUf" secondAttribute="top" constant="60" id="fLe-w5-0mi"/>
+                            <constraint firstItem="JOh-73-337" firstAttribute="centerX" secondItem="dKn-t7-B7d" secondAttribute="centerX" id="jI6-mF-YyS"/>
+                            <constraint firstItem="sq6-Qk-ctI" firstAttribute="centerX" secondItem="dKn-t7-B7d" secondAttribute="centerX" id="mfL-Gn-TVL"/>
+                            <constraint firstItem="tE4-Ou-eqB" firstAttribute="top" secondItem="dwv-HO-WWT" secondAttribute="bottom" constant="20" id="v5t-fV-JdI"/>
+                            <constraint firstItem="THr-lT-8Au" firstAttribute="centerX" secondItem="dKn-t7-B7d" secondAttribute="centerX" id="wrW-4C-SQ8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RUl-GB-rUf"/>
+                    </view>
+                    <connections>
+                        <outlet property="gameNameLabel" destination="kSG-kk-hre" id="puF-Xu-4Ka"/>
+                        <outlet property="imageView" destination="dwv-HO-WWT" id="yG3-sp-QPN"/>
+                        <outlet property="nicknameLabel" destination="tE4-Ou-eqB" id="9kx-wc-y1R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zfX-s8-NCO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2287" y="1238"/>
         </scene>
         <!--Dossier-->
         <scene sceneID="G0x-O1-cPz">
@@ -301,6 +377,7 @@
                         <outlet property="agentLabel" destination="Zi6-S5-Oaf" id="FFV-a1-kQk"/>
                         <outlet property="imageView" destination="WMg-hs-rsw" id="lji-Ve-dw8"/>
                         <outlet property="targetLabel" destination="wSg-Ij-Amq" id="ryl-8N-NbU"/>
+                        <segue destination="Ug4-XS-4dn" kind="presentation" identifier="quitFromDossier" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="dgT-eZ-mH2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rar-j5-dBR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -329,6 +406,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="U1W-np-V5y"/>
+        <segue reference="vhS-jg-IHX"/>
         <segue reference="qdd-un-H9G"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -37,6 +37,7 @@ class Game {
     var created: String!
     var ended: String?
     var state: String!
+    var winner = [String:String]()
     
     static func generateGameName() -> String {
         let names = ["The Odessa Files", "The Munich Gambit", "The Ostravsky Affair", "Smiley's Lament", "The Prague Chronicles", "The Vienna Waltz", "The Leningrad Let-Down"]

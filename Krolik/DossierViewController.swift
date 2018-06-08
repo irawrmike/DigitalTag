@@ -130,9 +130,13 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                     self.present(gameOverAlert, animated: true, completion: nil)
                     self.database.update(gameID: self.currentGameId, update: [Game.keys.state : Game.state.ended])
                     // add self as winner to game
-                    let winner = currentPlayer!.nickname as String
-                    self.database.update(gameID: self.currentGameId, update: [Game.keys.winner : winner])
-                    print("winner is: \(winner)!")
+                    let winnerName = currentPlayer!.nickname as String
+                    let winnerID = currentPlayer!.id as String
+               
+                   // update winner id/name to game on database
+                    self.database.databaseRef.child(Game.keys.root).child(self.currentGameId).child(Game.keys.winner).updateChildValues([winnerID : winnerName])
+                    print("winner is: \(winnerName)!")
+                    self.performSegue(withIdentifier: "quitFromDossier", sender: self)
                     // delete game and backup to history
 //                    self.database.delete(gameID: self.currentGameId)
                 } else {

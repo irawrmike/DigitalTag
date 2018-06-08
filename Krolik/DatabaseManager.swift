@@ -116,7 +116,9 @@ class DatabaseManager {
             game.id = gameData[Game.keys.id] as? String
             game.players = gameData[Game.keys.players] as! [String:String]
             game.state = gameData[Game.keys.state] as? String
-            
+            if let winner = gameData[Game.keys.winner] as? [String:String] {
+                game.winner = winner
+            }
             completion(game)
         }
     }
