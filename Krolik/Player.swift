@@ -41,7 +41,7 @@ class Player {
     var isDM: Bool = false
     
     static func generatePlayerName() -> String {
-        let names = ["Switchblade", "Honey Badger", "the Rattlesnake", "Omega Prime", "the Blade", "Shovelhead", "Nuke", "the Silent Wizard", "Marmot Alpha", "the auld Claymore", "Goosefeather", "Blackjack", "the Demon Dog", "Sidewinder", "Tomahawk", "Maverick from Top Gun", "Some Kind of Gremlin", "the Pink Ninja", "the Ender of Worlds", "Terminal Master"]
+        let names = ["Switchblade", "Honey Badger", "Rattlesnake", "Omega Prime", "Blade", "Shovelhead", "Nuke", "Silent Wizard", "Marmot Alpha", "Auld Claymore", "Goosefeather", "Blackjack", "Demon Dog", "Sidewinder", "Tomahawk", "Maverick from Top Gun", "Some Kind of Gremlin", "Pink Ninja", "Ender of Worlds", "Terminal Master", "Icepick", "Junkyard Dog", "Colossus", "Scorpion", "Living Nightmare", "Angry Bear", "Tunnel Rat", "Lance Corporal Murder", "Huge Bee", "Hornet Prime", "Human Slayer Song", "Poison Apple", "Red Sparrow", "Yellow Sparrow", "Rubber Duck but Scary", "Even Angrier Rambo", "Snake Legs", "Snake Eyes", "Snowblind", "Clown from IT","Black Widow", "Grey Widow", "Sledgehammer", "Widowmaker", "Sleeping Nightmare", "Sleeping Beauty", "Golden Spike", "Human Mutant", "Scary Person", "Crime Master"]
         let randomIndex = Int(arc4random_uniform(UInt32(names.count)))
         let name = names[randomIndex]
         return name
