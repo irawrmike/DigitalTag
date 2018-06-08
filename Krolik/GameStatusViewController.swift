@@ -64,8 +64,13 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         let imageFrame = CGRect(x: cellFrame.origin.x+10, y: cellFrame.origin.y+10, width: cellFrame.width-20, height: cellFrame.height-20)
         let imageView = UIImageView(frame: imageFrame)
         imageView.contentMode = .scaleAspectFit
- 
+        
+        // if player dies change cell look
         let player = currentPlayers[indexPath.row]
+        guard let playerState = currentGame?.players[player.id] else { return  cell }
+        if  playerState == Player.state.dead {
+            cell.contentView.layer.borderColor = UIColor.red.cgColor
+        }
         
         networkManager.getDataFromUrl(url: URL(string: player.photoURL)!) { (data, response, error) in
             guard let imageData = data else {
