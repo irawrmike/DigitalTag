@@ -177,10 +177,10 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wam-dd-5Z3">
-                                            <rect key="frame" x="328" y="16" width="78" height="38"/>
-                                            <state key="normal" title="Start Game"/>
+                                            <rect key="frame" x="306" y="16" width="100" height="38"/>
+                                            <state key="normal" title="Header Button"/>
                                             <connections>
-                                                <action selector="startGameButtonTapped:" destination="Pcb-ia-zwM" eventType="touchUpInside" id="0uL-bM-46q"/>
+                                                <action selector="headerButtonTapped:" destination="Pcb-ia-zwM" eventType="touchUpInside" id="gHu-ps-onN"/>
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yOa-qX-NjR">
@@ -242,6 +242,7 @@
                     <connections>
                         <outlet property="collectionView" destination="Z6z-0O-iux" id="6oi-EN-N2M"/>
                         <segue destination="Ug4-XS-4dn" kind="presentation" identifier="quitFromStatus" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="vhS-jg-IHX"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="quitGameSegue" id="NeQ-4H-1KD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J8S-TX-YSB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -408,5 +409,6 @@
         <segue reference="U1W-np-V5y"/>
         <segue reference="vhS-jg-IHX"/>
         <segue reference="qdd-un-H9G"/>
+        <segue reference="Cb7-DF-BU3"/>
     </inferredMetricsTieBreakers>
 </document>

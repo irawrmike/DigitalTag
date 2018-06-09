@@ -87,15 +87,11 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "gameLobbyHeader", for: indexPath)
         
-        let startButton = header.viewWithTag(1) as! UIButton
+        let headerButton = header.viewWithTag(1) as! UIButton
         let gameNameLabel = header.viewWithTag(2) as! UILabel
         let gameIDLabel = header.viewWithTag(3) as! UILabel
         
-        if UserDefaults.standard.bool(forKey: Player.keys.owner) && currentGame?.state == Game.state.pending {
-            startButton.isHidden = false
-        }else {
-            startButton.isHidden = true
-        }
+        checkGameState(button: headerButton)
         
         gameNameLabel.text = "Game: \(currentGame?.name ?? "")"
         gameIDLabel.text = "ID: \(currentGame?.id ?? "")"
@@ -105,40 +101,80 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     
     //MARK: Actions
     
-    @IBAction func startGameButtonTapped(_ sender: UIButton) {
-        print("start game button tapped")
-        if currentGame?.players.count == 1 {
-            sender.isEnabled = true
-            let singlePlayerAlert = UIAlertController(title: "", message: "Comrade, please recruit more civilians for cause.", preferredStyle: .alert)
-            singlePlayerAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(singlePlayerAlert, animated: true, completion: nil)
-        }else{
-            game.currentGame = currentGame
-            game.startGame()
-            sender.isEnabled = false
+    @IBAction func headerButtonTapped(_ sender: UIButton) {
+        guard let title = sender.titleLabel?.text else {return}
+        
+        if title == "Start Game" {
+            print("start game button tapped")
+            if currentGame?.players.count == 1 {
+                sender.isEnabled = true
+                let singlePlayerAlert = UIAlertController(title: "", message: "Comrade, please recruit more civilians for cause, or end game.", preferredStyle: .alert)
+                singlePlayerAlert.addAction(UIAlertAction(title: "Quit", style: .default, handler: { (_) in
+                    // get game id from user defaults before deletion
+                    let gameID = UserDefaults.standard.string(forKey: Game.keys.id)
+                    let playerID = UserDefaults.standard.string(forKey: Player.keys.id)
+                    // remove game from user defaults
+                    UserDefaults.standard.removeObject(forKey: Game.keys.id)
+                    UserDefaults.standard.removeObject(forKey: Player.keys.id)
+                    // segue to root view controller
+                    self.performSegue(withIdentifier: "quitGameSegue", sender: self)
+                    // delete game/player
+                    self.database.databaseRef.child(Game.keys.root).child(gameID!).removeValue()
+                    self.database.databaseRef.child(Player.keys.root).child(playerID!).removeValue()
+                }))
+                singlePlayerAlert.addAction(UIAlertAction(title: "Recruit", style: .default, handler: nil))
+                present(singlePlayerAlert, animated: true, completion: nil)
+            }else{
+                game.currentGame = currentGame
+                game.startGame()
+                sender.isEnabled = false
+            }
+        }else if title == "Quit Game" {
+            // remove player from game then players list
+            let gameID = UserDefaults.standard.string(forKey: Game.keys.id)
+            let playerID = UserDefaults.standard.string(forKey: Player.keys.id)
+            database.databaseRef.child(Game.keys.root).child(gameID!).child(Game.keys.players).child(playerID!).removeValue { (_, _) in
+                self.database.databaseRef.child(Player.keys.root).child(playerID!).removeValue()
+            }
+            // remove game/player from user defaults
+            UserDefaults.standard.removeObject(forKey: Game.keys.id)
+            UserDefaults.standard.removeObject(forKey: Player.keys.id)
+            // segue to root view controller
+            self.performSegue(withIdentifier: "quitGameSegue", sender: self)
         }
     }
     
     //MARK: Game Status
     
-    func checkGameState() {
+    func checkGameState(button: UIButton? = nil) {
         if currentGame?.state == Game.state.pending {
             if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
                 tabBarItem.isEnabled = false
-                
             }
-            
+            if let headerButton = button {
+                if UserDefaults.standard.bool(forKey: Player.keys.owner) {
+                    headerButton.titleLabel?.text = "Start Game"
+                    headerButton.isHidden = false
+                }else{
+                    headerButton.titleLabel?.text = "Quit Game"
+                    headerButton.isHidden = false
+                }
+            }
         }else if currentGame?.state == Game.state.active {
             if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
                 tabBarItem.isEnabled = true
             }
-            
+            if let headerButton = button {
+                headerButton.isHidden = true
+            }
         }else if currentGame?.state == Game.state.ended {
             if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
                 tabBarItem.isEnabled = false
                 performSegue(withIdentifier: "quitFromStatus", sender: self)
             }
-            
+            if let headerButton = button {
+                headerButton.isHidden = true
+            }
         }
     }
     
