@@ -60,9 +60,7 @@ class DatabaseManager {
         
         // get random key for new player
         let newPlayerKey = playersRef.childByAutoId().key
-        // ADD PLAYER KEY TO USER DEFAULTS
-
-        UserDefaults.standard.set(newPlayerKey, forKey: "playerKey")
+        
         // create playerData dictionary using player properties
         var playerData = [String:Any?]()
         playerData[Player.keys.id] = newPlayerKey

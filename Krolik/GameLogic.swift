@@ -16,8 +16,6 @@ class GameLogic {
     var currentGame: Game!
     var currentPlayer : Player = Player()
     var currentTarget : Player = Player()
-//    var userDefaults = UserDefaults.standard
-    
     
     func createGame() {
         // create game object on database and locally

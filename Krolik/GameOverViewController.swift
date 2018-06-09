@@ -73,8 +73,7 @@ class GameOverViewController: UIViewController {
         // remove user defaults and send user back to home view controller
         UserDefaults.standard.removeObject(forKey: Game.keys.id)
         UserDefaults.standard.removeObject(forKey: Player.keys.id)
-        
-        
+        UserDefaults.standard.removeObject(forKey: Player.keys.owner)
     }
     
 }
