@@ -22,6 +22,8 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView.backgroundColor = UIColor(patternImage: UIImage(named: "corktexture")!)
+        
         database.read(gameID: UserDefaults.standard.string(forKey: Game.keys.id)!) { (game) in
             guard let game = game else {
                 print("game read returned nil value")
@@ -84,8 +86,21 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
             DispatchQueue.main.async {
                 imageView.image = image
                 self.collectionView.cellForItem(at: indexPath)?.contentView.addSubview(imageView)
+                
+                // create/add pushpin to cell
+                let pushpinView = UIImageView(image: UIImage(named: "pushpin"))
+                let centerX = (cell.contentView.frame.size.width / 2) - 5
+                cell.contentView.insertSubview(pushpinView, aboveSubview: imageView)
+                pushpinView.frame.origin.x = centerX
             }
         }
+        
+        // rotate cell by random amount up to 20 degrees
+        let rotate = collectionView.layoutAttributesForItem(at: indexPath)?.transform.rotated(by: randomRotation())
+        cell.transform = rotate!
+        
+        cell.backgroundColor = UIColor.white
+        
         return cell
     }
     
@@ -105,7 +120,28 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         gameNameLabel.text = "Game: \(currentGame?.name ?? "")"
         gameIDLabel.text = "ID: \(currentGame?.id ?? "")"
         
+        header.backgroundColor = UIColor.white
+        
         return header
+    }
+    
+    func randomRotation() -> CGFloat {
+        // get random degrees value
+        var random = Double(arc4random_uniform(20))
+        // convert to negative by random
+        if arc4random_uniform(2) == 0 {
+            random = random * -1
+        }
+        // convert to radians for rotation
+        let radians = convertToRadians(value: random)
+        return radians
+    }
+    
+    func convertToRadians(value: Double) -> CGFloat {
+        let degrees = value
+        let radians = degrees * (Double.pi / 180)
+        let converted = CGFloat(radians)
+        return converted
     }
     
     //MARK: Actions
