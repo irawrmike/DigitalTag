@@ -20,7 +20,8 @@ class NetworkManager {
     func uploadPhoto(photo: UIImage, path: String, completion: @escaping (_ photoURL: URL, Error?) -> ()) {
         let storage = Storage.storage()
         let storageRef = storage.reference()
-        guard let photoData = UIImageJPEGRepresentation(photo, 0.7) else {
+        let smallerPhoto = photo.makeSmaller()
+        guard let photoData = UIImageJPEGRepresentation(smallerPhoto, 1.0) else {
             print("photo data conversion ERROR")
             return
         }
@@ -150,4 +151,20 @@ class NetworkManager {
         dataTask.resume()
     }
     
+}
+
+extension UIImage {
+    func makeSmaller() -> UIImage {
+        let horizontalRatio = 200 / size.width
+        let verticalRatio = 300 / size.height
+        
+        let imageRatio = max(horizontalRatio, verticalRatio) // keep original aspect ratio
+        let newSize = CGSize(width: size.width * imageRatio, height: size.height * imageRatio)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, true, 0)
+        draw(in: CGRect(origin: CGPoint(x: 0, y: 0), size: newSize))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
 }
