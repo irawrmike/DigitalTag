@@ -16,9 +16,10 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     let networkManager = NetworkManager()
     var currentGame: Game?
     var currentPlayers: [Player] = []
+    var currentPlayer: Player!
     let database = DatabaseManager()
     let game = GameLogic()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,9 +37,14 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
             
             self.currentPlayers = []
             
-            for player in players {
-                self.database.read(playerID: player, completion: { (player) in
+            for plyr in players {
+                self.database.read(playerID: plyr, completion: { (player) in
                     self.currentPlayers.append(player!)
+                    
+                    if plyr == UserDefaults.standard.string(forKey: Player.keys.id) {
+                        self.currentPlayer = player!
+                    }
+                    
                     self.collectionView.reloadData()
                 })
             }
@@ -100,6 +106,13 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         cell.transform = rotate!
         
         cell.backgroundColor = UIColor.white
+        
+        // add overlay to cell for the current player's target
+        if currentGame?.state == Game.state.active {
+            if currentPlayers[indexPath.row].id == currentPlayer.target {
+                cell.contentView.layer.borderColor = UIColor.green.cgColor
+            }
+        }
         
         return cell
     }
