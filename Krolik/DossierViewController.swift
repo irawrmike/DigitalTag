@@ -50,7 +50,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
             self.networkManager.compareFaces(target: self.playerTarget, photoURL: url.absoluteString, completion: { (isAMatch) in
                 DispatchQueue.main.async {
                     if isAMatch {
-                        let killAlert = UIAlertController(title: "Target Hit!", message: "You have just sucessfully assasinated \(self.playerTarget.nickname!)!" , preferredStyle: .alert)
+                        let killAlert = UIAlertController(title: "Target Hit!", message: "Good job, \(self.currentPlayer.nickname), you have taken out \(self.playerTarget.nickname!)!" , preferredStyle: .alert)
                         killAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
                             self.killPerson()
                             spinner.stopAnimating()
