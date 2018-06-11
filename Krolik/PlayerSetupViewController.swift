@@ -60,7 +60,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
                     let faceAlert = UIAlertController(title: "Krolik Face Analysis Complete", message: "", preferredStyle: .alert)
                     
                     if isFace {
-                        faceAlert.message = "Ah, nice to see you again, comrade/. If ready to start, hit the submit button."
+                        faceAlert.message = "Ah, nice to see you again, comrade. If ready to start, hit the submit button."
                         faceAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self?.present(faceAlert, animated: true, completion: nil)
                         self?.currentPlayer?.photoURL = url.absoluteString
