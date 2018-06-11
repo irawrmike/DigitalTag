@@ -143,6 +143,9 @@ class DatabaseManager {
             game.id = gameData[Game.keys.id] as? String
             game.players = gameData[Game.keys.players] as! [String:String]
             game.state = gameData[Game.keys.state] as? String
+            if let winner = gameData[Game.keys.winner] as? [String:String] {
+                game.winner = winner
+            }
             
             completion(game)
         }
@@ -244,17 +247,6 @@ class DatabaseManager {
         
         // update values
         playersRef.updateChildValues(update)
-    }
-    
-    func updatePlayers(update: Dictionary<String, Any>, completion: @escaping (_ success: Bool) -> ()) {
-        // create reference to players root folder
-        databaseRef = Database.database().reference()
-        let playersRef = databaseRef.child(Player.keys.root)
-        
-        // update values
-        playersRef.updateChildValues(update)
-        
-        completion(true)
     }
     
     // MARK: DELETE

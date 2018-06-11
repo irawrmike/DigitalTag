@@ -177,8 +177,8 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wam-dd-5Z3">
-                                            <rect key="frame" x="306" y="16" width="100" height="38"/>
-                                            <state key="normal" title="Header Button"/>
+                                            <rect key="frame" x="328" y="16" width="78" height="38"/>
+                                            <state key="normal" title="Button"/>
                                             <connections>
                                                 <action selector="headerButtonTapped:" destination="Pcb-ia-zwM" eventType="touchUpInside" id="gHu-ps-onN"/>
                                             </connections>
@@ -495,9 +495,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="U1W-np-V5y"/>
+        <segue reference="qQu-Oa-UG8"/>
         <segue reference="vhS-jg-IHX"/>
         <segue reference="qdd-un-H9G"/>
-        <segue reference="Cb7-DF-BU3"/>
+        <segue reference="NeQ-4H-1KD"/>
     </inferredMetricsTieBreakers>
 </document>

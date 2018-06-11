@@ -30,6 +30,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                 return
             }
             self.currentGame = game
+            
             self.checkGameState()
             
             let players = Array(game.players.keys)
@@ -107,17 +108,44 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "gameLobbyHeader", for: indexPath)
         
-        let headerButton = header.viewWithTag(1) as! UIButton
         let gameNameLabel = header.viewWithTag(2) as! UILabel
         let gameIDLabel = header.viewWithTag(3) as! UILabel
-        
-        checkGameState(button: headerButton)
         
         gameNameLabel.text = "Game: \(currentGame?.name ?? "")"
         gameIDLabel.text = "ID: \(currentGame?.id ?? "")"
         
         header.backgroundColor = UIColor.white
         
+        if let currentGame = currentGame {
+            if currentGame.state == Game.state.pending {
+                if let headerButton = header.viewWithTag(1) as? UIButton {
+                    if UserDefaults.standard.bool(forKey: Player.keys.owner) {
+                        headerButton.setTitle("Start Game", for: .normal)
+                        headerButton.isHidden = false
+                    }else{
+                        headerButton.setTitle("Quit Game", for: .normal)
+                        headerButton.isHidden = false
+                    }
+                }
+                if let inviteButton = header.viewWithTag(4) as? UIButton {
+                    inviteButton.isHidden = false
+                }
+            }else if currentGame.state == Game.state.active {
+                if let headerButton = header.viewWithTag(1) as? UIButton {
+                    headerButton.isHidden = true
+                }
+                if let inviteButton = header.viewWithTag(4) as? UIButton {
+                    inviteButton.isHidden = true
+                }
+            }else if currentGame.state == Game.state.ended {
+                if let headerButton = header.viewWithTag(1) as? UIButton {
+                    headerButton.isHidden = true
+                }
+                if let inviteButton = header.viewWithTag(4) as? UIButton {
+                    inviteButton.isHidden = true
+                }
+            }
+        }
         return header
     }
     
@@ -163,7 +191,19 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                     self.database.databaseRef.child(Game.keys.root).child(gameID!).removeValue()
                     self.database.databaseRef.child(Player.keys.root).child(playerID!).removeValue()
                 }))
-                singlePlayerAlert.addAction(UIAlertAction(title: "Recruit", style: .default, handler: nil))
+                singlePlayerAlert.addAction(UIAlertAction(title: "Recruit", style: .default, handler: { (_) in
+                    let textToShare = "Comrade, join fight from link if dare."
+                    
+                    if let gameID = self.currentGame?.id {
+                        if let krolikURL = NSURL(string: "krolik://\(gameID)") {
+                            let objectsToShare = [textToShare, krolikURL] as [Any]
+                            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                            
+                            activityVC.popoverPresentationController?.sourceView = sender
+                            self.present(activityVC, animated: true, completion: nil)
+                        }
+                    }
+                }))
                 present(singlePlayerAlert, animated: true, completion: nil)
             }else{
                 game.currentGame = currentGame
@@ -202,34 +242,21 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     
     //MARK: Game Status
     
-    func checkGameState(button: UIButton? = nil) {
-        if currentGame?.state == Game.state.pending {
-            if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
-                tabBarItem.isEnabled = false
-            }
-            if let headerButton = button {
-                if UserDefaults.standard.bool(forKey: Player.keys.owner) {
-                    headerButton.titleLabel?.text = "Start Game"
-                    headerButton.isHidden = false
-                }else{
-                    headerButton.titleLabel?.text = "Quit Game"
-                    headerButton.isHidden = false
+    func checkGameState() {
+        if let currentGame = currentGame {
+            if currentGame.state == Game.state.pending {
+                if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
+                    tabBarItem.isEnabled = false
                 }
-            }
-        }else if currentGame?.state == Game.state.active {
-            if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
-                tabBarItem.isEnabled = true
-            }
-            if let headerButton = button {
-                headerButton.isHidden = true
-            }
-        }else if currentGame?.state == Game.state.ended {
-            if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
-                tabBarItem.isEnabled = false
-                performSegue(withIdentifier: "quitFromStatus", sender: self)
-            }
-            if let headerButton = button {
-                headerButton.isHidden = true
+            }else if currentGame.state == Game.state.active {
+                if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
+                    tabBarItem.isEnabled = true
+                }
+            }else if currentGame.state == Game.state.ended {
+                if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
+                    tabBarItem.isEnabled = false
+                    performSegue(withIdentifier: "quitFromStatus", sender: self)
+                }
             }
         }
     }
