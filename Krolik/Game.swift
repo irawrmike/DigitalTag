@@ -42,7 +42,7 @@ class Game {
     
     static func generateGameName() -> String {
         //let names = ["The Odessa Files", "The Munich Gambit", "The Ostravsky Affair", "Smiley's Lament", "The Prague Chronicles", "The Vienna Waltz", "The Leningrad Let-Down"]
-        let cities = ["Tirana", "Andorra", "Baku", "Minsk", "Munich", "Ostravsky", "Smiley's", "Odessa", "Prague", "Vienna", "Leningrad", "Brussels", "Sofia", "Zagreb", "Tallinn", "Helsinki", "Tbilisi", "Buda", "Pest", "Dublin", "Rome"]
+        let cities = ["Tirana", "Andorra", "Baku", "Minsk", "Munich", "Ostravsky", "Smiley", "Odessa", "Prague", "Vienna", "Leningrad", "Brussels", "Sofia", "Zagreb", "Tallinn", "Helsinki", "Tbilisi", "Buda", "Pest", "Dublin", "Rome"]
         let nouns = ["Files", "Gambit", "Affair", "Lament", "Elegy", "Chronicles", "Let-Down", "Come-Up", "Waltz", "Two-Step", "Freakout", "Breakdown", "Murder Party"]
         let randomIndexA = Int(arc4random_uniform(UInt32(cities.count)))
         let randomIndexB = Int(arc4random_uniform(UInt32 (nouns.count)))
