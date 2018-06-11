@@ -21,6 +21,7 @@
 		3B07CB8620C5C01A00C370C0 /* kremlin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BB04DEE20C17C010015C6B5 /* kremlin.ttf */; };
 		3B3D4E8120C082550027C68C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8020C082550027C68C /* GoogleService-Info.plist */; };
 		3B3D4E8720C08E7E0027C68C /* GameStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3D4E8620C08E7E0027C68C /* GameStatusViewController.swift */; };
+		3B5FF3D320CF2AEB00CB534B /* PlayerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5FF3D220CF2AEB00CB534B /* PlayerCollectionViewCell.swift */; };
 		3B8CC14920C1D71C00A5890C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8CC14820C1D71C00A5890C /* NetworkManager.swift */; };
 		3BC0D96720BF3EC900045B17 /* PlayerSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */; };
 		3BFD798C20C874A1008C1F54 /* DossierViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD798B20C874A1008C1F54 /* DossierViewController.swift */; };
@@ -60,6 +61,7 @@
 		3413B71FF29B5FB6BE268F6C /* Pods_Krolik.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Krolik.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3D4E8020C082550027C68C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B3D4E8620C08E7E0027C68C /* GameStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatusViewController.swift; sourceTree = "<group>"; };
+		3B5FF3D220CF2AEB00CB534B /* PlayerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCollectionViewCell.swift; sourceTree = "<group>"; };
 		3B8CC14820C1D71C00A5890C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3BB04DEE20C17C010015C6B5 /* kremlin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kremlin.ttf; sourceTree = "<group>"; };
 		3BC0D96620BF3EC900045B17 /* PlayerSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSetupViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				3BB04DEE20C17C010015C6B5 /* kremlin.ttf */,
 				3BFD798B20C874A1008C1F54 /* DossierViewController.swift */,
 				27B9034520CB2032005A3C9B /* GameOverViewController.swift */,
+				3B5FF3D220CF2AEB00CB534B /* PlayerCollectionViewCell.swift */,
 			);
 			path = Krolik;
 			sourceTree = "<group>";
@@ -176,7 +179,7 @@
 						CreatedOnToolsVersion = 9.3.1;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -278,6 +281,7 @@
 				272EBE3B20C1BA7F003FEFE2 /* Player.swift in Sources */,
 				272EBE3E20C1D3F2003FEFE2 /* DatabaseManager.swift in Sources */,
 				3BC0D96720BF3EC900045B17 /* PlayerSetupViewController.swift in Sources */,
+				3B5FF3D320CF2AEB00CB534B /* PlayerCollectionViewCell.swift in Sources */,
 				27B9035020CEE468005A3C9B /* HelpScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,7 +428,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Krolik/Krolik.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84BM2BTTA9;
@@ -447,7 +450,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Krolik/Krolik.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84BM2BTTA9;

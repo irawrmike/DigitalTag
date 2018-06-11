@@ -20,10 +20,6 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     let database = DatabaseManager()
     let game = GameLogic()
     
-    override var shouldAutorotate: Bool {
-        return false
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

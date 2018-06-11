@@ -22,10 +22,6 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
     var currentPlayer: Player!
     var playerTarget: Player!
     
-    override var shouldAutorotate: Bool {
-        return false
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
