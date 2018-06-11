@@ -15,6 +15,7 @@ class Game {
         static let history = "game_history"
         static let name = "game_name"
         static let id = "game_id"
+        static let join = "join_id"
         static let players = "game_players"
         static let devices = "game_device"
         static let state = "state"

@@ -58,7 +58,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playerCell", for: indexPath)
         cell.contentView.layer.borderWidth = 2
-        cell.contentView.layer.cornerRadius = 15
+        cell.contentView.layer.cornerRadius = 10
         cell.contentView.layer.borderColor = UIColor.black.cgColor
         cell.layer.masksToBounds = true
         
@@ -108,13 +108,18 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "gameLobbyHeader", for: indexPath)
         
         let startButton = header.viewWithTag(1) as! UIButton
+        let inviteButton = header.viewWithTag(4) as! UIButton
         let gameNameLabel = header.viewWithTag(2) as! UILabel
         let gameIDLabel = header.viewWithTag(3) as! UILabel
         
         if UserDefaults.standard.bool(forKey: Player.keys.owner) && currentGame?.state == Game.state.pending {
             startButton.isHidden = false
+            inviteButton.isHidden = false
+        }else if currentGame?.state == Game.state.pending {
+            inviteButton.isHidden = false
         }else {
             startButton.isHidden = true
+            inviteButton.isHidden = true
         }
         
         gameNameLabel.text = "Game: \(currentGame?.name ?? "")"
@@ -157,6 +162,21 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
             game.currentGame = currentGame
             game.startGame()
             sender.isEnabled = false
+        }
+    }
+    
+    @IBAction func inviteButtonTapped(_ sender: UIButton) {
+        print("invite link tapped")
+        let textToShare = "Comrade, join fight from link if dare."
+        
+        if let gameID = currentGame?.id {
+            if let krolikURL = NSURL(string: "krolik://\(gameID)") {
+                let objectsToShare = [textToShare, krolikURL] as [Any]
+                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                
+                activityVC.popoverPresentationController?.sourceView = sender
+                self.present(activityVC, animated: true, completion: nil)
+            }
         }
     }
     

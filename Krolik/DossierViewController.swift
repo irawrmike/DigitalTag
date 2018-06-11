@@ -170,4 +170,14 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
             })
         }
     }
+    
+    @IBAction func helpButtonTapped(_ sender: UIButton) {
+        let helpScreen = HelpScreenView(frame: CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: self.view.frame.width, height: self.view.frame.height))
+        self.view.addSubview(helpScreen)
+        self.view.bringSubview(toFront: helpScreen)
+        
+        
+    }
+    
+    
 }
