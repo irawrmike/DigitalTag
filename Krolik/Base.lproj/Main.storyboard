@@ -259,7 +259,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W2n-4h-i9a"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Game Status" id="GId-xE-IoF"/>
+                    <tabBarItem key="tabBarItem" title="Game Status" image="Game_Status" id="GId-xE-IoF"/>
                     <navigationItem key="navigationItem" title="Game Name" id="ZbA-l9-qDd">
                         <barButtonItem key="rightBarButtonItem" title="Mission" id="Ur3-HK-X8a"/>
                     </navigationItem>
@@ -407,7 +407,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NcT-jI-D90"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="Dossier" id="5qc-Co-Hsv"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Dossier" image="Dossier" id="5qc-Co-Hsv"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="agentLabel" destination="Zi6-S5-Oaf" id="FFV-a1-kQk"/>
@@ -509,6 +509,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Dossier" width="30" height="26"/>
+        <image name="Game_Status" width="30" height="30"/>
         <image name="WELCOMEKROLIK" width="352" height="352"/>
     </resources>
     <inferredMetricsTieBreakers>
