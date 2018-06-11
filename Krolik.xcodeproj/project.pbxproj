@@ -13,6 +13,7 @@
 		272EBE4020C5AFE7003FEFE2 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EBE3F20C5AFE7003FEFE2 /* GameLogic.swift */; };
 		27B9034620CB2032005A3C9B /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9034520CB2032005A3C9B /* GameOverViewController.swift */; };
 		27B9035020CEE468005A3C9B /* HelpScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9034F20CEE467005A3C9B /* HelpScreenView.swift */; };
+		27D81B6820CEF7C20000B607 /* morsecode.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27D81B6720CEF7C20000B607 /* morsecode.wav */; };
 		27E7361720BF31F5004B48D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7361620BF31F5004B48D2 /* AppDelegate.swift */; };
 		27E7361920BF31F5004B48D2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7361820BF31F5004B48D2 /* HomeViewController.swift */; };
 		27E7361C20BF31F5004B48D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E7361A20BF31F5004B48D2 /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		277179E020C6DFAF00DE6580 /* Krolik.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Krolik.entitlements; sourceTree = "<group>"; };
 		27B9034520CB2032005A3C9B /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		27B9034F20CEE467005A3C9B /* HelpScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpScreenView.swift; sourceTree = "<group>"; };
+		27D81B6720CEF7C20000B607 /* morsecode.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morsecode.wav; sourceTree = "<group>"; };
 		27E7361320BF31F5004B48D2 /* Krolik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Krolik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E7361620BF31F5004B48D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27E7361820BF31F5004B48D2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		27E7361520BF31F5004B48D2 /* Krolik */ = {
 			isa = PBXGroup;
 			children = (
+				27D81B6720CEF7C20000B607 /* morsecode.wav */,
 				277179E020C6DFAF00DE6580 /* Krolik.entitlements */,
 				27E7361620BF31F5004B48D2 /* AppDelegate.swift */,
 				272EBE3D20C1D3F2003FEFE2 /* DatabaseManager.swift */,
@@ -209,6 +212,7 @@
 				27E7362120BF31F6004B48D2 /* LaunchScreen.storyboard in Resources */,
 				3B3D4E8120C082550027C68C /* GoogleService-Info.plist in Resources */,
 				27E7361E20BF31F6004B48D2 /* Assets.xcassets in Resources */,
+				27D81B6820CEF7C20000B607 /* morsecode.wav in Resources */,
 				27E7361C20BF31F5004B48D2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
