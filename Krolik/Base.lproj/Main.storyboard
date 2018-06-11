@@ -187,14 +187,14 @@
                                             <rect key="frame" x="8" y="8" width="94.666666666666671" height="54"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" text="Game Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjZ-Vl-I5m">
-                                                    <rect key="frame" x="0.0" y="0.0" width="94.666666666666671" height="33.666666666666664"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="94.666666666666671" height="24"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="gameNameLabel"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GameID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfa-dp-6qA">
-                                                    <rect key="frame" x="0.0" y="33.666666666666664" width="94.666666666666671" height="20.333333333333336"/>
+                                                    <rect key="frame" x="0.0" y="24" width="94.666666666666671" height="30"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="gameIDLabel"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -210,12 +210,22 @@
                                                 <constraint firstItem="fjZ-Vl-I5m" firstAttribute="leading" secondItem="yOa-qX-NjR" secondAttribute="leading" id="tx2-gU-WKJ"/>
                                             </constraints>
                                         </stackView>
+                                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXj-Lg-B8f" userLabel="Invite Link">
+                                            <rect key="frame" x="106.66666666666669" y="32" width="48" height="30"/>
+                                            <state key="normal" title="(Invite)"/>
+                                            <connections>
+                                                <action selector="inviteButtonTapped:" destination="Pcb-ia-zwM" eventType="touchUpInside" id="SsH-Xp-DhD"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="yOa-qX-NjR" secondAttribute="bottom" constant="8" id="18A-H5-kH7"/>
+                                        <constraint firstItem="UXj-Lg-B8f" firstAttribute="centerY" secondItem="cfa-dp-6qA" secondAttribute="centerY" id="2vW-Vq-Plz"/>
                                         <constraint firstItem="yOa-qX-NjR" firstAttribute="leading" secondItem="feh-Hu-HxU" secondAttribute="leading" constant="8" id="8UJ-4v-gHl"/>
+                                        <constraint firstItem="UXj-Lg-B8f" firstAttribute="leading" secondItem="cfa-dp-6qA" secondAttribute="trailing" constant="4" id="NEb-Os-TBU"/>
                                         <constraint firstItem="wam-dd-5Z3" firstAttribute="trailing" secondItem="feh-Hu-HxU" secondAttribute="trailing" constant="-8" id="TKy-VZ-AlP"/>
                                         <constraint firstItem="wam-dd-5Z3" firstAttribute="leading" relation="lessThanOrEqual" secondItem="fjZ-Vl-I5m" secondAttribute="trailing" constant="225.33333333333331" id="aBy-o6-aOf"/>
+                                        <constraint firstItem="UXj-Lg-B8f" firstAttribute="height" secondItem="cfa-dp-6qA" secondAttribute="height" id="lRw-cC-cAY"/>
                                         <constraint firstItem="yOa-qX-NjR" firstAttribute="top" secondItem="feh-Hu-HxU" secondAttribute="top" constant="8" id="sNf-Hj-l6M"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="wam-dd-5Z3" secondAttribute="bottom" constant="8" id="vS4-rB-dWF"/>
                                         <constraint firstItem="wam-dd-5Z3" firstAttribute="top" secondItem="feh-Hu-HxU" secondAttribute="topMargin" constant="8" id="x5a-ZR-yhu"/>
@@ -280,11 +290,21 @@
                                     <constraint firstAttribute="width" secondItem="WMg-hs-rsw" secondAttribute="height" multiplier="3:4" id="eFk-Na-dUy"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxp-Z5-98y">
+                                <rect key="frame" x="378" y="653" width="32" height="30"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <state key="normal" title="Help"/>
+                                <connections>
+                                    <action selector="helpButtonTapped:" destination="q7T-mY-VmS" eventType="touchUpInside" id="dw4-iJ-DNV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6OB-fr-kec" firstAttribute="top" secondItem="WMg-hs-rsw" secondAttribute="bottom" constant="40" id="8oe-LT-kvK"/>
                             <constraint firstItem="WMg-hs-rsw" firstAttribute="centerX" secondItem="mlI-H3-aba" secondAttribute="centerX" id="LiW-17-oKg"/>
+                            <constraint firstItem="pxp-Z5-98y" firstAttribute="trailing" secondItem="NcT-jI-D90" secondAttribute="trailing" constant="-4" id="N4k-OT-mK3"/>
+                            <constraint firstItem="pxp-Z5-98y" firstAttribute="bottom" secondItem="NcT-jI-D90" secondAttribute="bottom" constant="-4" id="Zqp-UT-tdQ"/>
                             <constraint firstItem="wSg-Ij-Amq" firstAttribute="top" secondItem="Zi6-S5-Oaf" secondAttribute="bottom" constant="20" id="Zwn-6N-Cce"/>
                             <constraint firstItem="WMg-hs-rsw" firstAttribute="width" secondItem="mlI-H3-aba" secondAttribute="width" multiplier="0.6" id="by5-4U-req"/>
                             <constraint firstItem="6OB-fr-kec" firstAttribute="centerX" secondItem="mlI-H3-aba" secondAttribute="centerX" id="c7q-nf-rSM"/>

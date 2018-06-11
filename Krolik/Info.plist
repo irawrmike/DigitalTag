@@ -49,5 +49,16 @@
 	</array>
 	<key>UIStatusBarHidden</key>
 	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>krolik</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>com.krolikTeam.Krolik</string>
+		</dict>
+	</array>
 </dict>
 </plist>
