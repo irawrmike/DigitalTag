@@ -125,10 +125,6 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         
         cell.backgroundColor = UIColor.white
         
-        
-        
-        
-        
         return cell
     }
     

@@ -51,10 +51,12 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                 DispatchQueue.main.async {
                     if isAMatch {
                         let killAlert = UIAlertController(title: "Target Hit!", message: "You have just sucessfully assasinated \(self.playerTarget.nickname!)!" , preferredStyle: .alert)
-                        killAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        killAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                            self.killPerson()
+                            spinner.stopAnimating()
+                        }))
                         self.present(killAlert, animated: true)
-                        self.killPerson()
-                        spinner.stopAnimating()
+                        
                     } else {
                         let failAlert = UIAlertController(title: "Target Miss!", message: "You have missed your target! Make sure you've got your positioning right and try to hit \(self.playerTarget.nickname!) again", preferredStyle: .alert)
                         failAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -134,11 +136,13 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                 print("entering game end check")
                 // game ends if currentPlayer's target is itself
                 if self.currentPlayer.id == self.playerTarget.id {
-                    let gameOverAlert = UIAlertController(title: " Game Over!", message: "Game over, you WIN! Mission complete", preferredStyle: .alert)
-                    gameOverAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
-                        self.performSegue(withIdentifier: "quitFromDossier", sender: self)
-                    }))
-                    self.present(gameOverAlert, animated: true, completion: nil)
+                    DispatchQueue.main.async {
+                        let gameOverAlert = UIAlertController(title: " Game Over!", message: "Game over, you WIN! Mission complete", preferredStyle: .alert)
+                        gameOverAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                            self.performSegue(withIdentifier: "quitFromDossier", sender: self)
+                        }))
+                        self.present(gameOverAlert, animated: true, completion: nil)
+                    }
                     self.database.update(gameID: self.currentGameId, update: [Game.keys.state : Game.state.ended])
                     // add self as winner to game
                     let winnerName = currentPlayer!.nickname as String
