@@ -135,7 +135,9 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                 // game ends if currentPlayer's target is itself
                 if self.currentPlayer.id == self.playerTarget.id {
                     let gameOverAlert = UIAlertController(title: " Game Over!", message: "Game over, you WIN! Mission complete", preferredStyle: .alert)
-                    gameOverAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    gameOverAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                        self.performSegue(withIdentifier: "quitFromDossier", sender: self)
+                    }))
                     self.present(gameOverAlert, animated: true, completion: nil)
                     self.database.update(gameID: self.currentGameId, update: [Game.keys.state : Game.state.ended])
                     // add self as winner to game
@@ -145,7 +147,6 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                    // update winner id/name to game on database
                     self.database.databaseRef.child(Game.keys.root).child(self.currentGameId).child(Game.keys.winner).updateChildValues([winnerID : winnerName])
                     print("winner is: \(winnerName)!")
-                    self.performSegue(withIdentifier: "quitFromDossier", sender: self)
                     // delete game and backup to history
 //                    self.database.delete(gameID: self.currentGameId)
                 } else {
