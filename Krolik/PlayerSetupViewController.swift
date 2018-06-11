@@ -38,27 +38,29 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         view.addSubview(spinner)
         spinner.startAnimating()
         submitButton.isEnabled = false
-        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+        guard var image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             print("ERROR: No image found")
             return
         }
+
+        image = image.cropsToSquare()
+        image = image.makeSmaller()
         
         playerImageView.image = image
-        
         let gameID = currentGame?.id ?? ""
         let playerID = currentPlayer?.id ?? ""
         
-        networkManager.uploadPhoto(photo: image, path: "\(gameID)/\(playerID).jpg") { (url, error) in
+        networkManager.uploadPhoto(photo: playerImageView.image!, path: "\(gameID)/\(playerID).jpg") { (url, error) in
             if error != nil {
                 print(error ?? "error?")
             }
             // check for a face in the image here!!
             self.networkManager.checkPhotoFace(photoURL: url.absoluteString) { [weak self] (isFace) in
                 DispatchQueue.main.async {
-                    let faceAlert = UIAlertController(title: "Finished Checking Photo", message: "", preferredStyle: .alert)
+                    let faceAlert = UIAlertController(title: "Krolik Face Analysis Complete", message: "", preferredStyle: .alert)
                     
                     if isFace {
-                        faceAlert.message = "Face was found. If ready to start, hit the submit button!"
+                        faceAlert.message = "Ah, nice to see you again, comrade. If ready to start, hit the submit button."
                         faceAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self?.present(faceAlert, animated: true, completion: nil)
                         self?.currentPlayer?.photoURL = url.absoluteString
@@ -76,7 +78,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
                         faceAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
                             self?.showCamera()
                         }))
-                        faceAlert.message = "Face was NOT found. Please take picture of your face again!"
+                        faceAlert.message = "Pardon, comrade.  We need to see your beautiful face. Please try again!"
                         self?.present(faceAlert, animated: true, completion: nil)
                         spinner.stopAnimating()
                     }
@@ -141,4 +143,35 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
     
+}
+
+extension UIImage {
+    func makeSmaller() -> UIImage {
+        let horizontalRatio = 200 / size.width
+        let verticalRatio = 200 / size.height
+        
+        let imageRatio = max(horizontalRatio, verticalRatio) // keep original aspect ratio
+        let newSize = CGSize(width: size.width * imageRatio, height: size.height * imageRatio)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, true, 0)
+        draw(in: CGRect(origin: CGPoint(x: 0, y: 0), size: newSize))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+    
+    func cropsToSquare() -> UIImage {
+        let refWidth = CGFloat((self.cgImage!.width))
+        let refHeight = CGFloat((self.cgImage!.height))
+        let cropSize = refWidth > refHeight ? refHeight : refWidth
+        
+        let x = (refWidth - cropSize) / 2.0
+        let y = (refHeight - cropSize) / 2.0
+        
+        let cropRect = CGRect(x: x, y: y, width: cropSize, height: cropSize)
+        let imageRef = self.cgImage?.cropping(to: cropRect)
+        let cropped = UIImage(cgImage: imageRef!, scale: 0.0, orientation: self.imageOrientation)
+        
+        return cropped
+    }
 }

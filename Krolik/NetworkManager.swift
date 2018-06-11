@@ -20,7 +20,8 @@ class NetworkManager {
     func uploadPhoto(photo: UIImage, path: String, completion: @escaping (_ photoURL: URL, Error?) -> ()) {
         let storage = Storage.storage()
         let storageRef = storage.reference()
-        guard let photoData = UIImageJPEGRepresentation(photo, 0.7) else {
+
+        guard let photoData = UIImageJPEGRepresentation(photo, 1.0) else {
             print("photo data conversion ERROR")
             return
         }
@@ -84,7 +85,7 @@ class NetworkManager {
         let data = ["image" : player.photoURL, "subject_id" : "player", "gallery_name" : player.id]
         let jsonData = try? JSONSerialization.data(withJSONObject: data)
         request.httpBody = jsonData
-
+        
         let dataTask = URLSession(configuration: URLSessionConfiguration.default).dataTask(with: request) { (data, urlResponse, error) in
             
             guard let responseData = data else {
