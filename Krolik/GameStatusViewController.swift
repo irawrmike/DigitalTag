@@ -63,22 +63,17 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playerCell", for: indexPath)
-        cell.contentView.layer.borderWidth = 2
-        cell.contentView.layer.cornerRadius = 10
-        cell.contentView.layer.borderColor = UIColor.black.cgColor
+
         cell.layer.masksToBounds = true
         
         let cellFrame = cell.contentView.frame
-        let imageFrame = CGRect(x: cellFrame.origin.x+10, y: cellFrame.origin.y+10, width: cellFrame.width-20, height: cellFrame.height-20)
+        let imageFrame = CGRect(x: cellFrame.origin.x+10, y: cellFrame.origin.y+5, width: cellFrame.width-20, height: cellFrame.height-30)
         let imageView = UIImageView(frame: imageFrame)
         imageView.contentMode = .scaleAspectFit
         
-        // if player dies change cell look
         let player = currentPlayers[indexPath.row]
         guard let playerState = currentGame?.players[player.id] else { return  cell }
-        if  playerState == Player.state.dead {
-            cell.contentView.layer.borderColor = UIColor.red.cgColor
-        }
+        
         
         networkManager.getDataFromUrl(url: URL(string: player.photoURL)!) { (data, response, error) in
             guard let imageData = data else {
@@ -93,10 +88,32 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                 imageView.image = image
                 self.collectionView.cellForItem(at: indexPath)?.contentView.addSubview(imageView)
                 
+                let overlayOrigin = cell.contentView.frame.origin
+                let overlaySize = cell.contentView.frame.size
+                
+                // if player dies add X overlay
+                let deadOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: overlaySize))
+                deadOverlay.image = UIImage(named: "deadX")
+                deadOverlay.contentMode = .scaleAspectFit
+                if  playerState == Player.state.dead {
+                    cell.contentView.insertSubview(deadOverlay, aboveSubview: imageView)
+                }
+                
+                // Create the target Overlay
+                let targetOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: overlaySize))
+                targetOverlay.image = UIImage(named: "targetCircle")
+                targetOverlay.contentMode = .scaleAspectFit
+                // add overlay to cell for the current player's target
+                if self.currentGame?.state == Game.state.active {
+                    if self.currentPlayers[indexPath.row].id == self.currentPlayer.target {
+                        cell.contentView.insertSubview(targetOverlay, aboveSubview: imageView)
+                    }
+                }
+                
                 // create/add pushpin to cell
                 let pushpinView = UIImageView(image: UIImage(named: "pushpin"))
                 let centerX = (cell.contentView.frame.size.width / 2) - 5
-                cell.contentView.insertSubview(pushpinView, aboveSubview: imageView)
+                cell.contentView.insertSubview(pushpinView, aboveSubview: targetOverlay)
                 pushpinView.frame.origin.x = centerX
             }
         }
@@ -107,12 +124,9 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         
         cell.backgroundColor = UIColor.white
         
-        // add overlay to cell for the current player's target
-        if currentGame?.state == Game.state.active {
-            if currentPlayers[indexPath.row].id == currentPlayer.target {
-                cell.contentView.layer.borderColor = UIColor.green.cgColor
-            }
-        }
+        
+        
+        
         
         return cell
     }
