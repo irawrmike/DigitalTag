@@ -130,13 +130,13 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="axb-kg-NeT">
-                                <rect key="frame" x="100.33333333333331" y="485" width="215" height="37.333333333333371"/>
+                                <rect key="frame" x="118.33333333333331" y="485" width="179" height="37.333333333333371"/>
                                 <state key="normal" title="Take a New Photo">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Take a New Photo">
                                             <attributes>
                                                 <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <font key="NSFont" size="22" name="Kremlin"/>
+                                                <font key="NSFont" metaFont="system" size="22"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
@@ -146,14 +146,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v5l-a2-fWA">
-                                <rect key="frame" x="166" y="562.33333333333337" width="83" height="36.666666666666629"/>
+                                <rect key="frame" x="171" y="562.33333333333337" width="73" height="36.666666666666629"/>
                                 <state key="normal" title="Submit">
                                     <attributedString key="attributedTitle">
                                         <fragment content="SuBmit">
                                             <attributes>
                                                 <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <font key="NSFont" size="22" name="Kremlin"/>
-                                                <font key="NSOriginalFont" size="22" name="Kremlin"/>
+                                                <font key="NSFont" metaFont="system" size="22"/>
+                                                <font key="NSOriginalFont" metaFont="system" size="22"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
@@ -218,13 +218,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wam-dd-5Z3">
-                                            <rect key="frame" x="328" y="16" width="78" height="38"/>
-                                            <state key="normal" title="Button"/>
-                                            <connections>
-                                                <action selector="headerButtonTapped:" destination="Pcb-ia-zwM" eventType="touchUpInside" id="gHu-ps-onN"/>
-                                            </connections>
-                                        </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yOa-qX-NjR">
                                             <rect key="frame" x="8" y="8" width="138" height="54"/>
                                             <subviews>
@@ -238,19 +231,45 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="fjZ-Vl-I5m" firstAttribute="top" secondItem="yOa-qX-NjR" secondAttribute="top" id="Jog-fx-oN8"/>
+                                                <constraint firstAttribute="bottom" secondItem="fjZ-Vl-I5m" secondAttribute="bottom" id="ULL-3c-Xy5"/>
                                                 <constraint firstAttribute="trailing" secondItem="fjZ-Vl-I5m" secondAttribute="trailing" id="edX-SJ-ssK"/>
                                                 <constraint firstItem="fjZ-Vl-I5m" firstAttribute="leading" secondItem="yOa-qX-NjR" secondAttribute="leading" id="tx2-gU-WKJ"/>
                                             </constraints>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="C6A-ru-RhD">
+                                            <rect key="frame" x="260" y="0.0" width="146" height="70"/>
+                                            <subviews>
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wam-dd-5Z3">
+                                                    <rect key="frame" x="79" y="0.0" width="67" height="40"/>
+                                                    <fontDescription key="fontDescription" name="Kremlin" family="Kremlin" pointSize="16"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="headerButtonTapped:" destination="Pcb-ia-zwM" eventType="touchUpInside" id="gHu-ps-onN"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LpN-tV-53h">
+                                                    <rect key="frame" x="0.0" y="40" width="146" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="146" id="jVE-Ed-gkL"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Kremlin" family="Kremlin" pointSize="16"/>
+                                                    <state key="normal" title="invite comrades">
+                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
                                         </stackView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="yOa-qX-NjR" secondAttribute="bottom" constant="8" id="18A-H5-kH7"/>
                                         <constraint firstItem="yOa-qX-NjR" firstAttribute="leading" secondItem="feh-Hu-HxU" secondAttribute="leading" constant="8" id="8UJ-4v-gHl"/>
-                                        <constraint firstAttribute="bottom" secondItem="sGP-LV-sIZ" secondAttribute="bottom" constant="4" id="E3L-gz-WzT"/>
-                                        <constraint firstAttribute="trailing" secondItem="sGP-LV-sIZ" secondAttribute="trailing" constant="8" id="j2f-Bx-x9q"/>
-                                        <constraint firstItem="sGP-LV-sIZ" firstAttribute="top" secondItem="feh-Hu-HxU" secondAttribute="top" constant="4" id="m6M-5t-buT"/>
+                                        <constraint firstItem="C6A-ru-RhD" firstAttribute="top" secondItem="feh-Hu-HxU" secondAttribute="top" id="Q1V-Ub-hbS"/>
+                                        <constraint firstAttribute="bottom" secondItem="C6A-ru-RhD" secondAttribute="bottom" id="Qg0-kn-rTN"/>
+                                        <constraint firstItem="C6A-ru-RhD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yOa-qX-NjR" secondAttribute="trailing" constant="8" id="hkM-XL-3ra"/>
+                                        <constraint firstAttribute="trailing" secondItem="C6A-ru-RhD" secondAttribute="trailing" constant="8" id="iy0-pN-wnl"/>
                                         <constraint firstItem="yOa-qX-NjR" firstAttribute="top" secondItem="feh-Hu-HxU" secondAttribute="top" constant="8" id="sNf-Hj-l6M"/>
-                                        <constraint firstItem="yOa-qX-NjR" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="sGP-LV-sIZ" secondAttribute="leading" constant="-8" id="u9L-bh-jMZ"/>
                                     </constraints>
                                 </collectionReusableView>
                                 <connections>
@@ -391,7 +410,6 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxp-Z5-98y">
                                 <rect key="frame" x="378" y="653" width="32" height="30"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                 <state key="normal" title="Help"/>
                                 <connections>
                                     <action selector="helpButtonTapped:" destination="q7T-mY-VmS" eventType="touchUpInside" id="dw4-iJ-DNV"/>
@@ -529,7 +547,6 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Oxj-V9-qlH">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="Pcb-ia-zwM" kind="relationship" relationship="viewControllers" id="XiK-9W-FnY"/>
@@ -552,7 +569,8 @@
         <image name="rabbitNoBackground" width="276" height="425"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hgt-7m-pOm"/>
+        <segue reference="NJe-0o-BFB"/>
+        <segue reference="qQu-Oa-UG8"/>
         <segue reference="dgT-eZ-mH2"/>
         <segue reference="qdd-un-H9G"/>
         <segue reference="NeQ-4H-1KD"/>
