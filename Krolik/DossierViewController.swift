@@ -28,7 +28,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "LinedPaper")!)
         currentGameId = UserDefaults.standard.string(forKey: Game.keys.id)
         updatePlayerAndTarget()
     }

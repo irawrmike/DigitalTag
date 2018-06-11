@@ -126,7 +126,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8AZ-ZO-Lns" userLabel="Player Photo">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WELCOMEKROLIK" translatesAutoresizingMaskIntoConstraints="NO" id="8AZ-ZO-Lns" userLabel="Player Photo">
                                 <rect key="frame" x="31" y="50" width="352" height="352"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
@@ -148,7 +148,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8AZ-ZO-Lns" firstAttribute="width" secondItem="A3H-HT-Pga" secondAttribute="width" multiplier="0.85" id="1mP-oM-AQ7"/>
                             <constraint firstItem="N3y-nh-fkX" firstAttribute="bottom" secondItem="v5l-a2-fWA" secondAttribute="bottom" constant="137" id="A4u-QU-7kz"/>
@@ -271,7 +271,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W2n-4h-i9a"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Game Status" id="GId-xE-IoF"/>
+                    <tabBarItem key="tabBarItem" title="Game Status" image="Game_Status" id="GId-xE-IoF"/>
                     <navigationItem key="navigationItem" title="Game Name" id="ZbA-l9-qDd">
                         <barButtonItem key="rightBarButtonItem" title="Mission" id="Ur3-HK-X8a"/>
                     </navigationItem>
@@ -419,7 +419,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NcT-jI-D90"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="Dossier" id="5qc-Co-Hsv"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Dossier" image="Dossier" id="5qc-Co-Hsv"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="agentLabel" destination="Zi6-S5-Oaf" id="FFV-a1-kQk"/>
@@ -553,7 +553,7 @@
         <image name="rabbitNoBackground" width="276" height="425"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qQu-Oa-UG8"/>
+        <segue reference="hgt-7m-pOm"/>
         <segue reference="dgT-eZ-mH2"/>
         <segue reference="qdd-un-H9G"/>
         <segue reference="NeQ-4H-1KD"/>
