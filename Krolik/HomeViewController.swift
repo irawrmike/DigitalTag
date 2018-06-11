@@ -35,6 +35,9 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         if UserDefaults.standard.string(forKey: Game.keys.id) != nil {
             performSegue(withIdentifier: "gameInProgress", sender: nil)
         }
+        if let joinID = UserDefaults.standard.string(forKey: Game.keys.join) {
+            gameIDField.text = joinID
+        }
     }
 
     //MARK: Keyboard Move View
@@ -109,12 +112,18 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
             
             // update player creation to create game owner
             UserDefaults.standard.set(true, forKey: Player.keys.owner)
+            
+            // remove join game ID from user defaults
+            UserDefaults.standard.removeObject(forKey: Game.keys.join)
         }
         if segue.identifier == "joinGameSegue" {
             // passes game object to player creation
             let destination = segue.destination as? PlayerSetupViewController
             destination?.currentGame = currentGame
             UserDefaults.standard.set(false, forKey: Player.keys.owner)
+            
+            // remove join game ID from user defaults
+            UserDefaults.standard.removeObject(forKey: Game.keys.join)
         }
     }
 }

@@ -48,7 +48,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
             }
             
             self.networkManager.compareFaces(target: self.playerTarget, photoURL: url.absoluteString, completion: { (isAMatch) in
-                DispatchQueue.main.async {
+                //DispatchQueue.main.async {
                     if isAMatch {
                         let killAlert = UIAlertController(title: "Target Hit!", message: "You have just sucessfully assasinated \(self.playerTarget.nickname!)!" , preferredStyle: .alert)
                         killAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -61,7 +61,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                         self.present(failAlert, animated: true)
                         spinner.stopAnimating()
                     }
-                }
+                //}
                 
             })
             
@@ -71,12 +71,16 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
     func killPerson() {
         // update target state to dead
         database.changePlayerState(gameID: UserDefaults.standard.string(forKey: Game.keys.id)!, playerID: playerTarget.id!, state: Player.state.dead)
+        // update player target to target's target
         
-        // update assassin and target values on database
-    database.databaseRef.child(Player.keys.root).child(currentPlayer.id!).updateChildValues([Player.keys.target : playerTarget.target!])
-    database.databaseRef.child(Player.keys.root).child(playerTarget.target!).updateChildValues([Player.keys.assassin : currentPlayer.id!])
+        var update = [String:String]()
+        update["\(currentPlayer.id!)/\(Player.keys.target)/"] = playerTarget.target!
+        update["\(playerTarget.target!)/\(Player.keys.assassin)/"] = currentPlayer.id!
         
-        updatePlayerAndTarget()
+        database.updatePlayers(update: update) { [weak self] (success) in
+            self?.updatePlayerAndTarget()
+        }
+        
     }
     
     //MARK: Actions
@@ -102,6 +106,10 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
     
     func updatePlayerAndTarget() {
         print("update player/target called")
+        // clear text before loading in correct values
+        self.agentLabel.text = ""
+        self.targetLabel.text = ""
+        
         // get the current player and its target from the database
         database.read(playerID: UserDefaults.standard.string(forKey: Player.keys.id)!) { (currentPlayer) in
             print("current player finished reading with these values:")
@@ -111,7 +119,9 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
             
             self.currentPlayer = currentPlayer
             print("assigned current player to property")
-            
+            DispatchQueue.main.async {
+                self.agentLabel.text = self.currentPlayer.nickname
+            }
             
             self.database.read(playerID: currentPlayer!.target!, completion: { (playerTarget) in
                 print("finished reading playerTarget with these values:")
@@ -121,6 +131,9 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                 
                 self.playerTarget = playerTarget
                 print("assigned player target to property")
+                DispatchQueue.main.async {
+                    self.targetLabel.text = self.playerTarget.nickname
+                }
                 
                 print("entering game end check")
                 // game ends if currentPlayer's target is itself
@@ -154,8 +167,6 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                         DispatchQueue.main.async {
                             print("changes image to downloaded image")
                             self.imageView.image = image
-                            self.agentLabel.text = self.currentPlayer.nickname
-                            self.targetLabel.text = self.playerTarget.nickname
                         }
                     }
                     
@@ -163,4 +174,14 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
             })
         }
     }
+    
+    @IBAction func helpButtonTapped(_ sender: UIButton) {
+        let helpScreen = HelpScreenView(frame: CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: self.view.frame.width, height: self.view.frame.height))
+        self.view.addSubview(helpScreen)
+        self.view.bringSubview(toFront: helpScreen)
+        
+        
+    }
+    
+    
 }

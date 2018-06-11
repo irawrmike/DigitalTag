@@ -45,6 +45,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         completionHandler([.alert, .sound, .badge])
     }
     
+    // for custom URL functionality
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if let gameID = url.host {
+            UserDefaults.standard.set(gameID, forKey: Game.keys.join)
+            return true
+        }else{
+            return false
+        }
+    }
+    
     //FIREBASE CLOUD MESSAGING
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         //CHECK TOKEN RECEIVED FROM FCM

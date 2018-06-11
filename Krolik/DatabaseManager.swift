@@ -246,6 +246,17 @@ class DatabaseManager {
         playersRef.updateChildValues(update)
     }
     
+    func updatePlayers(update: Dictionary<String, Any>, completion: @escaping (_ success: Bool) -> ()) {
+        // create reference to players root folder
+        databaseRef = Database.database().reference()
+        let playersRef = databaseRef.child(Player.keys.root)
+        
+        // update values
+        playersRef.updateChildValues(update)
+        
+        completion(true)
+    }
+    
     // MARK: DELETE
     
     // DELETE GAME
