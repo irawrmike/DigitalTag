@@ -427,7 +427,7 @@
 				CODE_SIGN_ENTITLEMENTS = Krolik/Krolik.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 84BM2BTTA9;
+				DEVELOPMENT_TEAM = 36N89YW4Y8;
 				INFOPLIST_FILE = Krolik/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -450,7 +450,7 @@
 				CODE_SIGN_ENTITLEMENTS = Krolik/Krolik.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 84BM2BTTA9;
+				DEVELOPMENT_TEAM = 36N89YW4Y8;
 				INFOPLIST_FILE = Krolik/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
