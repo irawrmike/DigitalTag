@@ -20,8 +20,8 @@ class NetworkManager {
     func uploadPhoto(photo: UIImage, path: String, completion: @escaping (_ photoURL: URL, Error?) -> ()) {
         let storage = Storage.storage()
         let storageRef = storage.reference()
-        let smallerPhoto = photo.makeSmaller()
-        guard let photoData = UIImageJPEGRepresentation(smallerPhoto, 1.0) else {
+
+        guard let photoData = UIImageJPEGRepresentation(photo, 1.0) else {
             print("photo data conversion ERROR")
             return
         }
@@ -85,7 +85,7 @@ class NetworkManager {
         let data = ["image" : player.photoURL, "subject_id" : "player", "gallery_name" : player.id]
         let jsonData = try? JSONSerialization.data(withJSONObject: data)
         request.httpBody = jsonData
-
+        
         let dataTask = URLSession(configuration: URLSessionConfiguration.default).dataTask(with: request) { (data, urlResponse, error) in
             
             guard let responseData = data else {
@@ -151,20 +151,4 @@ class NetworkManager {
         dataTask.resume()
     }
     
-}
-
-extension UIImage {
-    func makeSmaller() -> UIImage {
-        let horizontalRatio = 200 / size.width
-        let verticalRatio = 300 / size.height
-        
-        let imageRatio = max(horizontalRatio, verticalRatio) // keep original aspect ratio
-        let newSize = CGSize(width: size.width * imageRatio, height: size.height * imageRatio)
-        
-        UIGraphicsBeginImageContextWithOptions(newSize, true, 0)
-        draw(in: CGRect(origin: CGPoint(x: 0, y: 0), size: newSize))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage!
-    }
 }
