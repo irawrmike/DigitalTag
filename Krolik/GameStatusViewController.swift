@@ -98,6 +98,9 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                 deadOverlay.contentMode = .scaleAspectFit
                 if  playerState == Player.state.dead {
                     cell.contentView.insertSubview(deadOverlay, aboveSubview: imageView)
+                    deadOverlay.isHidden = false
+                } else {
+                    deadOverlay.isHidden = true
                 }
                 
                 // Create the target Overlay
@@ -108,6 +111,10 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                 if self.currentGame?.state == Game.state.active {
                     if self.currentPlayers[indexPath.row].id == self.currentPlayer.target {
                         cell.contentView.insertSubview(targetOverlay, aboveSubview: imageView)
+                        targetOverlay.isHidden = false
+                    }
+                    else {
+                        targetOverlay.isHidden = true
                     }
                 }
                 
