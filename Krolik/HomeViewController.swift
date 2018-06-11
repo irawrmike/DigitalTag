@@ -22,7 +22,11 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     var keyboardIsHidden = true
     let database = DatabaseManager()
     var currentGame: Game!
-
+    
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         gameIDField.delegate = self
@@ -39,7 +43,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
             gameIDField.text = joinID
         }
     }
-
+    
     //MARK: Keyboard Move View
 
     @objc func keyboardWillShow(notification: NSNotification) {

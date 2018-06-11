@@ -22,6 +22,10 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
     var currentPlayer: Player?
     var isGameOwner = false
     
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.isEnabled = false
