@@ -18,7 +18,7 @@ class Game {
         static let join = "join_id"
         static let players = "game_players"
         static let devices = "game_device"
-        static let state = "state"
+        static let state = "game_state"
         static let created = "date_created"
         static let ended = "date_ended"
         static let winner = "winner"
@@ -38,6 +38,7 @@ class Game {
     var created: String!
     var ended: String?
     var state: String!
+    var winner = [String:String]()
     
     static func generateGameName() -> String {
         //let names = ["The Odessa Files", "The Munich Gambit", "The Ostravsky Affair", "Smiley's Lament", "The Prague Chronicles", "The Vienna Waltz", "The Leningrad Let-Down"]

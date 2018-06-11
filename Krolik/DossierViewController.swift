@@ -48,7 +48,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
             }
             
             self.networkManager.compareFaces(target: self.playerTarget, photoURL: url.absoluteString, completion: { (isAMatch) in
-                //DispatchQueue.main.async {
+                DispatchQueue.main.async {
                     if isAMatch {
                         let killAlert = UIAlertController(title: "Target Hit!", message: "You have just sucessfully assasinated \(self.playerTarget.nickname!)!" , preferredStyle: .alert)
                         killAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -61,7 +61,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                         self.present(failAlert, animated: true)
                         spinner.stopAnimating()
                     }
-                //}
+                }
                 
             })
             
@@ -71,16 +71,12 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
     func killPerson() {
         // update target state to dead
         database.changePlayerState(gameID: UserDefaults.standard.string(forKey: Game.keys.id)!, playerID: playerTarget.id!, state: Player.state.dead)
-        // update player target to target's target
         
-        var update = [String:String]()
-        update["\(currentPlayer.id!)/\(Player.keys.target)/"] = playerTarget.target!
-        update["\(playerTarget.target!)/\(Player.keys.assassin)/"] = currentPlayer.id!
+        // update assassin and target values on database
+        database.databaseRef.child(Player.keys.root).child(currentPlayer.id!).updateChildValues([Player.keys.target : playerTarget.target!])
+        database.databaseRef.child(Player.keys.root).child(playerTarget.target!).updateChildValues([Player.keys.assassin : currentPlayer.id!])
         
-        database.updatePlayers(update: update) { [weak self] (success) in
-            self?.updatePlayerAndTarget()
-        }
-        
+        updatePlayerAndTarget()
     }
     
     //MARK: Actions
@@ -139,13 +135,18 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                 // game ends if currentPlayer's target is itself
                 if self.currentPlayer.id == self.playerTarget.id {
                     let gameOverAlert = UIAlertController(title: " Game Over!", message: "Game over, you WIN! Mission complete", preferredStyle: .alert)
-                    gameOverAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    gameOverAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                        self.performSegue(withIdentifier: "quitFromDossier", sender: self)
+                    }))
                     self.present(gameOverAlert, animated: true, completion: nil)
                     self.database.update(gameID: self.currentGameId, update: [Game.keys.state : Game.state.ended])
                     // add self as winner to game
-                    let winner = currentPlayer!.nickname as String
-                    self.database.update(gameID: self.currentGameId, update: [Game.keys.winner : winner])
-                    print("winner is: \(winner)!")
+                    let winnerName = currentPlayer!.nickname as String
+                    let winnerID = currentPlayer!.id as String
+               
+                   // update winner id/name to game on database
+                    self.database.databaseRef.child(Game.keys.root).child(self.currentGameId).child(Game.keys.winner).updateChildValues([winnerID : winnerName])
+                    print("winner is: \(winnerName)!")
                     // delete game and backup to history
 //                    self.database.delete(gameID: self.currentGameId)
                 } else {
@@ -175,7 +176,6 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
         let helpScreen = HelpScreenView(frame: CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: self.view.frame.width, height: self.view.frame.height))
         self.view.addSubview(helpScreen)
         self.view.bringSubview(toFront: helpScreen)
-        
         
     }
     
