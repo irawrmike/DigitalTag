@@ -55,15 +55,15 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
             // check for a face in the image here!!
             self.networkManager.checkPhotoFace(photoURL: url.absoluteString) { [weak self] (isFace) in
                 DispatchQueue.main.async {
-                    let faceAlert = UIAlertController(title: "Finished Checking Photo", message: "", preferredStyle: .alert)
+                    let faceAlert = UIAlertController(title: "Krolik Face Analysis Complete", message: "", preferredStyle: .alert)
                     faceAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     
                     if isFace {
-                        faceAlert.message = "Face was found. If ready to start, hit the submit button!"
+                        faceAlert.message = "Ah, comrade krolik. Nice to see you again. Please, hit submit button now."
                         self?.present(faceAlert, animated: true, completion: nil)
                         self?.currentPlayer?.photoURL = url.absoluteString
                     } else {
-                        faceAlert.message = "Face was NOT found. Please take picture of your face again!"
+                        faceAlert.message = "Comrade krolik - your face is hard to see. Please, take another picture."
                         self?.present(faceAlert, animated: true, completion: nil)
                     }
                     
