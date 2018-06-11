@@ -546,10 +546,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Krolik-HowTo-Scene01" width="1320" height="770"/>
+        <image name="Krolik-HowTo-Scene02" width="1410" height="770"/>
+        <image name="Krolik-HowTo-Scene03" width="1980" height="1150"/>
+        <image name="Krolik-HowTo-Scene04" width="1350" height="810"/>
         <image name="rabbitNoBackground" width="276" height="425"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="U1W-np-V5y"/>
+        <segue reference="qQu-Oa-UG8"/>
         <segue reference="dgT-eZ-mH2"/>
         <segue reference="qdd-un-H9G"/>
         <segue reference="NeQ-4H-1KD"/>
