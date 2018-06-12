@@ -11,6 +11,7 @@
 		272EBE3C20C1BA7F003FEFE2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EBE3A20C1BA7F003FEFE2 /* Game.swift */; };
 		272EBE3E20C1D3F2003FEFE2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EBE3D20C1D3F2003FEFE2 /* DatabaseManager.swift */; };
 		272EBE4020C5AFE7003FEFE2 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EBE3F20C5AFE7003FEFE2 /* GameLogic.swift */; };
+		27ADE48920D04C1000DEAFF4 /* morsecode.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27ADE48820D04C1000DEAFF4 /* morsecode.wav */; };
 		27B9034620CB2032005A3C9B /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9034520CB2032005A3C9B /* GameOverViewController.swift */; };
 		27B9035020CEE468005A3C9B /* HelpScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9034F20CEE467005A3C9B /* HelpScreenView.swift */; };
 		27E7361720BF31F5004B48D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7361620BF31F5004B48D2 /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 		272EBE3D20C1D3F2003FEFE2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		272EBE3F20C5AFE7003FEFE2 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		277179E020C6DFAF00DE6580 /* Krolik.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Krolik.entitlements; sourceTree = "<group>"; };
+		27ADE48820D04C1000DEAFF4 /* morsecode.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = morsecode.wav; sourceTree = "<group>"; };
 		27B9034520CB2032005A3C9B /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		27B9034F20CEE467005A3C9B /* HelpScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpScreenView.swift; sourceTree = "<group>"; };
 		27E7361320BF31F5004B48D2 /* Krolik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Krolik.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +103,7 @@
 		27E7361520BF31F5004B48D2 /* Krolik */ = {
 			isa = PBXGroup;
 			children = (
+				27ADE48820D04C1000DEAFF4 /* morsecode.wav */,
 				277179E020C6DFAF00DE6580 /* Krolik.entitlements */,
 				27E7361620BF31F5004B48D2 /* AppDelegate.swift */,
 				272EBE3D20C1D3F2003FEFE2 /* DatabaseManager.swift */,
@@ -179,7 +182,7 @@
 						CreatedOnToolsVersion = 9.3.1;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -212,6 +215,7 @@
 				27E7362120BF31F6004B48D2 /* LaunchScreen.storyboard in Resources */,
 				3B3D4E8120C082550027C68C /* GoogleService-Info.plist in Resources */,
 				27E7361E20BF31F6004B48D2 /* Assets.xcassets in Resources */,
+				27ADE48920D04C1000DEAFF4 /* morsecode.wav in Resources */,
 				27E7361C20BF31F5004B48D2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,9 +432,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Krolik/Krolik.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 84BM2BTTA9;
+				DEVELOPMENT_TEAM = 36N89YW4Y8;
 				INFOPLIST_FILE = Krolik/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -450,9 +455,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Krolik/Krolik.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 84BM2BTTA9;
+				DEVELOPMENT_TEAM = 36N89YW4Y8;
 				INFOPLIST_FILE = Krolik/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

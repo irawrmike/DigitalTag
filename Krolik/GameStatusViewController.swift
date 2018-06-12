@@ -163,7 +163,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         
         let gameNameLabel = header.viewWithTag(2) as! UILabel
         
-        gameNameLabel.text = "Game: \(currentGame?.name ?? "")"
+        gameNameLabel.text = "\(currentGame?.name.uppercased() ?? "")"
         
         header.backgroundColor = UIColor.white
         
@@ -171,10 +171,10 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
             if currentGame.state == Game.state.pending {
                 if let headerButton = header.viewWithTag(1) as? UIButton {
                     if UserDefaults.standard.bool(forKey: Player.keys.owner) {
-                        headerButton.setTitle("Start Game", for: .normal)
+                        headerButton.setTitle("START GAME", for: .normal)
                         headerButton.isHidden = false
                     }else{
-                        headerButton.setTitle("Quit Game", for: .normal)
+                        headerButton.setTitle("QUIT GAME", for: .normal)
                         headerButton.isHidden = false
                     }
                 }
@@ -224,7 +224,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     @IBAction func headerButtonTapped(_ sender: UIButton) {
         guard let title = sender.titleLabel?.text else {return}
         
-        if title == "Start Game" {
+        if title == "START GAME" {
             print("start game button tapped")
             if currentGame?.players.count == 1 {
                 sender.isEnabled = true
@@ -261,7 +261,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                 game.startGame()
                 sender.isEnabled = false
             }
-        }else if title == "Quit Game" {
+        }else if title == "QUIT GAME" {
             // remove player from game then players list
             let gameID = UserDefaults.standard.string(forKey: Game.keys.id)
             let playerID = UserDefaults.standard.string(forKey: Player.keys.id)
