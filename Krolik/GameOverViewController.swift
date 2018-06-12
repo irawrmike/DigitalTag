@@ -13,6 +13,7 @@ class GameOverViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var gameNameLabel: UILabel!
+    @IBOutlet weak var backgroundView: UIView!
     
     let database = DatabaseManager()
     let networkManager = NetworkManager()
@@ -23,6 +24,10 @@ class GameOverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        backgroundView.layer.borderWidth = 4
+        backgroundView.layer.borderColor = UIColor.black.cgColor
+        backgroundView.layer.cornerRadius = 10
         
         database.readOnce(gameID: UserDefaults.standard.string(forKey: Game.keys.id)!) { [weak self] (game) in
             guard let gameName = game?.name else {
