@@ -25,6 +25,22 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
         super.viewDidLoad()
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "LinedPaper")!)
         currentGameId = UserDefaults.standard.string(forKey: Game.keys.id)
+        
+        // observe player state in database
+        let currentUserID = UserDefaults.standard.string(forKey: Player.keys.id)!
+        database.read(gameID: currentGameId) { (game) in
+            if let plrs = game?.players {
+                if plrs[currentUserID] == Player.state.dead {
+                    DispatchQueue.main.async {
+                        if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
+                            tabBarItem.isEnabled = false
+                        }
+                        self.tabBarController?.selectedIndex = 0
+                    }
+                }
+            }
+        }
+        
         updatePlayerAndTarget()
     }
     
