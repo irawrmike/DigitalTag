@@ -27,6 +27,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBarController?.tabBar.tintColor = UIColor.darkGray
         collectionView.backgroundColor = UIColor(patternImage: UIImage(named: "corktexture")!)
         
         database.read(gameID: UserDefaults.standard.string(forKey: Game.keys.id)!) { (game) in
