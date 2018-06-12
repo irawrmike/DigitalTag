@@ -64,9 +64,13 @@ class NetworkManager {
             }
             guard let resultsDict = results as? [String : Any] ?? nil else { return }
             print(results)
-            guard let imagesArray = resultsDict["images"] as? [[String : [Any]]] ?? nil else { return }
-            guard let facesArray = imagesArray[0]["faces"] else { return }
-            if facesArray.count < 2  {
+            guard let imagesArray = resultsDict["images"] as? [[String : Any]] ?? nil else {
+                return
+                
+            }
+            guard let facesArray = imagesArray[0]["faces"]  as? [Any] ?? nil else { return }
+            //let facesArray = [0,2]
+            if facesArray.count > 1  {
                 completion(false, false)
             } else if resultsDict["Errors"] != nil
             {

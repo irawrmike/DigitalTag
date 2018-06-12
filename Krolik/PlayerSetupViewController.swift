@@ -59,7 +59,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
                 DispatchQueue.main.async {
                     let faceAlert = UIAlertController(title: "Krolik Face Analysis Complete", message: "", preferredStyle: .alert)
                     
-                    if isFace {
+                    if isFace  && multipleFaces == false {
                         faceAlert.message = "Ah, nice to see you again, comrade. If ready to start, hit the submit button."
                         faceAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self?.present(faceAlert, animated: true, completion: nil)
@@ -79,9 +79,9 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
                             self?.showCamera()
                         }))
                         if multipleFaces == false {
-                            faceAlert.message = "Pardon, comrade.  We need to see your beautiful face. Please try again!"
-                        } else {
                             faceAlert.message = "Pardon, comrade. We need to see your face and your face only. Please take a picture of just you!"
+                        } else {
+                            faceAlert.message = "Pardon, comrade.  We need to see your beautiful face. Please try again!"
                         }
                         self?.present(faceAlert, animated: true, completion: nil)
                         spinner.stopAnimating()
