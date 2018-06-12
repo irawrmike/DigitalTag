@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         registerNotifications(application)
         application.registerForRemoteNotifications()
         UIApplication.shared.isStatusBarHidden = false
-        
         return true
     }
     

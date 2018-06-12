@@ -411,7 +411,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target Copy" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSg-Ij-Amq">
                                 <rect key="frame" x="20" y="40" width="374" height="163"/>
-                                <fontDescription key="fontDescription" name="Kremlin" family="Kremlin" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Kremlin" family="Kremlin" pointSize="24"/>
                                 <color key="textColor" red="0.98878632484094675" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -486,6 +486,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UWK-9Q-tjh">
+                                <rect key="frame" x="87" y="304" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cVZ-e4-cvj">
+                                <rect key="frame" x="87" y="304" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FhN-77-26f">
                                 <rect key="frame" x="12" y="128.99999999999997" width="390" height="478.33333333333326"/>
                                 <subviews>
@@ -559,6 +568,7 @@
                             <constraint firstItem="FhN-77-26f" firstAttribute="leading" secondItem="8kx-Js-crZ" secondAttribute="leading" constant="12" id="pnZ-TG-DRW"/>
                             <constraint firstItem="FhN-77-26f" firstAttribute="centerY" secondItem="Nud-hC-8Dc" secondAttribute="centerY" id="s6L-cm-xRc"/>
                             <constraint firstItem="D7J-OY-KaV" firstAttribute="leading" secondItem="8kx-Js-crZ" secondAttribute="leading" constant="8" id="udu-hz-zUH"/>
+                            <constraint firstItem="UWK-9Q-tjh" firstAttribute="width" secondItem="FhN-77-26f" secondAttribute="width" id="vsg-9Q-diz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8kx-Js-crZ"/>
                     </view>
@@ -599,7 +609,6 @@
         <image name="rabbitNoBackground" width="276" height="425"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NJe-0o-BFB"/>
         <segue reference="qQu-Oa-UG8"/>
         <segue reference="dgT-eZ-mH2"/>
         <segue reference="qdd-un-H9G"/>
