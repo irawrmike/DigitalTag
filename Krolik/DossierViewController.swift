@@ -11,7 +11,6 @@ import UIKit
 class DossierViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var agentLabel: UILabel!
     @IBOutlet weak var targetLabel: UILabel!
     
     //MARK: Properties
@@ -109,7 +108,7 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
     func updatePlayerAndTarget() {
         print("update player/target called")
         // clear text before loading in correct values
-        self.agentLabel.text = ""
+//        self.agentLabel.text = ""
         self.targetLabel.text = ""
         
         // get the current player and its target from the database
@@ -121,9 +120,9 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
             
             self.currentPlayer = currentPlayer
             print("assigned current player to property")
-            DispatchQueue.main.async {
-                self.agentLabel.text = self.currentPlayer.nickname
-            }
+//            DispatchQueue.main.async {
+//                self.agentLabel.text = self.currentPlayer.nickname
+//            }
             
             self.database.read(playerID: currentPlayer!.target!, completion: { (playerTarget) in
                 print("finished reading playerTarget with these values:")
@@ -134,7 +133,8 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
                 self.playerTarget = playerTarget
                 print("assigned player target to property")
                 DispatchQueue.main.async {
-                    self.targetLabel.text = self.playerTarget.nickname
+                    let copy = "Welcome, agent \(self.currentPlayer.nickname!). Your current target is krolik \(self.playerTarget.nickname!). Find them... and take them out."
+                    self.targetLabel.text = copy.uppercased()
                 }
                 
                 print("entering game end check")
