@@ -569,9 +569,8 @@
         <image name="rabbitNoBackground" width="276" height="425"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NJe-0o-BFB"/>
         <segue reference="qQu-Oa-UG8"/>
-        <segue reference="dgT-eZ-mH2"/>
+        <segue reference="vhS-jg-IHX"/>
         <segue reference="qdd-un-H9G"/>
         <segue reference="NeQ-4H-1KD"/>
     </inferredMetricsTieBreakers>
