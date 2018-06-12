@@ -17,7 +17,4 @@ class PlayerCollectionViewCell: UICollectionViewCell {
 //        super.init(coder: aDecoder)
 //    }
     
-    var photo: UIImageView!
-    var overlay: UIImageView!
-    
 }

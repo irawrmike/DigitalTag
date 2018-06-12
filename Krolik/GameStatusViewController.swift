@@ -142,7 +142,9 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                 let pushpinView = UIImageView(image: UIImage(named: "pushpin"))
                 let centerX = (cell.contentView.frame.size.width / 2) - 5
                 cell.contentView.insertSubview(pushpinView, aboveSubview: targetOverlay!)
+                cell.contentView.bringSubview(toFront: pushpinView)
                 pushpinView.frame.origin.x = centerX
+                
             }
         }
         
