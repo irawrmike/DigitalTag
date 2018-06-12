@@ -26,14 +26,15 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "LinedPaper")!)
         currentGameId = UserDefaults.standard.string(forKey: Game.keys.id)
         updatePlayerAndTarget()
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true)
         
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        imageView.addSubview(spinner)
         spinner.center = imageView.center
+        view.addSubview(spinner)
         spinner.startAnimating()
         
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
@@ -42,6 +43,8 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
         }
         
         networkManager.uploadPhoto(photo: image, path: "\(currentGameId)/\(currentPlayer.id)_target.jpg") { (url, error) in
+            spinner.startAnimating()
+
             if error != nil {
                 print(error ?? "error uploading photo in DossierViewController")
             }
