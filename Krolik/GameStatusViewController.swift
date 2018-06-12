@@ -20,10 +20,6 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     let database = DatabaseManager()
     let game = GameLogic()
     
-    override var shouldAutorotate: Bool {
-        return false
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,13 +64,14 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playerCell", for: indexPath)
-
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playerCell", for: indexPath) as! PlayerCollectionViewCell
+        
         cell.layer.masksToBounds = true
         
         let cellFrame = cell.contentView.frame
         let imageFrame = CGRect(x: cellFrame.origin.x+10, y: cellFrame.origin.y+5, width: cellFrame.width-20, height: cellFrame.height-30)
         let imageView = UIImageView(frame: imageFrame)
+        
         imageView.contentMode = .scaleAspectFit
         
         let player = currentPlayers[indexPath.row]
@@ -98,36 +95,57 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                 let overlaySize = cell.contentView.frame.size
                 
                 // if player dies add X overlay
-                let deadOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: overlaySize))
-                deadOverlay.image = UIImage(named: "deadX")
-                deadOverlay.contentMode = .scaleAspectFit
-                if  playerState == Player.state.dead {
-                    cell.contentView.insertSubview(deadOverlay, aboveSubview: imageView)
-                    deadOverlay.isHidden = false
+                var deadOverlay: UIImageView?
+                
+                if let deo = cell.viewWithTag(200) as? UIImageView {
+                    deadOverlay = deo
                 } else {
-                    deadOverlay.isHidden = true
+                    deadOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: overlaySize))
+                    deadOverlay?.tag = 200
+                }
+                
+//                deadOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: overlaySize))
+                deadOverlay?.image = nil
+                deadOverlay?.image = UIImage(named: "deadX")
+                deadOverlay?.contentMode = .scaleAspectFit
+                if  playerState == Player.state.dead {
+                    cell.contentView.insertSubview(deadOverlay!, aboveSubview: imageView)
+                    deadOverlay?.isHidden = false
+                } else {
+                    deadOverlay?.isHidden = true
                 }
                 
                 // Create the target Overlay
-                let targetOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: overlaySize))
-                targetOverlay.image = UIImage(named: "targetCircle")
-                targetOverlay.contentMode = .scaleAspectFit
+                var targetOverlay: UIImageView?
+                
+                if let to = cell.viewWithTag(400) as? UIImageView {
+                    targetOverlay = to
+                } else {
+                    targetOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: overlaySize))
+                    targetOverlay?.tag = 400
+                }
+                
+                targetOverlay?.image = nil
+                targetOverlay?.image = UIImage(named: "targetCircle")
+                targetOverlay?.contentMode = .scaleAspectFit
                 // add overlay to cell for the current player's target
                 if self.currentGame?.state == Game.state.active {
                     if self.currentPlayers[indexPath.row].id == self.currentPlayer.target {
-                        cell.contentView.insertSubview(targetOverlay, aboveSubview: imageView)
-                        targetOverlay.isHidden = false
+                        cell.contentView.insertSubview(targetOverlay!, aboveSubview: imageView)
+                        targetOverlay?.isHidden = false
                     }
                     else {
-                        targetOverlay.isHidden = true
+                        targetOverlay?.isHidden = true
                     }
                 }
                 
                 // create/add pushpin to cell
                 let pushpinView = UIImageView(image: UIImage(named: "pushpin"))
                 let centerX = (cell.contentView.frame.size.width / 2) - 5
-                cell.contentView.insertSubview(pushpinView, aboveSubview: targetOverlay)
+                cell.contentView.insertSubview(pushpinView, aboveSubview: targetOverlay!)
+                cell.contentView.bringSubview(toFront: pushpinView)
                 pushpinView.frame.origin.x = centerX
+                
             }
         }
         

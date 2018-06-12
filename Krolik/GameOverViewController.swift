@@ -18,10 +18,6 @@ class GameOverViewController: UIViewController {
     let database = DatabaseManager()
     let networkManager = NetworkManager()
     
-    override var shouldAutorotate: Bool {
-        return false
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

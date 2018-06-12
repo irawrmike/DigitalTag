@@ -23,10 +23,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     let database = DatabaseManager()
     var currentGame: Game!
     
-    override var shouldAutorotate: Bool {
-        return true
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         gameIDField.delegate = self
