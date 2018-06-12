@@ -64,7 +64,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playerCell", for: indexPath) as! PlayerCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playerCell", for: indexPath)
         
         cell.layer.masksToBounds = true
         
@@ -162,10 +162,8 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "gameLobbyHeader", for: indexPath)
         
         let gameNameLabel = header.viewWithTag(2) as! UILabel
-//        let gameIDLabel = header.viewWithTag(3) as! UILabel
         
-        gameNameLabel.text = currentGame?.name ?? ""
-//        gameIDLabel.text = "ID: \(currentGame?.id ?? "")"
+        gameNameLabel.text = "Game: \(currentGame?.name ?? "")"
         
         header.backgroundColor = UIColor.white
         
