@@ -61,7 +61,7 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter an existing game ID" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gJg-np-V01">
-                                <rect key="frame" x="88.666666666666686" y="634.66666666666663" width="237" height="51.333333333333371"/>
+                                <rect key="frame" x="41.666666666666657" y="634.66666666666663" width="331.33333333333337" height="51.333333333333371"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.97647058819999999" green="0.92941176469999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -100,6 +100,7 @@
                             <constraint firstItem="OPV-5D-daz" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OjF-s1-wwY"/>
                             <constraint firstItem="gJg-np-V01" firstAttribute="top" secondItem="0S7-hl-ZSv" secondAttribute="bottom" constant="8" id="bag-6o-PMk"/>
                             <constraint firstItem="0S7-hl-ZSv" firstAttribute="top" secondItem="OPV-5D-daz" secondAttribute="bottom" id="eNo-Lm-JZe"/>
+                            <constraint firstItem="gJg-np-V01" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="k8f-hU-HCC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gJg-np-V01" secondAttribute="bottom" constant="50" id="xJn-9I-QXn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -599,7 +600,7 @@
         <image name="rabbitNoBackground" width="276" height="425"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qQu-Oa-UG8"/>
+        <segue reference="U1W-np-V5y"/>
         <segue reference="vhS-jg-IHX"/>
         <segue reference="qdd-un-H9G"/>
         <segue reference="NeQ-4H-1KD"/>
