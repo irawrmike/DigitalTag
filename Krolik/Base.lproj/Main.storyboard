@@ -38,7 +38,7 @@
                                 <size key="shadowOffset" width="4" height="2"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S7-hl-ZSv">
-                                <rect key="frame" x="98" y="574.66666666666663" width="218" height="52"/>
+                                <rect key="frame" x="98" y="574" width="218" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="218" id="W7s-QR-T6D"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="52" id="aQj-pf-F4s"/>
@@ -54,14 +54,14 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="rabbitNoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ZAB-g4-E2y">
-                                <rect key="frame" x="69" y="162.00000000000003" width="276" height="331.66666666666674"/>
+                                <rect key="frame" x="69" y="162" width="276" height="331"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="331.33333333333326" id="Nby-aw-xl3"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="276" id="klo-5r-fDe"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter an existing game ID" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gJg-np-V01">
-                                <rect key="frame" x="41.666666666666657" y="634.66666666666663" width="331.33333333333337" height="51.333333333333371"/>
+                                <rect key="frame" x="41.666666666666657" y="634" width="331" height="52"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.97647058819999999" green="0.92941176469999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -72,7 +72,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OPV-5D-daz">
-                                <rect key="frame" x="36.666666666666657" y="522.66666666666663" width="341" height="52"/>
+                                <rect key="frame" x="36.666666666666657" y="522" width="341" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="52" id="1Ly-yE-Qqf"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="341" id="1re-kK-OcD"/>
@@ -230,7 +230,7 @@
                                             </constraints>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="C6A-ru-RhD">
-                                            <rect key="frame" x="221" y="0.0" width="146" height="70"/>
+                                            <rect key="frame" x="260" y="0.0" width="146" height="70"/>
                                             <subviews>
                                                 <button opaque="NO" tag="1" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wam-dd-5Z3">
                                                     <rect key="frame" x="79" y="0.0" width="67" height="40"/>
@@ -508,7 +508,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Krolik-HowTo-Scene01" translatesAutoresizingMaskIntoConstraints="NO" id="gEb-I0-nPy">
                                         <rect key="frame" x="0.0" y="0.0" width="223" height="119"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="invite comrades to battle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4I5-zo-TkP">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="invite comrades for battle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4I5-zo-TkP">
                                         <rect key="frame" x="0.0" y="119.00000000000001" width="223" height="12.999999999999986"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="13.666666666666671" id="bqh-dX-hh1"/>
@@ -629,8 +629,8 @@
         <image name="rabbitNoBackground" width="276" height="425"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="U1W-np-V5y"/>
-        <segue reference="vhS-jg-IHX"/>
+        <segue reference="qQu-Oa-UG8"/>
+        <segue reference="dgT-eZ-mH2"/>
         <segue reference="qdd-un-H9G"/>
         <segue reference="NeQ-4H-1KD"/>
     </inferredMetricsTieBreakers>
