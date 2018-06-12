@@ -35,6 +35,16 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
             
             self.checkGameState()
             
+            let currentPlayerState = game.players[UserDefaults.standard.string(forKey: Player.keys.id)!]!
+            
+            if currentPlayerState == Player.state.dead {
+                DispatchQueue.main.async {
+                    if let tabBarItems = self.tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = tabBarItems[1] as? UITabBarItem {
+                        tabBarItem.isEnabled = false
+                    }
+                }
+            }
+            
             let players = Array(game.players.keys)
             
             self.currentPlayers = []
