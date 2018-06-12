@@ -9,12 +9,11 @@
 import UIKit
 
 class PlayerCollectionViewCell: UICollectionViewCell {
-    override func prepareForReuse() {
-        for subview in self.contentView.subviews {
-            
-            if let _ = subview as? UIImageView {
-                subview.removeFromSuperview()
-            }
-        }
-    }
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//        
+//    }
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//    }
 }

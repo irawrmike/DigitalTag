@@ -20,7 +20,7 @@ class NetworkManager {
     func uploadPhoto(photo: UIImage, path: String, completion: @escaping (_ photoURL: URL, Error?) -> ()) {
         let storage = Storage.storage()
         let storageRef = storage.reference()
-
+        
         guard let photoData = UIImageJPEGRepresentation(photo, 1.0) else {
             print("photo data conversion ERROR")
             return
@@ -38,7 +38,7 @@ class NetworkManager {
         }
     }
     
-    func checkPhotoFace(photoURL: String, completion: @escaping (_ isFace: Bool) -> ()) {
+    func checkPhotoFace(photoURL: String, completion: @escaping (_ isFace: Bool, _ multipleFaces: Bool) -> ()) {
         guard let url = URL(string: "https://api.kairos.com/detect") else { return }
         
         var request = URLRequest(url: url)
@@ -54,20 +54,25 @@ class NetworkManager {
             
             guard let responseData = data else {
                 print(error as? String ?? "no error")
-                completion(false)
+                completion(false, false)
                 return
             }
             guard let results = try? JSONSerialization.jsonObject(with: responseData, options: []) else {
                 print("JSON results ERROR")
-                completion(false)
+                completion(false, false)
                 return
             }
             guard let resultsDict = results as? [String : Any] ?? nil else { return }
             print(results)
-            if resultsDict["Errors"] != nil {
-                completion(false)
-            } else {
-                completion(true)
+            guard let imagesArray = resultsDict["images"] as? [[String : [Any]]] ?? nil else { return }
+            guard let facesArray = imagesArray[0]["faces"] else { return }
+            if facesArray.count < 2  {
+                completion(false, false)
+            } else if resultsDict["Errors"] != nil
+            {
+                completion(false, true)
+            }else {
+                completion(true, false)
             }
         }
         dataTask.resume()

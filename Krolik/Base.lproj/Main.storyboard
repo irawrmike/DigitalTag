@@ -189,7 +189,7 @@
                                     <inset key="sectionInset" minX="30" minY="40" maxX="30" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="playerCell" id="3Lm-Wo-JHZ">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="playerCell" id="3Lm-Wo-JHZ" customClass="PlayerCollectionViewCell" customModule="Krolik" customModuleProvider="target">
                                         <rect key="frame" x="30" y="110" width="140" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -203,7 +203,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wam-dd-5Z3">
-                                            <rect key="frame" x="321" y="16" width="46" height="38"/>
+                                            <rect key="frame" x="328" y="16" width="78" height="38"/>
                                             <state key="normal" title="Button"/>
                                             <connections>
                                                 <action selector="headerButtonTapped:" destination="Pcb-ia-zwM" eventType="touchUpInside" id="gHu-ps-onN"/>
@@ -435,7 +435,6 @@
         <!--View Controller-->
         <scene sceneID="Gpn-aE-c8Y">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vrQ-kn-HwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="RVu-qC-seQ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nud-hC-8Dc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -522,6 +521,7 @@
                         <viewLayoutGuide key="safeArea" id="8kx-Js-crZ"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vrQ-kn-HwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3552.1739130434785" y="293.47826086956525"/>
         </scene>
@@ -554,7 +554,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qQu-Oa-UG8"/>
-        <segue reference="dgT-eZ-mH2"/>
+        <segue reference="vhS-jg-IHX"/>
         <segue reference="qdd-un-H9G"/>
         <segue reference="NeQ-4H-1KD"/>
     </inferredMetricsTieBreakers>
