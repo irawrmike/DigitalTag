@@ -2,8 +2,8 @@
 //  GameOverViewController.swift
 //  Krolik
 //
-//  Created by Mike Stoltman on 2018-06-08.
-//  Copyright © 2018 Mike Stoltman. All rights reserved.
+//  Created by Colin Russell, Mike Cameron, and Mike Stoltman
+//  Copyright © 2018 Krolik Team. All rights reserved.
 //
 
 import UIKit
