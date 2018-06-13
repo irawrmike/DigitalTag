@@ -65,18 +65,16 @@ class NetworkManager {
             guard let resultsDict = results as? [String : Any] ?? nil else { return }
             print(results)
             guard let imagesArray = resultsDict["images"] as? [[String : Any]] ?? nil else {
+                completion(false, false) // no faces in the image
                 return
-                
             }
             guard let facesArray = imagesArray[0]["faces"]  as? [Any] ?? nil else { return }
-            //let facesArray = [0,2]
             if facesArray.count > 1  {
-                completion(false, false)
-            } else if resultsDict["Errors"] != nil
-            {
-                completion(false, true)
+                completion(false, true) // multiple faces in the image
+            } else if resultsDict["Errors"] != nil {
+                completion(false, false) // other errors
             }else {
-                completion(true, false)
+                completion(true, false) // one face in the image
             }
         }
         dataTask.resume()

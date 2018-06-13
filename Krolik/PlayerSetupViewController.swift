@@ -55,11 +55,13 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
                 print(error ?? "error?")
             }
             // check for a face in the image here!!
+            
+            
             self.networkManager.checkPhotoFace(photoURL: url.absoluteString) { [weak self] (isFace, multipleFaces) in
                 DispatchQueue.main.async {
                     let faceAlert = UIAlertController(title: "Krolik Face Analysis Complete", message: "", preferredStyle: .alert)
                     
-                    if isFace  && multipleFaces == false {
+                    if isFace && multipleFaces == false {
                         faceAlert.message = "Ah, nice to see you again, comrade. If ready to start, hit the submit button."
                         faceAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self?.present(faceAlert, animated: true, completion: nil)
@@ -78,7 +80,7 @@ class PlayerSetupViewController: UIViewController, UIImagePickerControllerDelega
                         faceAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
                             self?.showCamera()
                         }))
-                        if multipleFaces == false {
+                        if multipleFaces == true {
                             faceAlert.message = "Pardon, comrade. We need to see your face and your face only. Please take a picture of just you!"
                         } else {
                             faceAlert.message = "Pardon, comrade.  We need to see your beautiful face. Please try again!"
