@@ -58,8 +58,9 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                     if plyr == UserDefaults.standard.string(forKey: Player.keys.id) {
                         self.currentPlayer = player!
                     }
-                    
-                    self.collectionView.reloadData()
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
                 })
             }
         }
@@ -68,8 +69,11 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         database.read(playerID: UserDefaults.standard.string(forKey: Player.keys.id)!) { (player) in
             guard let current = player else { return }
-            self.currentPlayer = current
-            self.collectionView.reloadData()
+            
+            DispatchQueue.main.async {
+                self.currentPlayer = current
+                self.collectionView.reloadData()
+            }
         }
     }
     
@@ -124,7 +128,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                     deadOverlay?.tag = 200
                 }
                 
-//                deadOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: overlaySize))
+                //                deadOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: overlaySize))
                 deadOverlay?.image = nil
                 deadOverlay?.image = UIImage(named: "deadX")
                 deadOverlay?.contentMode = .scaleAspectFit
