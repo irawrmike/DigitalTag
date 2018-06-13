@@ -88,15 +88,29 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
         }
     }
     
+//    func killPerson() {
+//        // update target state to dead
+//        database.changePlayerState(gameID: UserDefaults.standard.string(forKey: Game.keys.id)!, playerID: playerTarget.id!, state: Player.state.dead)
+//
+//        // update assassin and target values on database
+//        database.databaseRef.child(Player.keys.root).child(currentPlayer.id!).updateChildValues([Player.keys.target : playerTarget.target!])
+//        database.databaseRef.child(Player.keys.root).child(playerTarget.target!).updateChildValues([Player.keys.assassin : currentPlayer.id!])
+//
+//        updatePlayerAndTarget()
+//    }
+    
     func killPerson() {
         // update target state to dead
         database.changePlayerState(gameID: UserDefaults.standard.string(forKey: Game.keys.id)!, playerID: playerTarget.id!, state: Player.state.dead)
         
         // update assassin and target values on database
-        database.databaseRef.child(Player.keys.root).child(currentPlayer.id!).updateChildValues([Player.keys.target : playerTarget.target!])
-        database.databaseRef.child(Player.keys.root).child(playerTarget.target!).updateChildValues([Player.keys.assassin : currentPlayer.id!])
-        
-        updatePlayerAndTarget()
+        database.read(playerID: currentPlayer.target!) { (player) in
+            guard let targetPlayer = player else { return }
+            self.database.databaseRef.child(Player.keys.root).child(self.currentPlayer.id).updateChildValues([Player.keys.target : targetPlayer.target!])
+            self.database.databaseRef.child(Player.keys.root).child(targetPlayer.target!).updateChildValues([Player.keys.assassin : self.currentPlayer.id!])
+            
+            self.updatePlayerAndTarget()
+        }
     }
     
     //MARK: Actions
@@ -125,7 +139,8 @@ class DossierViewController: UIViewController, UINavigationControllerDelegate, U
         // clear text before loading in correct values
 //        self.agentLabel.text = ""
         self.targetLabel.text = ""
-        
+        self.currentPlayer = Player()
+        self.playerTarget = Player()
         // get the current player and its target from the database
         database.read(playerID: UserDefaults.standard.string(forKey: Player.keys.id)!) { (currentPlayer) in
             print("current player finished reading with these values:")

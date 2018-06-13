@@ -43,8 +43,8 @@ class GameOverViewController: UIViewController {
             }
             
             DispatchQueue.main.async {
-                self?.gameNameLabel.text = gameName
-                self?.nicknameLabel.text = winnerName
+                self?.gameNameLabel.text = gameName.uppercased()
+                self?.nicknameLabel.text = winnerName.uppercased()
             }
             
             self?.database.read(playerID: winnerID, completion: { [weak self] (player) in
