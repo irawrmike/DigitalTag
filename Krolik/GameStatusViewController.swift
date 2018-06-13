@@ -45,6 +45,8 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                 }
             }
             
+            
+            
             let players = Array(game.players.keys)
             
             self.currentPlayers = []
@@ -60,6 +62,14 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                     self.collectionView.reloadData()
                 })
             }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        database.read(playerID: UserDefaults.standard.string(forKey: Player.keys.id)!) { (player) in
+            guard let current = player else { return }
+            self.currentPlayer = current
+            self.collectionView.reloadData()
         }
     }
     
