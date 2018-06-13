@@ -58,9 +58,7 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                     if plyr == UserDefaults.standard.string(forKey: Player.keys.id) {
                         self.currentPlayer = player!
                     }
-                    DispatchQueue.main.async {
                         self.collectionView.reloadData()
-                    }
                 })
             }
         }
@@ -80,10 +78,8 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         database.read(playerID: UserDefaults.standard.string(forKey: Player.keys.id)!) { (player) in
             guard let current = player else { return }
             
-            DispatchQueue.main.async {
                 self.currentPlayer = current
                 self.collectionView.reloadData()
-            }
         }
     }
     
