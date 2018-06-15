@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2724EEA820D430D600AA7A42 /* Screenshot-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 2724EEA720D430D600AA7A42 /* Screenshot-01.png */; };
 		272EBE3B20C1BA7F003FEFE2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EBE3920C1BA7F003FEFE2 /* Player.swift */; };
 		272EBE3C20C1BA7F003FEFE2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EBE3A20C1BA7F003FEFE2 /* Game.swift */; };
 		272EBE3E20C1D3F2003FEFE2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EBE3D20C1D3F2003FEFE2 /* DatabaseManager.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		1CB76E85B814DA2FABF2DCCF /* Pods-Krolik.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Krolik.release.xcconfig"; path = "Pods/Target Support Files/Pods-Krolik/Pods-Krolik.release.xcconfig"; sourceTree = "<group>"; };
+		2724EEA720D430D600AA7A42 /* Screenshot-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-01.png"; sourceTree = "<group>"; };
 		272EBE3920C1BA7F003FEFE2 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		272EBE3A20C1BA7F003FEFE2 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		272EBE3D20C1D3F2003FEFE2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2724EEA620D4309600AA7A42 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				2724EEA720D430D600AA7A42 /* Screenshot-01.png */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
 		27E7360A20BF31F5004B48D2 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +134,7 @@
 				3BFD798B20C874A1008C1F54 /* DossierViewController.swift */,
 				27B9034520CB2032005A3C9B /* GameOverViewController.swift */,
 				3B5FF3D220CF2AEB00CB534B /* PlayerCollectionViewCell.swift */,
+				2724EEA620D4309600AA7A42 /* Screenshots */,
 			);
 			path = Krolik;
 			sourceTree = "<group>";
@@ -211,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2724EEA820D430D600AA7A42 /* Screenshot-01.png in Resources */,
 				3B07CB8620C5C01A00C370C0 /* kremlin.ttf in Resources */,
 				27E7362120BF31F6004B48D2 /* LaunchScreen.storyboard in Resources */,
 				3B3D4E8120C082550027C68C /* GoogleService-Info.plist in Resources */,
