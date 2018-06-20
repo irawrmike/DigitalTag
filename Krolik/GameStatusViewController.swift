@@ -184,8 +184,9 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                 if let ppo = cell.viewWithTag(600) as? UIImageView {
                     pushpinOverlay = ppo
                 } else {
-                    let centerX = (cell.contentView.frame.size.width / 2) - 5
-                    pushpinOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: overlaySize))
+                    let pushpinSize = CGSize(width: cell.contentView.frame.size.width/10, height: cell.contentView.frame.size.width/10)
+                    let centerX = (cell.contentView.frame.size.width / 2) - (pushpinSize.width/2)
+                    pushpinOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: pushpinSize))
                     pushpinOverlay?.frame.origin.x = centerX
                     pushpinOverlay?.tag = 600
                 }
