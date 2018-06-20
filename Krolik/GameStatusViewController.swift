@@ -64,24 +64,24 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         }
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        database.read(playerID: UserDefaults.standard.string(forKey: Player.keys.id)!) { (player) in
+            guard let current = player else { return }
+            DispatchQueue.main.async {
+                self.currentPlayer = current
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+//    override func viewDidAppear(_ animated: Bool) {
 //        database.read(playerID: UserDefaults.standard.string(forKey: Player.keys.id)!) { (player) in
 //            guard let current = player else { return }
 //
-//            DispatchQueue.main.async {
 //                self.currentPlayer = current
 //                self.collectionView.reloadData()
-//            }
 //        }
 //    }
-    override func viewDidAppear(_ animated: Bool) {
-        database.read(playerID: UserDefaults.standard.string(forKey: Player.keys.id)!) { (player) in
-            guard let current = player else { return }
-            
-                self.currentPlayer = current
-                self.collectionView.reloadData()
-        }
-    }
     
     //MARK: UICollectionViewMethods
     
