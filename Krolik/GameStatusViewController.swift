@@ -105,8 +105,8 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
         imageView.contentMode = .scaleAspectFit
         
         let player = currentPlayers[indexPath.row]
-        guard let playerState = currentGame?.players[player.id] else { return  cell }
         
+        guard let playerState = currentGame?.players[player.id] else { return  cell }
         
         networkManager.getDataFromUrl(url: URL(string: player.photoURL)!) { (data, response, error) in
             guard let imageData = data else {
@@ -118,6 +118,15 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                 return
             }
             DispatchQueue.main.async {
+                
+                // rotate cell by random amount up to 20 degrees
+                let rotate = collectionView.layoutAttributesForItem(at: indexPath)?.transform.rotated(by: self.randomRotation())
+                cell.transform = rotate!
+                
+                // change background color to white
+                cell.backgroundColor = UIColor.white
+                
+                // add player image to imageview
                 imageView.image = image
                 self.collectionView.cellForItem(at: indexPath)?.contentView.addSubview(imageView)
                 
@@ -169,21 +178,26 @@ class GameStatusViewController: UIViewController, UICollectionViewDataSource {
                     }
                 }
                 
-                // create/add pushpin to cell
-                let pushpinView = UIImageView(image: UIImage(named: "pushpin"))
-                let centerX = (cell.contentView.frame.size.width / 2) - 5
-                cell.contentView.insertSubview(pushpinView, aboveSubview: targetOverlay!)
-                cell.contentView.bringSubview(toFront: pushpinView)
-                pushpinView.frame.origin.x = centerX
+                // Create the pushpin overlay
+                var pushpinOverlay: UIImageView?
                 
+                if let ppo = cell.viewWithTag(600) as? UIImageView {
+                    pushpinOverlay = ppo
+                } else {
+                    let centerX = (cell.contentView.frame.size.width / 2) - 5
+                    pushpinOverlay = UIImageView(frame: CGRect(origin: overlayOrigin, size: overlaySize))
+                    pushpinOverlay?.frame.origin.x = centerX
+                    pushpinOverlay?.tag = 600
+                }
+                
+                pushpinOverlay?.image = nil
+                pushpinOverlay?.image = UIImage(named: "pushpin")
+                pushpinOverlay?.contentMode = .scaleAspectFit
+                // add overlay to cell
+                cell.contentView.addSubview(pushpinOverlay!)
+                cell.contentView.bringSubview(toFront: pushpinOverlay!)
             }
         }
-        
-        // rotate cell by random amount up to 20 degrees
-        let rotate = collectionView.layoutAttributesForItem(at: indexPath)?.transform.rotated(by: randomRotation())
-        cell.transform = rotate!
-        
-        cell.backgroundColor = UIColor.white
         
         return cell
     }
